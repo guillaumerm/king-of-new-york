@@ -16,6 +16,6 @@ public:
 	string getDescription() const;
 	void setName(string name);
 	void setDescription(string description);
-	virtual friend ostream& operator<<(ostream&, const Card&);
+	friend ostream& operator<<(ostream&, const Card&);
 };
 #endif

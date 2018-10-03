@@ -33,6 +33,10 @@ template <class T> int Deck<T>::size() {
 	return this->currentSize;
 }
 
+template <class T> T* Deck<T>::get(int i) {
+	return this->items[i];
+}
+
 template <class T> void Deck<T>::setItems(T** items, int size) {
 	if (!this->isEmpty()) {
 		for (int i = 0; i < this->currentSize; i++) {
@@ -50,14 +54,10 @@ template <class T> void Deck<T>::setItems(T** items, int size) {
 	Methods which shuffles the deck of card. The algorithm used to shuffle the cards is an implementation of the modern algorithm of "Fisher–Yates shuffle".
 */
 template <class T> void Deck<T>::shuffle() {
-	for (int sourceIndex = 0; sourceIndex < this->currentSize; sourceIndex++) {
-		int destinationIndex = rand() % (this->currentSize-1) - sourceIndex;
+	for (int sourceIndex = 0; sourceIndex < this->currentSize - 1; sourceIndex++) {
+		int destinationIndex = rand() % (this->currentSize-1-sourceIndex) + sourceIndex;
 		T* source = this->items[sourceIndex];
 		this->items[sourceIndex] = this->items[destinationIndex];
-		this->items[sourceIndex] = source;
+		this->items[destinationIndex] = source;
 	}
-}
-
-template <class T> ostream& operator<<(ostream &strm, const Deck<T> &deck) {
-	return strm << "Deck (" << 
 }

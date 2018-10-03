@@ -1,6 +1,7 @@
 #ifndef DECK_H
 #define DECK_H
 #include <iostream>
+#include <ostream>
 
 using namespace std;
 
@@ -12,8 +13,8 @@ public:
 	int size();
 	bool isEmpty() const;
 	void setItems(T**, int);
+	T* get(int);
 private:
-	friend ostream& operator<<(ostream&, const Deck<T>&);
 	int top;
 	int currentSize;
 	T** items;

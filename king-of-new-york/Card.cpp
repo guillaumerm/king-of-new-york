@@ -48,3 +48,7 @@ string Card::getName() const {
 string Card::getDescription() const {
 	return this->description;
 }
+
+ostream& operator<<(ostream &strm, const Card &card) {
+	return strm << "Card(" << card.name << "; " << card.description << ")";
+}
