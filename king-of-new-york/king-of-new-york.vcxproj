@@ -118,6 +118,7 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="DiscardCard.h" />
+    <ClInclude Include="EnergyCube.h" />
     <ClInclude Include="GamePiece.h" />
     <ClInclude Include="GoalCard.h" />
     <ClInclude Include="KeepCard.h" />
@@ -125,6 +126,7 @@
     <ClInclude Include="GameCard.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Tile.h" />
+    <ClInclude Include="Token.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
@@ -138,6 +140,7 @@
     <ClCompile Include="MonsterCard.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerDriver.cpp" />
+    <ClCompile Include="Token.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

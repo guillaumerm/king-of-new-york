@@ -29,12 +29,14 @@ template <class T> T* Deck<T>::deal(){
 	}
 }
 
-template <class T> int Deck<T>::size() {
-	return this->currentSize;
+template <class T> void Deck<T>::push(T* item) {
+	// TODO handle full stack
+	this->items[this->top + 1] = item;
+	this->currentSize++;
 }
 
-template <class T> T* Deck<T>::get(int i) {
-	return this->items[i];
+template <class T> int Deck<T>::size() {
+	return this->currentSize;
 }
 
 template <class T> void Deck<T>::setItems(T** items, int size) {
@@ -60,4 +62,9 @@ template <class T> void Deck<T>::shuffle() {
 		this->items[sourceIndex] = this->items[destinationIndex];
 		this->items[destinationIndex] = source;
 	}
+}
+
+template <class T> T* Deck<T>::operator[](int index)
+{
+	return this->items[index];
 }

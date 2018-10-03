@@ -9,11 +9,12 @@ template <class T> class Deck {
 public:
 	Deck(T**, int);
 	void shuffle();
+	T* operator[](int);
 	T* deal();
 	int size();
 	bool isEmpty() const;
 	void setItems(T**, int);
-	T* get(int);
+	void push(T* item);
 private:
 	int top;
 	int currentSize;
