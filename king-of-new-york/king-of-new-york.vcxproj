@@ -117,6 +117,9 @@
   <ItemGroup>
     <ClInclude Include="Card.h" />
     <ClInclude Include="Deck.h" />
+    <ClInclude Include="DiceRoll.h" />
+    <ClInclude Include="DiceRollingFacility.h" />
+    <ClInclude Include="Die.h" />
     <ClInclude Include="DiscardCard.h" />
     <ClInclude Include="EnergyCube.h" />
     <ClInclude Include="GamePiece.h" />
@@ -132,6 +135,9 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="DeckCard-impl.cpp" />
+    <ClCompile Include="DiceRoll.cpp" />
+    <ClCompile Include="DiceRollFacility.cpp" />
+    <ClCompile Include="Die.cpp" />
     <ClCompile Include="DiscardCard.cpp" />
     <ClCompile Include="GameCard.cpp" />
     <ClCompile Include="GameComponentDriver.cpp" />
