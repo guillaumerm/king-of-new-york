@@ -7,18 +7,17 @@ using namespace std;
 
 template <class T> class Deck {
 public:
-	Deck(T**, int);
+	Deck(int);
 	void shuffle();
 	T* operator[](int);
 	T* deal();
 	int size();
 	bool isEmpty() const;
-	void setItems(T**, int);
-	void push(T* item);
+	void push(T item);
 private:
 	int top;
 	int currentSize;
-	T** items;
+	T* items;
 };
 
 #endif

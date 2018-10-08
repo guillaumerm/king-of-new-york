@@ -4,10 +4,10 @@
 
 using namespace std;
 
-template <class T> Deck<T>::Deck(T** cards, int pSize) {
-	this->items = cards;
-	this->top = pSize - 1;
-	this->currentSize = pSize;
+template <class T> Deck<T>::Deck(int pSize) {
+	this->items = new T[pSize];
+	this->top = -1;
+	this->currentSize = 0;
 };
 
 template <class T> bool Deck<T>::isEmpty() const {
@@ -17,8 +17,7 @@ template <class T> bool Deck<T>::isEmpty() const {
 template <class T> T* Deck<T>::deal(){
 	
 	if (!this->isEmpty()) {
-		T* const top = this->items[this->top];
-		this->items[this->top] = NULL;
+		T* const top = &this->items[this->top];
 		this->top -= 1;
 		this->currentSize -= 1;
 		return top;
@@ -29,27 +28,14 @@ template <class T> T* Deck<T>::deal(){
 	}
 }
 
-template <class T> void Deck<T>::push(T* item) {
+template <class T> void Deck<T>::push(T item) {
 	// TODO handle full stack
-	this->items[this->top + 1] = item;
+	this->items[++this->top] = item;
 	this->currentSize++;
 }
 
 template <class T> int Deck<T>::size() {
 	return this->currentSize;
-}
-
-template <class T> void Deck<T>::setItems(T** items, int size) {
-	if (!this->isEmpty()) {
-		for (int i = 0; i < this->currentSize; i++) {
-			delete this->items[i];
-			this->items[i] = NULL;
-		}
-	}
-	delete this->items;
-	this->items = items;
-	this->top = size - 1;
-	this->currentSize = size;
 }
 
 /**
@@ -58,7 +44,7 @@ template <class T> void Deck<T>::setItems(T** items, int size) {
 template <class T> void Deck<T>::shuffle() {
 	for (int sourceIndex = 0; sourceIndex < this->currentSize - 1; sourceIndex++) {
 		int destinationIndex = rand() % (this->currentSize-1-sourceIndex) + sourceIndex;
-		T* source = this->items[sourceIndex];
+		T source = this->items[sourceIndex];
 		this->items[sourceIndex] = this->items[destinationIndex];
 		this->items[destinationIndex] = source;
 	}
@@ -66,5 +52,5 @@ template <class T> void Deck<T>::shuffle() {
 
 template <class T> T* Deck<T>::operator[](int index)
 {
-	return this->items[index];
+	return &this->items[index];
 }

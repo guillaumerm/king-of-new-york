@@ -8,12 +8,13 @@ using namespace std;
 
 class KeepCard : public GameCard {
 public:
-	KeepCard(string name, string description);
-	KeepCard(string name, string description, bool facingUp);
+	KeepCard(string name, string description, int cost);
+	KeepCard(string name, string description, int cost, bool facingUp);
 	bool isFacingUp() const;
 	void setFacingUp(bool facingUp);
 private:
 	bool facingUp;
+	friend ostream& operator<<(ostream& strm, const KeepCard&);
 };
 
 #endif

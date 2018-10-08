@@ -15,6 +15,7 @@ public:
 		Souvenir,	/**< Souvenir Token Type*/
 		Carapace	/**< Carapace Token Type*/
 	};
+	Token();
 	Token(string, string, Type);
 	string getName() const;			//! Obtain name of the token
 	string getDescription() const;	//! Obtain description of the token

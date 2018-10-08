@@ -10,7 +10,7 @@ const int MAX_LIFE_POINTS = 10;
 const int STARTING_VICTORY_POINTS = 0;
 const int MAX_VICTORY_POINTS = 20;
 const int MIN_VICTORY_POINTS = 0;
-
+MonsterCard::MonsterCard() : MonsterCard("", "") {};
 MonsterCard::MonsterCard(string name, string description) : MonsterCard(name, description, STARTING_LIFE_POINTS, STARTING_VICTORY_POINTS) {};
 
 MonsterCard::MonsterCard(string name, string description, int lifePoints, int victoryPoints) : Card(name, description) {
@@ -63,3 +63,6 @@ int MonsterCard::getVictoryPoint() const {
 }
 
 
+ostream& operator<<(ostream &strm, const MonsterCard &card) {
+	return strm << "MonsterCard(name:" << card.name << ";description:" << card.description << ";lifePoints:" << card.lifePoints << ";victoryPoints:" << card.victoryPoints <<")";
+}

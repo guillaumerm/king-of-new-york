@@ -7,5 +7,7 @@
 class GoalCard : public GameCard {
 public:
 	GoalCard(string name, string description);
+private:
+	friend ostream& operator<<(ostream&, const GoalCard&);
 };
 #endif

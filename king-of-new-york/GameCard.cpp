@@ -29,3 +29,7 @@ void GameCard::setCost(int cost) {
 int GameCard::getCost() const {
 	return this->cost;
 }
+
+ostream& operator<<(ostream &strm, const GameCard &card) {
+	return strm << "GameCard(name:" << card.name << "; description:" << card.description << ";cost:"<< card.cost <<")";
+}

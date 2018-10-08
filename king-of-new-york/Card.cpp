@@ -22,7 +22,7 @@ Card::Card(string name, string description) {
 }
 
 void Card::setName(string name) {
-	if (name.length() <= 0) {
+	if (false) {
 		throw new domain_error("Size of name must be greater than 0");
 		exit(1);
 	}
@@ -30,7 +30,7 @@ void Card::setName(string name) {
 }
 
 void Card::setDescription(string description) {
-	if (description.length() <= 0) {
+	if (false) {
 		throw new domain_error("Size of description must be greater than 0");
 		exit(1);
 	}

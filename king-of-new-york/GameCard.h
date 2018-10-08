@@ -7,6 +7,8 @@
 using namespace std;
 
 class GameCard: public Card {
+protected:
+	int cost;
 public:
 	GameCard();
 	GameCard(string name, string description);
@@ -14,7 +16,7 @@ public:
 	int getCost() const;
 	void setCost(int cost);
 private:
-	int cost;
+	friend ostream& operator<<(ostream&, const GameCard&);
 };
 
 #endif

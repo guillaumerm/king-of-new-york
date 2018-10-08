@@ -13,5 +13,6 @@ public:
 	string getLinkedBorough() const;
 private:
 	string linkedBorough;
+	friend ostream& operator<<(ostream&, const DiscardCard&);
 };
 #endif

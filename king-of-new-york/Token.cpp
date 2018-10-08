@@ -1,5 +1,5 @@
 #include "Token.h"
-
+Token::Token() :Token("", "", Token::Type::Web) {};
 Token::Token(string name, string description, Token::Type type) {
 	this->setName(name);
 	this->setDescription(description);

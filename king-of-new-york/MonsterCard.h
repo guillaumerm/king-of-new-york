@@ -8,6 +8,7 @@ using namespace std;
 
 class MonsterCard: public Card {
 public:
+	MonsterCard();
 	MonsterCard(string name, string description);
 	MonsterCard(string name, string description, int lifePoints, int victoryPoints);
 	int getLifePoint() const;
@@ -19,5 +20,6 @@ public:
 private:
 	int lifePoints;
 	int victoryPoints;
+	friend ostream& operator<<(ostream& strm, const MonsterCard&);
 };
 #endif
