@@ -1,4 +1,4 @@
-#include <string>
+#include <string.h>
 
 #include "MonsterCard.h"
 using namespace std;

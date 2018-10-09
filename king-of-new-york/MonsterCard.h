@@ -1,16 +1,14 @@
 #ifndef MONSTER_CARD_H
 #define MONSTER_CARD_H
 
-#include <string>
+#include <string.h>
 #include "Card.h"
-
-using namespace std;
 
 class MonsterCard: public Card {
 public:
 	MonsterCard();
-	MonsterCard(string name, string description);
-	MonsterCard(string name, string description, int lifePoints, int victoryPoints);
+	MonsterCard(std::string name, std::string description);
+	MonsterCard(std::string name, std::string description, int lifePoints, int victoryPoints);
 	int getLifePoint() const;
 	int getVictoryPoint() const;
 	void removeLifePoints(int lifePoints);
