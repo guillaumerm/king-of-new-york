@@ -14,20 +14,20 @@ const DiceRoll* DiceRollingFacility::resolve(bool resolution[]) {
 	// Resolve the dice dicided to be kept.
 	Die::Face* roll = new Die::Face[diceRoll->getNumberDice()];
 	int rollIndex = 0;
-	for (int i = 0; i < diceRoll->getNumberDice; i++) {
+	for (int i = 0; i < diceRoll->getNumberDice(); i++) {
 		if (resolution[i]) {
 			roll[rollIndex++] = diceRoll->getFaceAt(i);
 		}
 	}
 
 	// Roll the remaining die that were rejected (if any is rejected)
-	if (!((rollIndex + 1) - diceRoll->getNumberDice)) {
-		generateRoll(&roll[rollIndex], (rollIndex + 1) - diceRoll->getNumberDice);
+	if (diceRoll->getNumberDice() - rollIndex > 0) {
+		generateRoll(&roll[rollIndex], diceRoll->getNumberDice() - rollIndex);
 	}
 
 	const DiceRoll *resolvedDiceRoll = new DiceRoll(roll, diceRoll->getNumberDice());
 
-	this->roll.push(resolvedDiceRoll);
+	this->diceRolls.push_back(resolvedDiceRoll);
 
 	return resolvedDiceRoll;
 }
@@ -41,8 +41,9 @@ void DiceRollingFacility::generateRoll(Die::Face* roll, int numberDice) const {
 const DiceRoll* DiceRollingFacility::roll(int numberDice) {
 	// Roll the die the desired number of times
 	Die::Face* roll = new Die::Face[numberDice];
+	generateRoll(roll, numberDice);
 
-	const DiceRoll* diceRoll = new DiceRoll(generateRoll(roll, numberDice), numberDice);
+	const DiceRoll* diceRoll = new DiceRoll(roll, numberDice);
 
 	this->diceRolls.push_back(diceRoll);
 

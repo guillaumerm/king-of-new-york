@@ -1,4 +1,7 @@
 #include "DiceRoll.h"
+#include <ostream>
+
+using namespace std;
 
 DiceRoll::DiceRoll() : DiceRoll(new Die::Face[0], 0) {};
 
@@ -47,4 +50,43 @@ int DiceRoll::getSumFace(Die::Face face) const {
 		}
 	}
 	return sum;
+}
+
+ostream& operator<<(ostream& strm, const DiceRoll &diceRoll) {
+	strm << "DiceRoll(";
+	for (int i = 0; i < diceRoll.numberDice; i++) {
+		strm << diceRoll.roll[i];
+		if (i < diceRoll.numberDice - 1)
+			strm << ", ";
+	}
+	strm << ")";
+
+	return strm;
+}
+
+ostream& operator<<(ostream& strm, const Die::Face face) {
+	switch (face) {
+	case Die::Face::A:
+		strm << "A";
+		break;
+	case Die::Face::C:
+		strm << "C";
+		break;
+	case Die::Face::D:
+		strm << "D";
+		break;
+	case Die::Face::E:
+		strm << "E";
+		break;
+	case Die::Face::H:
+		strm << "H";
+		break;
+	case Die::Face::O:
+		strm << "O";
+		break;
+	default: 
+		throw new out_of_range("Not a valid Die::Face");
+		exit(1);
+	}
+	return strm;
 }

@@ -82,7 +82,7 @@ inline MonsterCard* initMonsterCards() {
 
 
 
-int main() {
+int main1() {
 	Token* tokens = initTokens(GameCoponentDriver::NUM_WEB, GameCoponentDriver::NUM_JINX, GameCoponentDriver::NUM_CARAPACE, GameCoponentDriver::NUM_SOUVENIR);
 	printArray<Token>(tokens, 46);
 	MonsterCard* monsterCards = initMonsterCards();

@@ -8,12 +8,8 @@ Die::Die() {
 }
 
 Die::Face Die::roll() {
-	/* initialize random seed: */
-	/* Can be commented for testing purposes*/
-	srand(time(NULL));
-
 	/* randomly selecting a new face*/
-	this->lastRoll = (Face)(rand() % 5 + 0);
+	this->lastRoll = (Face)(rand() % 6 + 0);
 
 	return this->lastRoll;
 }
