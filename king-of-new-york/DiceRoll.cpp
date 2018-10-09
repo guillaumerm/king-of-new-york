@@ -39,6 +39,8 @@ int DiceRoll::getNumberDice() const{
 }
 
 Die::Face DiceRoll::getFaceAt(int dieIndex) const {
+	if (dieIndex < 0 || dieIndex >= this->numberDice)
+		throw out_of_range("Out of bound index");
 	return this->roll[dieIndex];
 }
 

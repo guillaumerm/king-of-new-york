@@ -104,7 +104,10 @@
     <ClCompile Include="DiceRoll.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DiceRollFacility.cpp">
+    <ClCompile Include="DiceRollingFacility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

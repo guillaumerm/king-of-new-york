@@ -5,6 +5,9 @@ DiceRollingFacility::DiceRollingFacility() {
 }
 
 const DiceRoll* DiceRollingFacility::getLastRoll() const {
+	if (this->diceRolls.empty()) {
+		return NULL;
+	}
 	return this->diceRolls.back();
 }
 
@@ -39,6 +42,9 @@ void DiceRollingFacility::generateRoll(Die::Face* roll, int numberDice) const {
 }
 
 const DiceRoll* DiceRollingFacility::roll(int numberDice) {
+	if (numberDice < 1) {
+		throw domain_error("You must at least roll one die");
+	}
 	// Roll the die the desired number of times
 	Die::Face* roll = new Die::Face[numberDice];
 	generateRoll(roll, numberDice);

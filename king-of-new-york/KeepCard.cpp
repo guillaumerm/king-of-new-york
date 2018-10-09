@@ -5,6 +5,8 @@ using namespace std;
 
 bool const DEFAULT_FACING_UP = true;
 
+KeepCard::KeepCard() :KeepCard("", "", 0, DEFAULT_FACING_UP) {};
+
 KeepCard::KeepCard(string name, string description, int cost) : KeepCard(name, description, cost, DEFAULT_FACING_UP) {};
 
 KeepCard::KeepCard(string name, string description, int cost, bool facingUp) : GameCard(name, description, cost) {

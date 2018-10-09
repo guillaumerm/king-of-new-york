@@ -17,6 +17,7 @@ public:
 private:
 	int top;
 	int currentSize;
+	int maxSize;
 	T* items;
 };
 

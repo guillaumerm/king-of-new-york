@@ -136,7 +136,7 @@
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="DeckCard-impl.cpp" />
     <ClCompile Include="DiceRoll.cpp" />
-    <ClCompile Include="DiceRollFacility.cpp" />
+    <ClCompile Include="DiceRollingFacility.cpp" />
     <ClCompile Include="Die.cpp" />
     <ClCompile Include="DiscardCard.cpp" />
     <ClCompile Include="GameCard.cpp" />
@@ -146,6 +146,7 @@
     <ClCompile Include="MonsterCard.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerDriver.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Token.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

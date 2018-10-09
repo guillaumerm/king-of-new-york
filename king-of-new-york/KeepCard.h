@@ -8,6 +8,7 @@ using namespace std;
 
 class KeepCard : public GameCard {
 public:
+	KeepCard();
 	KeepCard(string name, string description, int cost);
 	KeepCard(string name, string description, int cost, bool facingUp);
 	bool isFacingUp() const;

@@ -8,10 +8,11 @@ template <class T> Deck<T>::Deck(int pSize) {
 	this->items = new T[pSize];
 	this->top = -1;
 	this->currentSize = 0;
+	this->maxSize = pSize;
 };
 
 template <class T> bool Deck<T>::isEmpty() const {
-	return this->currentSize != 0;
+	return this->currentSize == 0;
 }
 
 template <class T> T* Deck<T>::deal(){
@@ -24,12 +25,15 @@ template <class T> T* Deck<T>::deal(){
 	}
 	else 
 	{
-		throw new range_error("The deck is empty!");
+		throw out_of_range("Deck is empty");
 	}
 }
 
 template <class T> void Deck<T>::push(T item) {
-	// TODO handle full stack
+	if (this->currentSize == this->maxSize) {
+		throw exception("Deck is full");
+	}
+
 	this->items[++this->top] = item;
 	this->currentSize++;
 }
