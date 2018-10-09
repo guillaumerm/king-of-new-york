@@ -27,7 +27,7 @@ private:
 	DiceRollingFacility* diceRollingFacility;
 	MonsterCard* monsterCard;
 	EnergyCube energyCubes;
-	GameCard* gameCards;
-	Token* tokens;
+	vector<GameCard*> gameCards;
+	vector<Token*> tokens;
 };
 #endif

@@ -16,12 +16,15 @@ void Player::buyCards(GameCard* cards, int numCardsBought) {
 		cost += cards[i].getCost();
 	}
 
-	if ((this->energyCubes - cost) > 0) {
-		throw new out_of_range("Cost of bought cards exceeds current amount of energyCubes held by player.");
+	if ((this->energyCubes - cost) <= 0) {
+		throw out_of_range("Cost of bought cards exceeds current amount of energyCubes held by player.");
 		exit(1);
 	}
 
 	this->energyCubes -= cost;
+	for (int i = 0; i < numCardsBought; i++) {
+		this->gameCards.push_back(&cards[i]);
+	}
 }
 
 int Player::getLifePoints() const {
