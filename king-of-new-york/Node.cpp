@@ -7,6 +7,7 @@
 
 using namespace std;
 
+const int NUMBER_OF_PLAYER_SLOTS = 2;
 
 string const defaultRegion = "";
 string const defaultOwner = "";
@@ -63,6 +64,45 @@ void Node::printNeighbours()
 			cout << adjacentZones.at(i)->getZoneName() << ", ";
 		}
 		cout << "as its adjacent regions." << endl;
+	}
+}
+
+bool Node::isAdjancent(Node *adjancentNode) {
+	vector<Node *>::iterator iteratorAdjacentNode = adjacentZones.begin();
+	while (iteratorAdjacentNode < adjacentZones.end()) {
+		if (*iteratorAdjacentNode == adjancentNode) {
+			return true;
+		}
+		iteratorAdjacentNode++;
+	}
+	return false;
+}
+
+bool Node::isFull() {
+	return this->players.size() < NUMBER_OF_PLAYER_SLOTS;
+}
+
+void Node::addPlayer(Player *player) {
+	int idx = 0;
+
+	while (idx < NUMBER_OF_PLAYER_SLOTS && player != this->players.at(idx)) {
+		idx++;
+	}
+
+	if (player != this->players.at(idx)) {
+		this->players.push_back(player);
+	}
+}
+
+void Node::removePlayer(Player *player) {
+	int idx = 0;
+	
+	while (idx < NUMBER_OF_PLAYER_SLOTS && player != this->players.at(idx)) {
+		idx++;
+	}
+
+	if (player == this->players.at(idx)) {
+		this->players.erase(this->players.begin() + idx);
 	}
 }
 

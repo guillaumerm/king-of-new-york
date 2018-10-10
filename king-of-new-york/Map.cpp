@@ -42,3 +42,17 @@ Node* Map::getZoneByName(string name)
 		}
 	}
 }
+
+bool Map::adjancent(string nameSourceZone, string nameDestinationZone) {
+	Node *sourceZone = this->getZoneByName(nameSourceZone);
+	Node *destinationZone = this->getZoneByName(nameDestinationZone);
+	
+	return sourceZone->isAdjancent(destinationZone);
+}
+
+void Map::movePlayer(Player *player, string nameSourceZone, string nameDestinationZone) {
+	Node *sourceZone = this->getZoneByName(nameSourceZone);
+	Node *destinationZone = this->getZoneByName(nameDestinationZone);
+	sourceZone->removePlayer(player);
+	destinationZone->addPlayer(player);
+}

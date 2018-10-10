@@ -9,7 +9,7 @@ using namespace std;
 
 class Map {
 private:
-	vector <Node*> nodeList;
+	vector <Node *> nodeList;
 public:
 	
 	Map();
@@ -18,6 +18,8 @@ public:
 	void listAllZones();
 	vector<Node*> getList();
 	Node* getZoneByName(string);
+	bool adjancent(string, string);
+	void movePlayer(Player *, string, string);
 };
 
 #endif

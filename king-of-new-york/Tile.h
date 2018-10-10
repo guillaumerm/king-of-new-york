@@ -6,7 +6,7 @@ using namespace std;
 
 class Tile {
 public:
-	enum Type {Unit, Building, Destroyed};
+	enum Type {Unit, Building};
 	Tile(string name, string description, int durability);
 	Tile(string name, string description, int durability, Tile::Type type);
 	void removeDurability(int durability);
@@ -16,7 +16,6 @@ public:
 	int getDurability() const;
 	bool isBuilding() const;
 	bool isUnit() const;
-	bool isDestroy() const;
 private:
 	Tile::Type type;
 	string name;
@@ -27,7 +26,5 @@ private:
 	void setDescription(string);
 	void setDurability(int);
 	void setType(Tile::Type type);
-	int durability;
-	int victoryPoints;
 };
 #endif

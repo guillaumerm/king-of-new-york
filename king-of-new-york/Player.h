@@ -6,14 +6,17 @@
 #include "DiceRollingFacility.h"
 #include "EnergyCube.h"
 #include "Token.h"
+#include "Map.h"
+#include "Node.h"
 
 using namespace std;
 class Player {
 public:
-	Player(MonsterCard* monsterCard, EnergyCube energyCubes);
+	Player();
+	Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone);
 	const DiceRoll* rollDice(int numberDice);
 	const DiceRoll* resolveDice(bool resolution[]);
-	void move();
+	void move(Map *, string);
 	void buyCards(GameCard* cards, int numCardsBought);
 	bool isDead();
 	bool won();
@@ -29,5 +32,6 @@ private:
 	EnergyCube energyCubes;
 	vector<GameCard*> gameCards;
 	vector<Token*> tokens;
+	string currentZone;
 };
 #endif

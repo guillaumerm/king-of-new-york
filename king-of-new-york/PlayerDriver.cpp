@@ -3,7 +3,8 @@
 #include "GameCard.h"
 #include "KeepCard.h"
 #include "DiscardCard.h"
-
+#include "MapLoader.h"
+#include "Map.h"
 
 #include <iostream>
 #include <time.h>
@@ -16,7 +17,8 @@ int main() {
 	srand(time(NULL));
 
 	MonsterCard *monsterCard = new MonsterCard("Sherif", "A TRex sherif");
-	Player *player = new Player(monsterCard, 30);
+	string startingZone = "Bronx";
+	Player *player = new Player(monsterCard, 30, startingZone);
 	cout << *player->rollDice(6) << endl;
 	bool resolution[6] = { true, false, true, false, false, false };
 	cout << *player->resolveDice(resolution) << endl;
@@ -31,7 +33,9 @@ int main() {
 		cerr << exception.what() << endl;
 		exit(1);
 	}
-	
+
+	Map *map = MapLoader::loadMap("MapLayoutFormat1.txt");
+	player->move(map, "Queens");
 	system("pause");
 	return 0;
 }

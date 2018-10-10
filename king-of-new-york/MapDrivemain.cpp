@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int main()
+int main55()
 {
 	//Creating a new map with unconnected zones
 	cout << "TEST CASE 1: Generating a map by manually coding Nodes and connecting them" << endl;

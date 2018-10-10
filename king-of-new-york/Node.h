@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
+#include "Player.h"
 
 using namespace std;
 
@@ -12,7 +13,7 @@ private:
 	string regionName;
 	string regionOwner;
 	vector <Node*> adjacentZones;
-
+	vector <Player*> players;
 public:
 	Node();
 	Node(string);
@@ -23,6 +24,10 @@ public:
 	void newOwner(string);
 	void connectZones(Node*);
 	void printNeighbours();
+	bool isAdjancent(Node *);
+	bool isFull();
+	void addPlayer(Player *);
+	void removePlayer(Player *);
 };
 
 #endif

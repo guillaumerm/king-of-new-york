@@ -3,10 +3,15 @@
 
 using namespace std;
 
-Player::Player(MonsterCard* monsterCard, EnergyCube energyCubes) {
+Player::Player() : Player(NULL, 0, "") {
+
+}
+
+Player::Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone) {
 	this->monsterCard = monsterCard;
 	this->energyCubes = energyCubes;
 	this->diceRollingFacility = new DiceRollingFacility();
+	this->currentZone = startingZone;
 }
 
 void Player::buyCards(GameCard* cards, int numCardsBought) {
@@ -65,4 +70,13 @@ const DiceRoll* Player::rollDice(int numberDice) {
 
 const DiceRoll* Player::resolveDice(bool resolution[]) {
 	return this->diceRollingFacility->resolve(resolution);
+}
+
+void Player::move(Map *map, string nameDestinationZone) {
+	if (map->adjancent(this->currentZone, nameDestinationZone)) {
+		map->movePlayer(this, this->currentZone, nameDestinationZone);
+	}
+	else {
+		throw out_of_range("Cannot move to a none adjacent zone");
+	};
 }
