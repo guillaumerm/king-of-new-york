@@ -3,8 +3,9 @@
 #include "GameCard.h"
 #include "KeepCard.h"
 #include "DiscardCard.h"
-#include "MapLoader.h"
-#include "Map.h"
+#include "GameMapNode.h"
+#include "GameMap.h"
+#include "GameMapLoader.h"
 
 #include <iostream>
 #include <time.h>
@@ -34,8 +35,10 @@ int main() {
 		exit(1);
 	}
 
-	Map *map = MapLoader::loadMap("MapLayoutFormat1.txt");
+	GameMap *map = GameMapLoader::loadMap("new_york.map");
+	cout << "Player zone before moving:" << player->getCurrentZone() << endl;
 	player->move(map, "Queens");
+	cout << "Player zone after moving:" << player->getCurrentZone() << endl;
 	system("pause");
 	return 0;
 }

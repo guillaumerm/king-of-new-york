@@ -41,9 +41,6 @@ bool Tile::isBuilding() const {
 	return this->type == Tile::Type::Building;
 }
 
-bool Tile::isDestroyed() const {
-	return this->type == Tile::Type::Destroyed;
-}
 Tile::Type Tile::getType() const {
 	return this->type;
 }
@@ -62,7 +59,7 @@ string Tile::getDescription() const {
 void Tile::removeDurability(int destructionPoints) {
 	if (this->type == Type::Building) {
 		if (durability - destructionPoints == 0) {
-			this->type == Type::Unit;
+			this->type = Type::Unit;
 		}
 		else {
 			throw domain_error("Not enough destructionPoints to destroy this building");
@@ -70,7 +67,7 @@ void Tile::removeDurability(int destructionPoints) {
 	}
 	else if(this->type == Type::Unit){
 		if (durability - destructionPoints == 0) {
-			this->type == Type::Destroyed;
+			//this->type == Type::Destroyed;
 		}
 		else {
 			throw domain_error("Not enough destructionPoints to destroy this unit");

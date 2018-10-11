@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{37905F0D-D8BF-4AA5-8A71-5DE0FC6B76DA}</ProjectGuid>
     <RootNamespace>kingofnewyork</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -122,14 +122,16 @@
     <ClInclude Include="Die.h" />
     <ClInclude Include="DiscardCard.h" />
     <ClInclude Include="EnergyCube.h" />
+    <ClInclude Include="GameMap.h" />
+    <ClInclude Include="GameMapLoader.h" />
+    <ClInclude Include="GameMapNode.h" />
     <ClInclude Include="GamePiece.h" />
     <ClInclude Include="GoalCard.h" />
     <ClInclude Include="KeepCard.h" />
-    <ClInclude Include="Map.h" />
     <ClInclude Include="MapLoader.h" />
     <ClInclude Include="MonsterCard.h" />
     <ClInclude Include="GameCard.h" />
-    <ClInclude Include="Node.h" />
+    <ClInclude Include="NewNode.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Token.h" />
@@ -144,20 +146,20 @@
     <ClCompile Include="DiscardCard.cpp" />
     <ClCompile Include="GameCard.cpp" />
     <ClCompile Include="GameComponentDriver.cpp" />
+    <ClCompile Include="GameMap.cpp" />
+    <ClCompile Include="GameMapDriver.cpp" />
+    <ClCompile Include="GameMapLoader.cpp" />
+    <ClCompile Include="GameMapNode.cpp" />
     <ClCompile Include="GoalCard.cpp" />
     <ClCompile Include="KeepCard.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="MapDrivemain.cpp" />
-    <ClCompile Include="MapLoader.cpp" />
     <ClCompile Include="MonsterCard.cpp" />
-    <ClCompile Include="Node.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerDriver.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Token.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="MapLayoutFormat1.txt" />
+    <None Include="new_york.map" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

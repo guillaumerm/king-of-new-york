@@ -72,11 +72,20 @@ const DiceRoll* Player::resolveDice(bool resolution[]) {
 	return this->diceRollingFacility->resolve(resolution);
 }
 
-void Player::move(Map *map, string nameDestinationZone) {
+void Player::move(GameMap *map, string nameDestinationZone) {
 	if (map->adjancent(this->currentZone, nameDestinationZone)) {
 		map->movePlayer(this, this->currentZone, nameDestinationZone);
+		this->setCurrentZone(nameDestinationZone);
 	}
 	else {
 		throw out_of_range("Cannot move to a none adjacent zone");
 	};
+}
+
+string Player::getCurrentZone() const {
+	return this->currentZone;
+}
+
+void Player::setCurrentZone(string newCurrentZone) {
+	this->currentZone = newCurrentZone;
 }
