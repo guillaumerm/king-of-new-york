@@ -4,8 +4,6 @@
 
 using namespace std;
 
-vector <GameMapNode*> nodeList;
-
 GameMap::GameMap()
 {
 	vector <GameMapNode*> nodeList;
@@ -45,6 +43,32 @@ bool GameMap::adjancent(string nameSourceZone, string nameDestinationZone) {
 	GameMapNode *destinationZone = this->getZoneByName(nameDestinationZone);
 
 	return sourceZone->isAdjancent(destinationZone);
+}
+
+bool GameMap::duplicateFree()
+{
+	for (int i = 0; i < nodeList.size(); i++)
+	{
+		if (!nodeList.at(i)->duplicateAdjacentFree())
+		{
+			cout << "A duplicate region was found" << endl;
+			return false;
+		}
+	}
+	return true;
+}
+
+bool GameMap::allConnected()
+{
+	for (int i = 0; i < nodeList.size(); i++)
+	{
+		if (nodeList.at(i)->getNeighbours().empty())
+		{
+			cout << "A region is isolated" << endl;
+			return false;
+		}
+	}
+	return true;
 }
 
 void GameMap::movePlayer(Player *player, string nameSourceZone, string nameDestinationZone) {
