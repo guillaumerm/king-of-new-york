@@ -32,6 +32,11 @@ string GameMapNode::getOwner() const
 	return this->regionOwner;
 }
 
+vector<GameMapNode*> GameMapNode::getNeighbours()
+{
+	return this->adjacentZones;
+}
+
 void GameMapNode::newOwner(string usurper)
 {
 	regionOwner = usurper;
@@ -71,6 +76,22 @@ bool GameMapNode::isAdjancent(GameMapNode *adjancentGameMapNode) {
 		iteratorAdjacentGameMapNode++;
 	}
 	return false;
+}
+
+bool GameMapNode::duplicateAdjacentFree()
+{
+	for (int i = 0; i < adjacentZones.size(); i++)
+	{
+		for (int j = i + 1; j < adjacentZones.size(); j++)
+		{
+			if (adjacentZones.at(i)->getZoneName() == adjacentZones.at(j)->getZoneName())
+			{
+				return false;
+			}
+		}
+
+	}
+	return true;
 }
 
 bool GameMapNode::isFull() {
