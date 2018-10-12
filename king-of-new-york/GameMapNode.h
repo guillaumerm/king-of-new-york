@@ -21,10 +21,12 @@ public:
 
 	string getZoneName() const;
 	string getOwner() const;
+	vector<GameMapNode*> getNeighbours();
 	void newOwner(string);
 	void connectZones(GameMapNode*);
 	void printNeighbours();
 	bool isAdjancent(GameMapNode *);
+	bool duplicateAdjacentFree();
 	bool isFull();
 	void addPlayer(Player *);
 	void removePlayer(Player *);
