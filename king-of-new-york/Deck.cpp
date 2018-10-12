@@ -11,6 +11,11 @@ template <class T> Deck<T>::Deck(int pSize) {
 	this->maxSize = pSize;
 };
 
+template <class T> Deck<T>::~Deck() {
+	delete[] this->items;
+	this->items = NULL;
+}
+
 template <class T> bool Deck<T>::isEmpty() const {
 	return this->currentSize == 0;
 }
@@ -42,9 +47,6 @@ template <class T> int Deck<T>::size() {
 	return this->currentSize;
 }
 
-/**
-	Methods which shuffles the deck of card. The algorithm used to shuffle the cards is an implementation of the modern algorithm of "Fisher–Yates shuffle".
-*/
 template <class T> void Deck<T>::shuffle() {
 	for (int sourceIndex = 0; sourceIndex < this->currentSize - 1; sourceIndex++) {
 		int destinationIndex = rand() % (this->currentSize-1-sourceIndex) + sourceIndex;

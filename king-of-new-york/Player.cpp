@@ -14,6 +14,11 @@ Player::Player(MonsterCard* monsterCard, EnergyCube energyCubes, string starting
 	this->currentZone = startingZone;
 }
 
+Player::~Player() {
+	this->monsterCard = nullptr;
+	delete diceRollingFacility;
+}
+
 void Player::buyCards(GameCard* cards, int numCardsBought) {
 	int cost = 0;
 	

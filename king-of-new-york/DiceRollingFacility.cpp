@@ -1,7 +1,16 @@
 #include "DiceRollingFacility.h"
+#include <time.h>
 
 DiceRollingFacility::DiceRollingFacility() {
+	srand(time(NULL));
 	this->die = new Die();
+}
+
+DiceRollingFacility::~DiceRollingFacility() {
+	delete this->die;
+	this->die = NULL;
+	this->diceRolls.clear();
+
 }
 
 const DiceRoll* DiceRollingFacility::getLastRoll() const {

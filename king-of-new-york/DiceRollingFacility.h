@@ -9,6 +9,7 @@ using namespace std;
 class DiceRollingFacility {
 public:
 	DiceRollingFacility();
+	~DiceRollingFacility();
 	const DiceRoll* roll(int);
 	const DiceRoll* getLastRoll() const;
 	const DiceRoll* resolve(bool[]);

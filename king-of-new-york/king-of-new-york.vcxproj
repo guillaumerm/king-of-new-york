@@ -142,6 +142,7 @@
     <ClCompile Include="DeckCard-impl.cpp" />
     <ClCompile Include="DiceRoll.cpp" />
     <ClCompile Include="DiceRollingFacility.cpp" />
+    <ClCompile Include="DiceRollingFacilityDriver.cpp" />
     <ClCompile Include="Die.cpp" />
     <ClCompile Include="DiscardCard.cpp" />
     <ClCompile Include="GameCard.cpp" />

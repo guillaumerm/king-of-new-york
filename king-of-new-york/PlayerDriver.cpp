@@ -12,11 +12,7 @@
 
 using namespace std;
 
-int main() {
-	/* initialize random seed: */
-	/* Can be commented for testing purposes*/
-	srand(time(NULL));
-
+int main77() {
 	MonsterCard *monsterCard = new MonsterCard("Sherif", "A TRex sherif");
 	string startingZone = "Bronx";
 	Player *player = new Player(monsterCard, 30, startingZone);

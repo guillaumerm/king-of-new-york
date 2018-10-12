@@ -82,7 +82,7 @@ inline MonsterCard* initMonsterCards() {
 
 
 
-int main1() {
+int main() {
 	Token* tokens = initTokens(GameCoponentDriver::NUM_WEB, GameCoponentDriver::NUM_JINX, GameCoponentDriver::NUM_CARAPACE, GameCoponentDriver::NUM_SOUVENIR);
 	printArray<Token>(tokens, 46);
 	MonsterCard* monsterCards = initMonsterCards();
@@ -95,6 +95,12 @@ int main1() {
 	deckOfCards->shuffle();
 	cout << "Deck After Suffle" << endl;
 	printDeck<GameCard*>(deckOfCards);
+	delete[] tokens;
+	tokens = NULL;
+	delete deckOfCards;
+	deckOfCards = NULL;
+	delete[] monsterCards;
+	monsterCards = NULL;
 	system("pause");
 	return 0;
 }

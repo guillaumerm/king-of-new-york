@@ -15,6 +15,7 @@ class Player {
 public:
 	Player();
 	Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone);
+	~Player();
 	const DiceRoll* rollDice(int numberDice);
 	const DiceRoll* resolveDice(bool resolution[]);
 	void move(GameMap *, string);
