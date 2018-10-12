@@ -102,13 +102,26 @@ int main26()
 
 		mapLayout.close();
 	}
-	exampleGameMap2.listAllZones();
-
-	for (int i = 0; i < exampleGameMap2.getList().size(); i++)
+	if (exampleGameMap2.duplicateFree() && exampleGameMap2.allConnected())
 	{
-		exampleGameMap2.getList().at(i)->printNeighbours();
-	}
+		exampleGameMap2.listAllZones();
 
+		for (int i = 0; i < exampleGameMap2.getList().size(); i++)
+		{
+			exampleGameMap2.getList().at(i)->printNeighbours();
+		}
+	}
+	else
+	{
+		cout << "Given map file is invalid" << endl;
+		/*exampleGameMap2.listAllZones();
+
+		for (int i = 0; i < exampleGameMap2.getList().size(); i++)
+		{
+			exampleGameMap2.getList().at(i)->printNeighbours();
+		}*/
+
+	}
 	system("pause");
 	return 0;
 }
