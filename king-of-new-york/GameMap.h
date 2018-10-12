@@ -21,5 +21,7 @@ public:
 	vector<GameMapNode*> getList();
 	GameMapNode* getZoneByName(string);
 	bool adjancent(string, string);
+	bool duplicateFree();
+	bool allConnected();
 	void movePlayer(Player *, string, string);
 };
