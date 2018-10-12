@@ -44,7 +44,7 @@ PROJECT_NUMBER         = "COMP 345 - Assingment #1"
 # for a project that appears at the top of each page and should give viewer a
 # quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = 
+PROJECT_BRIEF          = "King of New York is a standalone game from designer Richard Garfield that keeps the core ideas of King of Tokyo while introducing new ways to play. As in KoT, your goal is to be the first monster to collect 20 victory points (VPs) or to be the last monster standing. On your turn, you roll six dice up to three times, then carry out the actions on those dice. Claws cause damage to other monsters, hearts heal damage to yourself, and energy is stored up so that you can purchase power cards that provide unique effects not available to anyone else."
 
 # With the PROJECT_LOGO tag one can specify a logo or an icon that is included
 # in the documentation. The maximum height of the logo should not exceed 55
@@ -58,7 +58,7 @@ PROJECT_LOGO           =
 # entered, it will be relative to the location where doxygen was started. If
 # left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = .
+OUTPUT_DIRECTORY       = Documentation
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create 4096 sub-
 # directories (in 2 levels) under the output directory of each output format and

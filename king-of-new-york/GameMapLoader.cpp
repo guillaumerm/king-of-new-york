@@ -58,5 +58,13 @@ GameMap *GameMapLoader::loadMap(string filename) {
 
 		mapLayout.close();
 	}
-	return map;
+
+	if (map->duplicateFree() && map->allConnected())
+	{
+		return map;
+	}
+	else
+	{
+		return NULL;
+	}
 }

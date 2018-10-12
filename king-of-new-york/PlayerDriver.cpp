@@ -12,7 +12,7 @@
 
 using namespace std;
 
-int main77() {
+int main000() {
 	MonsterCard *monsterCard = new MonsterCard("Sherif", "A TRex sherif");
 	string startingZone = "Bronx";
 	Player *player = new Player(monsterCard, 30, startingZone);

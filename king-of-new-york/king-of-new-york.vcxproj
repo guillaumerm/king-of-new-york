@@ -151,6 +151,7 @@
     <ClCompile Include="GameMapNode.cpp" />
     <ClCompile Include="GoalCard.cpp" />
     <ClCompile Include="KeepCard.cpp" />
+    <ClCompile Include="MapLoaderDriver.cpp" />
     <ClCompile Include="MonsterCard.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerDriver.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Token.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="invalid.map" />
     <None Include="new_york.map" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

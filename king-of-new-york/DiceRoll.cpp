@@ -10,6 +10,11 @@ DiceRoll::DiceRoll(Die::Face *roll, int numberDice) {
 	this->numberDice = numberDice;
 }
 
+DiceRoll::~DiceRoll() {
+	delete[] this->roll;
+	this->roll = NULL;
+}
+
 int DiceRoll::getSumAttack() const {
 	return this->getSumFace(Die::Face::A);
 }

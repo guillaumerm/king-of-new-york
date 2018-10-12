@@ -5,6 +5,7 @@
 #include <vector>
 
 using namespace std;
+
 /**
  * @brief Facility used to roll dice. It also keeps record of the previously rolled dice.
  */

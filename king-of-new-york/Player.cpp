@@ -65,10 +65,6 @@ bool Player::isDead(){
 	return this->monsterCard->getLifePoint() <= 0;
 }
 
-bool Player::won() {
-	return this->monsterCard->getVictoryPoint() >= 20;
-}
-
 const DiceRoll* Player::rollDice(int numberDice) {
 	return this->diceRollingFacility->roll(numberDice);
 }

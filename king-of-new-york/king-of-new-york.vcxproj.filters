@@ -134,9 +134,15 @@
     <ClCompile Include="DiceRollingFacilityDriver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MapLoaderDriver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="new_york.map">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="invalid.map">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
