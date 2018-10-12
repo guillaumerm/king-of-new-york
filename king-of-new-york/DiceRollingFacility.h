@@ -5,17 +5,51 @@
 #include <vector>
 
 using namespace std;
-
+/**
+ * @brief Facility used to roll dice. It also keeps record of the previously rolled dice.
+ */
 class DiceRollingFacility {
 public:
+	/**
+	 * Parameterless constructor for DiceRollingFacility
+	 */
 	DiceRollingFacility();
+
+	/**
+	 * Destructor for DiceRollingFacility
+	 */
 	~DiceRollingFacility();
-	const DiceRoll* roll(int);
+
+	/**
+	 * Rolls a dice roll of the desired number of dice. It also records this roll.
+	 * @param numberDice number of dice to be rolled
+	 * @return the DiceRoll rolled
+	 */
+	const DiceRoll* roll(int numberDice);
+
+	/**
+	 * Returns the last DiceRoll added to the DiceRollingFacility
+	 * @return the last DiceRoll * rolled
+	 */
 	const DiceRoll* getLastRoll() const;
-	const DiceRoll* resolve(bool[]);
+
+	/**
+	 * Resolves the last dice roll.
+	 * @param resolution bool[] which contains the Die::Face to keep
+	 */
+	const DiceRoll* resolve(bool resolution[]);
 private:
-	Die* die;
-	void generateRoll(Die::Face*, int) const;
+	Die* die; /**< Die used to roll random Die::Face */
+	/**
+	 * Sets random Die::Face for the array of the specified length.
+	 * @param roll Die::Face * that will hold the Die::Face
+	 * @param length length of the array roll
+	 */
+	void generateRoll(Die::Face *roll, int length) const;
+
+	/**
+	 * Data structure that records the previously DiceRoll rolled
+	 */
 	vector<const DiceRoll*> diceRolls;
 };
 #endif

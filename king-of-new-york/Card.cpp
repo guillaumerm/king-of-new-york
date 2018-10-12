@@ -6,8 +6,8 @@
 
 using namespace std;
 
-string const DEFAULT_CARD_NAME = "";
-string const DEFAULT_CARD_DESCRIPTION = "";
+string const Card::DEFAULT_CARD_NAME = "";
+string const Card::DEFAULT_CARD_DESCRIPTION = "";
 
 Card::Card() :Card(DEFAULT_CARD_NAME, DEFAULT_CARD_DESCRIPTION) {};
 
@@ -41,10 +41,6 @@ string Card::getName() const {
 	return this->name;
 }
 
-/**
-	Obtain the current description of the Card instance.
-	@return
-*/
 string Card::getDescription() const {
 	return this->description;
 }

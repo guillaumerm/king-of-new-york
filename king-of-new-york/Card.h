@@ -4,12 +4,17 @@
 #include <string>
 
 using namespace std;
-
+/**
+ * @brief Base class for the card component.
+ */
 class Card {
 protected:
 	string name; /**< Name of the card*/
 	string description; /**< Description of the card*/
 public:
+	const static string DEFAULT_CARD_NAME /**< Default car name */;
+
+	const static string DEFAULT_CARD_DESCRIPTION; /**< Default car description */;
 	/**
 	 * Parameterless constructor for cards.
 	 * Sets the name and description to the empty string.

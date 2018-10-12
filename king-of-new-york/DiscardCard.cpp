@@ -4,7 +4,7 @@
 
 using namespace std;
 
-string const DEFAULT_BOROUGH = "";
+const string DiscardCard::DEFAULT_BOROUGH = "";
 
 DiscardCard::DiscardCard(string name, string description, int cost) :DiscardCard(name, description, cost, DEFAULT_BOROUGH) {};
 

@@ -125,13 +125,11 @@
     <ClInclude Include="GameMap.h" />
     <ClInclude Include="GameMapLoader.h" />
     <ClInclude Include="GameMapNode.h" />
-    <ClInclude Include="GamePiece.h" />
     <ClInclude Include="GoalCard.h" />
     <ClInclude Include="KeepCard.h" />
     <ClInclude Include="MapLoader.h" />
     <ClInclude Include="MonsterCard.h" />
     <ClInclude Include="GameCard.h" />
-    <ClInclude Include="NewNode.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Token.h" />

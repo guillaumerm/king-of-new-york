@@ -33,9 +33,6 @@
     <ClInclude Include="GameCard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GamePiece.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -61,9 +58,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MapLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NewNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameMap.h">
