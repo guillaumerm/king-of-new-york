@@ -20,8 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{37905F0D-D8BF-4AA5-8A71-5DE0FC6B76DA}</ProjectGuid>
-    <RootNamespace>kingofnewyork</RootNamespace>
+    <ProjectGuid>{5A6DC17D-7CA5-414E-B325-E7988D02D892}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>a2p4</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -29,27 +30,27 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -69,96 +70,113 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <ConformanceMode>true</ConformanceMode>
-    </ClCompile>
-  </ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\guill\Source\Repos\king-of-new-york\king-of-new-york;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Card.h" />
-    <ClInclude Include="Deck.h" />
-    <ClInclude Include="DiceRoll.h" />
-    <ClInclude Include="DiceRollingFacility.h" />
-    <ClInclude Include="Die.h" />
-    <ClInclude Include="DiscardCard.h" />
-    <ClInclude Include="EnergyCube.h" />
-    <ClInclude Include="GameMap.h" />
-    <ClInclude Include="GameMapLoader.h" />
-    <ClInclude Include="GameMapNode.h" />
-    <ClInclude Include="GoalCard.h" />
-    <ClInclude Include="KeepCard.h" />
-    <ClInclude Include="MapLoader.h" />
-    <ClInclude Include="MonsterCard.h" />
-    <ClInclude Include="GameCard.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayerStateMachine.h" />
-    <ClInclude Include="Tile.h" />
-    <ClInclude Include="Token.h" />
+    <ClInclude Include="..\king-of-new-york\Card.h" />
+    <ClInclude Include="..\king-of-new-york\DiceRoll.h" />
+    <ClInclude Include="..\king-of-new-york\DiceRollingFacility.h" />
+    <ClInclude Include="..\king-of-new-york\Die.h" />
+    <ClInclude Include="..\king-of-new-york\GameCard.h" />
+    <ClInclude Include="..\king-of-new-york\GameMap.h" />
+    <ClInclude Include="..\king-of-new-york\GameMapNode.h" />
+    <ClInclude Include="..\king-of-new-york\MonsterCard.h" />
+    <ClInclude Include="..\king-of-new-york\Player.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Card.cpp" />
-    <ClCompile Include="Deck.cpp" />
-    <ClCompile Include="DeckCard-impl.cpp" />
-    <ClCompile Include="DiceRoll.cpp" />
-    <ClCompile Include="DiceRollingFacility.cpp" />
-    <ClCompile Include="Die.cpp" />
-    <ClCompile Include="DiscardCard.cpp" />
-    <ClCompile Include="entrypoint.cpp" />
-    <ClCompile Include="GameCard.cpp" />
-    <ClCompile Include="GameMap.cpp" />
-    <ClCompile Include="GameMapLoader.cpp" />
-    <ClCompile Include="GameMapNode.cpp" />
-    <ClCompile Include="GoalCard.cpp" />
-    <ClCompile Include="KeepCard.cpp" />
-    <ClCompile Include="MonsterCard.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerStateMachine.cpp" />
-    <ClCompile Include="Tile.cpp" />
-    <ClCompile Include="Token.cpp" />
+    <ClCompile Include="..\king-of-new-york\Card.cpp" />
+    <ClCompile Include="..\king-of-new-york\DiceRoll.cpp" />
+    <ClCompile Include="..\king-of-new-york\DiceRollingFacility.cpp" />
+    <ClCompile Include="..\king-of-new-york\Die.cpp" />
+    <ClCompile Include="..\king-of-new-york\GameCard.cpp" />
+    <ClCompile Include="..\king-of-new-york\GameMap.cpp" />
+    <ClCompile Include="..\king-of-new-york\GameMapNode.cpp" />
+    <ClCompile Include="..\king-of-new-york\MonsterCard.cpp" />
+    <ClCompile Include="..\king-of-new-york\Player.cpp" />
+    <ClCompile Include="a2p4.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="invalid.map" />
-    <None Include="new_york.map" />
+    <ProjectReference Include="..\king-of-new-york\king-of-new-york.vcxproj">
+      <Project>{37905f0d-d8bf-4aa5-8a71-5de0fc6b76da}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

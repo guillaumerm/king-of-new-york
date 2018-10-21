@@ -69,6 +69,9 @@
     <ClInclude Include="GameMapLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerStateMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MonsterCard.cpp">
@@ -86,16 +89,10 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerDriver.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Card.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Deck.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameComponentDriver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameCard.cpp">
@@ -125,16 +122,13 @@
     <ClCompile Include="GameMapNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameMapDriver.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameMapLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DiceRollingFacilityDriver.cpp">
+    <ClCompile Include="PlayerStateMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MapLoaderDriver.cpp">
+    <ClCompile Include="entrypoint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

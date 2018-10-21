@@ -1,7 +1,5 @@
-#include <string>
+#include <unordered_map>
 #include "Player.h"
-
-using namespace std;
 
 Player::Player() : Player(NULL, 0, "") {
 
@@ -65,12 +63,20 @@ bool Player::isDead(){
 	return this->monsterCard->getLifePoint() <= 0;
 }
 
-const DiceRoll* Player::rollDice(int numberDice) {
+const DiceRoll* Player::rollDice(bool diceToRoll[], int numberDice) {
 	return this->diceRollingFacility->roll(numberDice);
 }
 
-const DiceRoll* Player::resolveDice(bool resolution[]) {
-	return this->diceRollingFacility->resolve(resolution);
+const unordered_map<Die::Face, int> Player::resolveDice(unordered_set<Die::Face> order) {
+	unordered_map<Die::Face, int> resolution;
+	const DiceRoll *lastRoll = this->diceRollingFacility->getLastRoll();
+	unordered_set<Die::Face>::iterator iter;
+	
+	for (iter = order.begin(); iter != order.end(); iter++) {
+		resolution.insert({ *iter, lastRoll->getSumFace(*iter) });
+	}
+
+	return resolution;
 }
 
 void Player::move(GameMap *map, string nameDestinationZone) {

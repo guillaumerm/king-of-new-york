@@ -19,7 +19,8 @@ public:
 		D,	/**< Destruction die face */
 		E,	/**< Energy die face */
 		H,	/**< Heal die face */
-		O	/**< Ouch! die face */
+		O,	/**< Ouch! die face */
+		Face_MAX
 	};
 
 	/**

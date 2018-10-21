@@ -1,6 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <string>
+#include <unordered_set>
+#include <unordered_map>
 #include "GameMap.h"
 #include "MonsterCard.h"
 #include "GameCard.h"
@@ -41,14 +43,14 @@ public:
 	 * @throws domain_error if the numberDice is lower than 1.
 	 * @return DiceRoll * resulting from the role
 	 */
-	const DiceRoll* rollDice(int numberDice);
+	const DiceRoll* rollDice(bool diceToRoll[], int numberDice);
 
 	/** 
 	 * Resolves the last roll. That is decide which dice to keep and which to reroll. The resolution must be the same size as the previous roll.
 	 * @param resolution array of bool, true to keep the die, false to reroll.
 	 * @return the new resolved roll
 	 */
-	const DiceRoll* resolveDice(bool resolution[]);
+	const unordered_map<Die::Face, int> resolveDice(unordered_set<Die::Face> order);
 
 	/** 
 	 * Move a Player from one zone to another zone

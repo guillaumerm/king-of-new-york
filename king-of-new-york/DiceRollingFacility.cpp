@@ -19,7 +19,7 @@ const DiceRoll* DiceRollingFacility::getLastRoll() const {
 	}
 	return this->diceRolls.back();
 }
-
+/*
 const DiceRoll* DiceRollingFacility::resolve(bool resolution[]) {
 	const DiceRoll *diceRoll = this->diceRolls.back();
 
@@ -43,7 +43,7 @@ const DiceRoll* DiceRollingFacility::resolve(bool resolution[]) {
 
 	return resolvedDiceRoll;
 }
-
+*/
 void DiceRollingFacility::generateRoll(Die::Face* roll, int numberDice) const {
 	for (int i = 0; i < numberDice; i++) {
 		roll[i] = this->die->roll();

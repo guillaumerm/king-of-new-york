@@ -33,12 +33,6 @@ public:
 	 * @return the last DiceRoll * rolled
 	 */
 	const DiceRoll* getLastRoll() const;
-
-	/**
-	 * Resolves the last dice roll.
-	 * @param resolution bool[] which contains the Die::Face to keep
-	 */
-	const DiceRoll* resolve(bool resolution[]);
 private:
 	Die* die; /**< Die used to roll random Die::Face */
 	/**

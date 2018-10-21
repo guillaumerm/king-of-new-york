@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "king-of-new-york", "king-of
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test-king-of-new-york", "test-king-of-new-york\test-king-of-new-york.vcxproj", "{A582B565-66FB-4C10-BE7A-A98D6219AAEE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a2p4", "a2p4\a2p4.vcxproj", "{5A6DC17D-7CA5-414E-B325-E7988D02D892}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{A582B565-66FB-4C10-BE7A-A98D6219AAEE}.Release|x64.Build.0 = Release|x64
 		{A582B565-66FB-4C10-BE7A-A98D6219AAEE}.Release|x86.ActiveCfg = Release|Win32
 		{A582B565-66FB-4C10-BE7A-A98D6219AAEE}.Release|x86.Build.0 = Release|Win32
+		{5A6DC17D-7CA5-414E-B325-E7988D02D892}.Debug|x64.ActiveCfg = Debug|x64
+		{5A6DC17D-7CA5-414E-B325-E7988D02D892}.Debug|x64.Build.0 = Debug|x64
+		{5A6DC17D-7CA5-414E-B325-E7988D02D892}.Debug|x86.ActiveCfg = Debug|Win32
+		{5A6DC17D-7CA5-414E-B325-E7988D02D892}.Debug|x86.Build.0 = Debug|Win32
+		{5A6DC17D-7CA5-414E-B325-E7988D02D892}.Release|x64.ActiveCfg = Release|x64
+		{5A6DC17D-7CA5-414E-B325-E7988D02D892}.Release|x64.Build.0 = Release|x64
+		{5A6DC17D-7CA5-414E-B325-E7988D02D892}.Release|x86.ActiveCfg = Release|Win32
+		{5A6DC17D-7CA5-414E-B325-E7988D02D892}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
