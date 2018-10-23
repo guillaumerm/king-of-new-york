@@ -9,6 +9,7 @@
 #include "DiceRollingFacility.h"
 #include "EnergyCube.h"
 #include "Token.h"
+#include "PlayerStateMachine.h"
 
 class GameMap;
 
@@ -37,13 +38,60 @@ public:
 	 */
 	~Player();
 
+	/**
+	 * Rolls the desired number of dice. The number of dice should be greater or equal to 1.
+	 * @param numberDice number of dice to roll
+	 * @throws domain_error if the numberDice is lower than 1.
+	 * @return DiceRoll * resulting from the role
+	 */
+	const DiceRoll* rollDice(int numberDice);
+
 	/** 
 	 * Rolls the desired number of dice. The number of dice should be greater or equal to 1.
 	 * @param numberDice number of dice to roll
 	 * @throws domain_error if the numberDice is lower than 1.
 	 * @return DiceRoll * resulting from the role
 	 */
-	const DiceRoll* rollDice(bool diceToRoll[], int numberDice);
+	const DiceRoll* rollDice(bool diceToRoll[]);
+
+	/**
+	 * Checks whether the player is currently in the rolling state of his turn.
+	 * @return true is rolling, false otherwise
+	 */
+	bool isRolling() const;
+
+	/**
+	 * Checks whether the player is currently in the moving state of his turn.
+	 * @return true is moving, false otherwise
+	 */
+	bool isMoving() const;
+
+	/**
+	 * Checks whether the player is currently in the resolving state of his turn.
+	 * @return true is resolving, false otherwise
+	 */
+	bool isRelsoving() const;
+
+	/**
+	 * Checks whether the player is currently in the buying state of his turn.
+	 * @return true is buying, false otherwise
+	 */
+	bool isBuying() const;
+
+	/**
+	 * Changes the state of the player to the next state if all requires are meant.
+	 */
+	void endPhase();
+
+	/**
+	 * Sets the player state to the start of the state machine for the player to start his/her turn.
+	 */
+	void startTurn();
+
+	/**
+	 * Sets the player state to the end of the state machine for the player to end his/her turn.
+	 */
+	void endTurn();
 
 	/** 
 	 * Resolves the last roll. That is decide which dice to keep and which to reroll. The resolution must be the same size as the previous roll.
@@ -116,6 +164,7 @@ private:
 	vector<GameCard*> gameCards; /**< KeepCards/GoalCards currently being held by the player */
 	vector<Token*> tokens; /**< Tokens currently being held by the player */
 	string currentZone; /**< The zone where the player is currently located */
+	PlayerStateMachine state; /**< The state that keeps track of the current state of the player */
 	/**
 	 * Sets the current zone of the player
 	 * @param zone new zone where the player is located

@@ -160,6 +160,7 @@
     <ClInclude Include="..\king-of-new-york\GameMapNode.h" />
     <ClInclude Include="..\king-of-new-york\MonsterCard.h" />
     <ClInclude Include="..\king-of-new-york\Player.h" />
+    <ClInclude Include="..\king-of-new-york\PlayerStateMachine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\king-of-new-york\Card.cpp" />
@@ -171,6 +172,7 @@
     <ClCompile Include="..\king-of-new-york\GameMapNode.cpp" />
     <ClCompile Include="..\king-of-new-york\MonsterCard.cpp" />
     <ClCompile Include="..\king-of-new-york\Player.cpp" />
+    <ClCompile Include="..\king-of-new-york\PlayerStateMachine.cpp" />
     <ClCompile Include="a2p4.cpp" />
   </ItemGroup>
   <ItemGroup>

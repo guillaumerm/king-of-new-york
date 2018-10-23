@@ -18,6 +18,7 @@ public:
 	bool isMoving() const;
 	bool isBuying() const;
 	bool isResolving() const;
+	void proceed();
 	bool isDone() const;
 	void next();
 	void initTurn();
@@ -25,6 +26,7 @@ public:
 	PlayerState getCurrentState() const;
 private:
 	int numberRolls;
+	bool resolved;
 	PlayerState currentState;
 	PlayerState nextState;
 };

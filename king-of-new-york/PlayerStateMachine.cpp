@@ -4,18 +4,24 @@ const int PlayerStateMachine::MAX_NUMBER_OF_ROLLS = 3;
 
 PlayerStateMachine::PlayerStateMachine(): currentState(PlayerState::Rolling), nextState(PlayerState::Resolving) {}
 
-void PlayerStateMachine::next() {
+void PlayerStateMachine::proceed() {
+	this->currentState = this->nextState;
 	switch (this->currentState) {
 	case PlayerState::Rolling:
-		if (this->numberRolls < PlayerStateMachine::MAX_NUMBER_OF_ROLLS) {
-			this->nextState = PlayerState::Rolling;
-			this->numberRolls++;
+		this->numberRolls++;
+		if (this->numberRolls + 1 >= PlayerStateMachine::MAX_NUMBER_OF_ROLLS) {
+			this->nextState = PlayerState::Resolving;
 		}
 		else {
-			this->nextState = PlayerState::Resolving;
+			this->nextState = PlayerState::Rolling;
 		}
 		break;
 	case PlayerState::Resolving:
+		if (this->resolved) {
+			this->nextState = PlayerState::Moving;
+			throw exception("Player has already resolved.");
+			exit(1);
+		}
 		this->nextState = PlayerState::Moving;
 		break;
 	case PlayerState::Moving:
@@ -30,7 +36,43 @@ void PlayerStateMachine::next() {
 	}
 }
 
+void PlayerStateMachine::next() {
+	switch (this->currentState) {
+	case PlayerState::Rolling:
+		if (this->numberRolls < 1) {
+			this->nextState = PlayerState::Rolling;
+			this->currentState = PlayerState::Rolling;
+			throw exception("Rolling at least once is madantory");
+		}
+		this->currentState = PlayerState::Resolving;
+		this->nextState = PlayerState::Moving;
+		break;
+	case PlayerState::Resolving:
+		if (!this->resolved) {
+			this->nextState = PlayerState::Moving;
+			throw exception("Resolving is mandantory");
+		}
+		this->nextState = PlayerState::Moving;
+		this->nextState = PlayerState::Buying;
+		break;
+	case PlayerState::Moving:
+		this->nextState = PlayerState::Buying;
+		this->nextState = PlayerState::Idle;
+		break;
+	case PlayerState::Buying:
+		this->nextState = PlayerState::Idle;
+		this->currentState = PlayerState::Idle;
+		break;
+	case PlayerState::Idle:
+		this->nextState = PlayerState::Idle;
+		this->currentState = PlayerState::Idle;
+		break;
+	}
+}
+
 void PlayerStateMachine::initTurn() {
+	this->numberRolls = 0;
+	this->resolved = false;
 	this->nextState = PlayerState::Rolling;
 }
 

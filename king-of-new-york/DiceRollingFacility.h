@@ -29,6 +29,13 @@ public:
 	const DiceRoll* roll(int numberDice);
 
 	/**
+ * Rolls a dice roll of the desired number of dice. It also records this roll.
+ * @param numberDice number of dice to be rolled
+ * @return the DiceRoll rolled
+ */
+	const DiceRoll* reroll(bool diceToKeep[]);
+
+	/**
 	 * Returns the last DiceRoll added to the DiceRollingFacility
 	 * @return the last DiceRoll * rolled
 	 */

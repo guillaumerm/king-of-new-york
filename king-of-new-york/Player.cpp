@@ -18,6 +18,11 @@ Player::~Player() {
 }
 
 void Player::buyCards(GameCard* cards, int numCardsBought) {
+	if (!this->state.isBuying()) {
+		throw exception("The player cannot buying as he is not in the rolling phase.");
+		exit(1);
+	}
+
 	int cost = 0;
 	
 	for (int i = 0; i < numCardsBought; i++) {
@@ -33,6 +38,7 @@ void Player::buyCards(GameCard* cards, int numCardsBought) {
 	for (int i = 0; i < numCardsBought; i++) {
 		this->gameCards.push_back(&cards[i]);
 	}
+	this->state.proceed();
 }
 
 int Player::getLifePoints() const {
@@ -59,15 +65,58 @@ void Player::removeLifePoints(int lifePoints) {
 	this->monsterCard->removeLifePoints(lifePoints);
 }
 
+bool Player::isRolling() const {
+	return this->state.isRolling();
+}
+
+bool Player::isMoving() const {
+	return this->state.isMoving();
+}
+
+bool Player::isRelsoving() const {
+	return this->state.isResolving();
+}
+
+bool Player::isBuying() const {
+	return this->state.isBuying();
+}
+
 bool Player::isDead(){
 	return this->monsterCard->getLifePoint() <= 0;
 }
 
-const DiceRoll* Player::rollDice(bool diceToRoll[], int numberDice) {
+void Player::startTurn() {
+	this->state.initTurn();
+}
+
+void Player::endTurn() {
+	this->state.endTurn();
+}
+
+void Player::endPhase() {
+	this->state.next();
+}
+
+const DiceRoll* Player::rollDice(int numberDice) {
+	if (!this->state.isRolling()) {
+		throw exception("The player cannot roll has he is not in the rolling phase.");
+		exit(1);
+	}
+	this->state.proceed();
 	return this->diceRollingFacility->roll(numberDice);
 }
 
+const DiceRoll* Player::rollDice(bool diceToKeep[]) {
+	this->state.proceed();
+	return this->diceRollingFacility->reroll(diceToKeep);
+}
+
 const unordered_map<Die::Face, int> Player::resolveDice(unordered_set<Die::Face> order) {
+	if (!this->state.isResolving()) {
+		throw exception("The player cannot roll has he is not in the resolving phase.");
+		exit(1);
+	}
+
 	unordered_map<Die::Face, int> resolution;
 	const DiceRoll *lastRoll = this->diceRollingFacility->getLastRoll();
 	unordered_set<Die::Face>::iterator iter;
@@ -75,18 +124,26 @@ const unordered_map<Die::Face, int> Player::resolveDice(unordered_set<Die::Face>
 	for (iter = order.begin(); iter != order.end(); iter++) {
 		resolution.insert({ *iter, lastRoll->getSumFace(*iter) });
 	}
-
+	this->state.proceed();
 	return resolution;
 }
 
 void Player::move(GameMap *map, string nameDestinationZone) {
+	if (!this->state.isMoving()) {
+		throw exception("The player cannot move has he is not in the moving phase.");
+		exit(1);
+	}
+
 	if (map->adjancent(this->currentZone, nameDestinationZone)) {
+		this->state.next();
 		map->movePlayer(this, this->currentZone, nameDestinationZone);
 		this->setCurrentZone(nameDestinationZone);
 	}
 	else {
 		throw out_of_range("Cannot move to a none adjacent zone");
+		exit(1);
 	};
+
 }
 
 string Player::getCurrentZone() const {

@@ -42,6 +42,9 @@
     <ClInclude Include="..\king-of-new-york\Die.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\king-of-new-york\PlayerStateMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="a2p4.cpp">
@@ -72,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\king-of-new-york\Die.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\king-of-new-york\PlayerStateMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
