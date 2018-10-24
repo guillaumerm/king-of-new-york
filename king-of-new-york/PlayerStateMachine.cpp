@@ -5,7 +5,7 @@ const int PlayerStateMachine::MAX_NUMBER_OF_ROLLS = 3;
 PlayerStateMachine::PlayerStateMachine(): currentState(PlayerState::Rolling), nextState(PlayerState::Resolving) {}
 
 void PlayerStateMachine::proceed() {
-	this->currentState = this->nextState;
+ 	this->currentState = this->nextState;
 	switch (this->currentState) {
 	case PlayerState::Rolling:
 		this->numberRolls++;
@@ -68,6 +68,10 @@ void PlayerStateMachine::next() {
 		this->currentState = PlayerState::Idle;
 		break;
 	}
+}
+
+void PlayerStateMachine::setCurrentState(PlayerState state) {
+	this->currentState = state;
 }
 
 void PlayerStateMachine::initTurn() {

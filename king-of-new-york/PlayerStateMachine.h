@@ -24,6 +24,7 @@ public:
 	void initTurn();
 	void endTurn();
 	PlayerState getCurrentState() const;
+	void setCurrentState(PlayerState);
 private:
 	int numberRolls;
 	bool resolved;

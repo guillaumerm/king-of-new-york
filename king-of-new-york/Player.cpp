@@ -1,15 +1,20 @@
 #include <unordered_map>
 #include "Player.h"
 
-Player::Player() : Player(NULL, 0, "") {
+Player::Player() : Player(NULL, 0, "", PlayerStateMachine::PlayerState::Idle) {
 
 }
 
-Player::Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone) {
+Player::Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone): Player(monsterCard, energyCubes, startingZone, PlayerStateMachine::PlayerState::Idle) {
+
+}
+
+Player::Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone, PlayerStateMachine::PlayerState state) {
 	this->monsterCard = monsterCard;
 	this->energyCubes = energyCubes;
 	this->diceRollingFacility = new DiceRollingFacility();
 	this->currentZone = startingZone;
+	this->state.setCurrentState(state);
 }
 
 Player::~Player() {

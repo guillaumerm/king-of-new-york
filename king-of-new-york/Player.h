@@ -34,6 +34,14 @@ public:
 	Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone);
 
 	/**
+	 * Constructor which init a Player with a MonsterCard, EnergyCubes and a StartingZone
+	 * @param monsterCard A pointer to a monsterCard
+	 * @param energyCubes Number of energyCubes initially held by the player
+	 * @param startingZone name of the zone in which the player starts from
+	 */
+	Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone, PlayerStateMachine::PlayerState state);
+
+	/**
 	 * A destructor for Player
 	 */
 	~Player();
