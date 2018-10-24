@@ -162,6 +162,23 @@ public:
 	void removeLifePoints(int lifePoints);
 
 	/**
+	 * Adds a given amount of Energy Cubes.
+	 * @param amount amount of Energy Cubes to be added
+	 */
+	void addEnergyCubes(int amount);
+
+	/**
+	 * Remove a give amount of Energy Cubes.
+	 * @param amount amount of Energy Cubes to be removed
+	 */
+	void removeEnergyCubes(int amount);
+
+	/**
+	 * Gets the number of Energy Cubes the player has.
+	 */
+	int getEnergyCubes() const;
+
+	/**
 	 * Get the current zone where the player is currently located.
 	 */
 	string getCurrentZone() const;

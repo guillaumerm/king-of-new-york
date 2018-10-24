@@ -46,6 +46,19 @@ void Player::buyCards(GameCard* cards, int numCardsBought) {
 	this->state.proceed();
 }
 
+void Player::removeEnergyCubes(int amount) {
+	int diff = this->energyCubes - amount;
+	this->energyCubes = diff < 0 ? 0 : diff;
+}
+
+int Player::getEnergyCubes() const{
+	return this->energyCubes;
+}
+
+void Player::addEnergyCubes(int amount) {
+	this->energyCubes += amount;
+}
+
 int Player::getLifePoints() const {
 	return this->monsterCard->getLifePoint();
 }
