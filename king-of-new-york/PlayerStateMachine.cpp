@@ -77,6 +77,7 @@ void PlayerStateMachine::setCurrentState(PlayerState state) {
 void PlayerStateMachine::initTurn() {
 	this->numberRolls = 0;
 	this->resolved = false;
+	this->currentState = PlayerState::Rolling;
 	this->nextState = PlayerState::Rolling;
 }
 
