@@ -87,6 +87,4 @@ private:
 
 	friend ostream& operator<<(ostream& strm, const DiceRoll&);
 };
-
-ostream& operator<<(ostream& strm, const Die::Face);
 #endif
