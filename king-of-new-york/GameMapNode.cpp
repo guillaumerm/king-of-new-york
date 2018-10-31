@@ -47,7 +47,7 @@ void GameMapNode::connectZones(GameMapNode* adjacentZone)
 	//connectZones is called by one of the GameMapNodes and the other as its parameter
 	//connectZones adds both zones into each other's respective adjacentZone list
 	adjacentZones.push_back(adjacentZone);
-	adjacentZone->adjacentZones.push_back(this);
+	//adjacentZone->adjacentZones.push_back(this);
 }
 
 void GameMapNode::printNeighbours()
