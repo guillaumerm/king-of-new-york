@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="a2p5.cpp">
+    <ClCompile Include="..\king-of-new-york\Card.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\king-of-new-york\DiceRoll.cpp">
@@ -33,22 +33,10 @@
     <ClCompile Include="..\king-of-new-york\GameCard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\king-of-new-york\GameMap.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\king-of-new-york\GameMapLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\king-of-new-york\GameMapNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\king-of-new-york\GoalCard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\king-of-new-york\KeepCard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\king-of-new-york\MonsterCard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\king-of-new-york\Player.cpp">
@@ -57,11 +45,23 @@
     <ClCompile Include="..\king-of-new-york\PlayerStateMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\king-of-new-york\Card.cpp">
+    <ClCompile Include="..\king-of-new-york\GameMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\king-of-new-york\GameMapNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\king-of-new-york\MonsterCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="a2p6.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\king-of-new-york\Card.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\king-of-new-york\DiceRoll.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -71,25 +71,10 @@
     <ClInclude Include="..\king-of-new-york\Die.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\king-of-new-york\DiscardCard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\king-of-new-york\EnergyCube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\king-of-new-york\GameCard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\king-of-new-york\GameMap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\king-of-new-york\GameMapLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\king-of-new-york\GameMapNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\king-of-new-york\GoalCard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\king-of-new-york\KeepCard.h">
@@ -104,13 +89,14 @@
     <ClInclude Include="..\king-of-new-york\PlayerStateMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\king-of-new-york\Card.h">
+    <ClInclude Include="..\king-of-new-york\GameMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\king-of-new-york\new_york.map">
-      <Filter>Resource Files</Filter>
-    </None>
+    <ClInclude Include="..\king-of-new-york\GameMapNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\king-of-new-york\DiscardCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
