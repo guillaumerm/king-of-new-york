@@ -148,6 +148,7 @@
     <ClCompile Include="DiscardCard.cpp" />
     <ClCompile Include="entrypoint.cpp" />
     <ClCompile Include="GameCard.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameMap.cpp" />
     <ClCompile Include="GameMapLoader.cpp" />
     <ClCompile Include="GameMapNode.cpp" />
