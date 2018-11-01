@@ -72,6 +72,12 @@
     <ClInclude Include="PlayerStateMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PieceManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MonsterCard.cpp">
@@ -131,12 +137,21 @@
     <ClCompile Include="entrypoint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PieceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="new_york.map">
+    <None Include="MapDirectory\broken_york.map">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="invalid.map">
+    <None Include="MapDirectory\fake_city.map">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MapDirectory\invalid.map">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MapDirectory\new_york.map">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

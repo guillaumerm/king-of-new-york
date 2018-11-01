@@ -88,7 +88,7 @@ public:
 	 * Checks if a GameMapNode has place for players
 	 * @return true if no more space, false otherwise
 	 */
-	bool isFull();
+	bool isNotFull();
 
 	/**
 	 * Adds a player to the zone

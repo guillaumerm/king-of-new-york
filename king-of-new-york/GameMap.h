@@ -14,6 +14,8 @@ class GameMapNode;
 class GameMap {
 private:
 	vector <GameMapNode *> nodeList; /**< Lists of zones*/
+	static void DFS(GameMapNode *v, unordered_map<string, bool>* visited);
+	GameMap getTranspose();
 public:
 	/**
 	 * Parameterless constructor

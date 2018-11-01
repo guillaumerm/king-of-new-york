@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{37905F0D-D8BF-4AA5-8A71-5DE0FC6B76DA}</ProjectGuid>
     <RootNamespace>kingofnewyork</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -130,8 +130,10 @@
     <ClInclude Include="MapLoader.h" />
     <ClInclude Include="MonsterCard.h" />
     <ClInclude Include="GameCard.h" />
+    <ClInclude Include="PieceManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStateMachine.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Token.h" />
   </ItemGroup>
@@ -151,14 +153,17 @@
     <ClCompile Include="GoalCard.cpp" />
     <ClCompile Include="KeepCard.cpp" />
     <ClCompile Include="MonsterCard.cpp" />
+    <ClCompile Include="PieceManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerStateMachine.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Token.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="invalid.map" />
-    <None Include="new_york.map" />
+    <None Include="MapDirectory\broken_york.map" />
+    <None Include="MapDirectory\fake_city.map" />
+    <None Include="MapDirectory\invalid.map" />
+    <None Include="MapDirectory\new_york.map" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -60,15 +60,50 @@ bool GameMap::duplicateFree()
 
 bool GameMap::allConnected()
 {
-	for (int i = 0; i < nodeList.size(); i++)
-	{
-		if (nodeList.at(i)->getNeighbours().empty())
-		{
-			cout << "A region is isolated" << endl;
+	unordered_map<string, bool> *visited = new unordered_map<string, bool>();
+	for (int i = 0; i < this->nodeList.size(); i++)
+		visited->insert({this->nodeList.at(i)->getZoneName(), false});
+	DFS(this->nodeList.at(0), visited);
+	for (auto i : *visited) {
+		if (!i.second)
 			return false;
-		}
+	}
+
+	GameMap transposedGraph = this->getTranspose();
+	visited->clear();
+	for (auto i : transposedGraph.getList()) {
+		visited->insert({ i->getZoneName(), false });
+	}
+	DFS(transposedGraph.getList().at(0), visited);
+	for (auto i : *visited) {
+		if (!i.second)
+			return false;
 	}
 	return true;
+}
+
+void GameMap::DFS(GameMapNode* v, unordered_map<string, bool> *visited) {
+	visited->insert_or_assign(v->getZoneName(), true);
+	for (int i = 0; i < v->getNeighbours().size(); i++)
+		if (!visited->at(v->getNeighbours().at(i)->getZoneName()))
+			DFS(v->getNeighbours().at(i), visited);
+}
+
+GameMap GameMap::getTranspose() {
+	GameMap transposedGraph;
+	vector<GameMapNode*>::iterator i;
+	for (i = this->nodeList.begin(); i != this->nodeList.end(); i++)
+	{
+		transposedGraph.addRegion(new GameMapNode((*i)->getZoneName()));
+	}
+
+	for (auto currentNode: this->nodeList)
+	{
+		for (int j = 0; j < currentNode->getNeighbours().size(); j++) {
+			transposedGraph.getZoneByName(currentNode->getNeighbours().at(j)->getZoneName())->connectZones(transposedGraph.getZoneByName(currentNode->getZoneName()));
+		}
+	}
+	return transposedGraph;
 }
 
 void GameMap::movePlayer(Player *player, string nameSourceZone, string nameDestinationZone) {

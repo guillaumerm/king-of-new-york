@@ -5,9 +5,13 @@ Player::Player() : Player(NULL, 0, "", PlayerStateMachine::PlayerState::Idle) {
 
 }
 
+
+Player::Player(MonsterCard* monsterCard) : Player(monsterCard, 0, "", PlayerStateMachine::PlayerState::Idle) { }
+
 Player::Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone): Player(monsterCard, energyCubes, startingZone, PlayerStateMachine::PlayerState::Idle) {
 
 }
+
 
 Player::Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone, PlayerStateMachine::PlayerState state) {
 	this->monsterCard = monsterCard;
@@ -152,7 +156,7 @@ void Player::move(GameMap *map, string nameDestinationZone) {
 		exit(1);
 	}
 
-	if (map->adjancent(this->currentZone, nameDestinationZone)) {
+	if (map->adjancent(this->currentZone, nameDestinationZone) && map->getZoneByName(nameDestinationZone)->isNotFull()) {
 		this->state.next();
 		map->movePlayer(this, this->currentZone, nameDestinationZone);
 		this->setCurrentZone(nameDestinationZone);

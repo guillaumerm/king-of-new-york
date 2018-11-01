@@ -94,7 +94,7 @@ bool GameMapNode::duplicateAdjacentFree()
 	return true;
 }
 
-bool GameMapNode::isFull() {
+bool GameMapNode::isNotFull() {
 	return this->players.size() < NUMBER_OF_PLAYER_SLOTS;
 }
 

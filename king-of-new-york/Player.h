@@ -26,6 +26,12 @@ public:
 	Player();
 
 	/**
+	 * Constructor which init a Player with a MonsterCard
+	 * @param monsterCard A pointer to a monsterCard
+	 */
+	Player(MonsterCard* monsterCard);
+
+	/**
 	 * Constructor which init a Player with a MonsterCard, EnergyCubes and a StartingZone
 	 * @param monsterCard A pointer to a monsterCard
 	 * @param energyCubes Number of energyCubes initially held by the player
