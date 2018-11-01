@@ -15,7 +15,7 @@ int main()
 	cout << "Welcome to the King of New York game!" << endl;
 	cout << "This driver will set up the New York map and create a game for 4 players." << endl;
 
-	GameMap map = *GameMapLoader::loadMap("MapDirectory\\new_york.map");
+	GameMap map = *GameMapLoader::loadMap("..\\king-of-new-york\\MapDirectory\\new_york.map");
 	map.listAllZones();
 	//Restricting some zones from being where the players can start the game at
 	for (int i = 0; i < 3; i++)

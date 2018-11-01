@@ -136,6 +136,12 @@ public:
 	bool isDead();
 
 	/**
+	 * Checks whether the Player is idle
+	 * @return true if idle, false otherwise
+	 */
+	bool isIdle();
+
+	/**
 	 * Obtain the victory points of the player
 	 * @return number of victory points
 	 */
@@ -188,6 +194,12 @@ public:
 	 * Get the current zone where the player is currently located.
 	 */
 	string getCurrentZone() const;
+
+	/**
+	 * Get the monsters name
+	 * @return the name of the monster
+	 */
+	string getMonster();
 private:
 	DiceRollingFacility* diceRollingFacility; /**< Object used to roll and track rolls */
 	MonsterCard* monsterCard; /**< Object used to track victory points and life points */

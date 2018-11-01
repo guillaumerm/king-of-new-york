@@ -18,10 +18,54 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\king-of-new-york\Card.cpp" />
+    <ClCompile Include="..\king-of-new-york\Deck.cpp" />
+    <ClCompile Include="..\king-of-new-york\DeckCard-impl.cpp" />
+    <ClCompile Include="..\king-of-new-york\DiceRoll.cpp" />
+    <ClCompile Include="..\king-of-new-york\DiceRollingFacility.cpp" />
+    <ClCompile Include="..\king-of-new-york\Die.cpp" />
+    <ClCompile Include="..\king-of-new-york\DiscardCard.cpp" />
+    <ClCompile Include="..\king-of-new-york\GameCard.cpp" />
+    <ClCompile Include="..\king-of-new-york\GameMap.cpp" />
+    <ClCompile Include="..\king-of-new-york\GameMapLoader.cpp" />
+    <ClCompile Include="..\king-of-new-york\GameMapNode.cpp" />
+    <ClCompile Include="..\king-of-new-york\GoalCard.cpp" />
+    <ClCompile Include="..\king-of-new-york\KeepCard.cpp" />
+    <ClCompile Include="..\king-of-new-york\MonsterCard.cpp" />
+    <ClCompile Include="..\king-of-new-york\PieceManager.cpp" />
+    <ClCompile Include="..\king-of-new-york\Player.cpp" />
+    <ClCompile Include="..\king-of-new-york\PlayerStateMachine.cpp" />
+    <ClCompile Include="..\king-of-new-york\Tile.cpp" />
+    <ClCompile Include="..\king-of-new-york\Token.cpp" />
+    <ClCompile Include="a2p2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\king-of-new-york\Card.h" />
+    <ClInclude Include="..\king-of-new-york\Deck.h" />
+    <ClInclude Include="..\king-of-new-york\DiceRoll.h" />
+    <ClInclude Include="..\king-of-new-york\DiceRollingFacility.h" />
+    <ClInclude Include="..\king-of-new-york\Die.h" />
+    <ClInclude Include="..\king-of-new-york\DiscardCard.h" />
+    <ClInclude Include="..\king-of-new-york\EnergyCube.h" />
+    <ClInclude Include="..\king-of-new-york\GameCard.h" />
+    <ClInclude Include="..\king-of-new-york\GameMap.h" />
+    <ClInclude Include="..\king-of-new-york\GameMapLoader.h" />
+    <ClInclude Include="..\king-of-new-york\GameMapNode.h" />
+    <ClInclude Include="..\king-of-new-york\GoalCard.h" />
+    <ClInclude Include="..\king-of-new-york\KeepCard.h" />
+    <ClInclude Include="..\king-of-new-york\MonsterCard.h" />
+    <ClInclude Include="..\king-of-new-york\PieceManager.h" />
+    <ClInclude Include="..\king-of-new-york\Player.h" />
+    <ClInclude Include="..\king-of-new-york\PlayerStateMachine.h" />
+    <ClInclude Include="..\king-of-new-york\Tile.h" />
+    <ClInclude Include="..\king-of-new-york\Token.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{37905F0D-D8BF-4AA5-8A71-5DE0FC6B76DA}</ProjectGuid>
-    <RootNamespace>kingofnewyork</RootNamespace>
+    <ProjectGuid>{8C18E59C-4827-4413-9CE9-ED88389FDB4E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>a2p2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -29,27 +73,27 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -69,103 +113,87 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <ConformanceMode>true</ConformanceMode>
-    </ClCompile>
-  </ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\king-of-new-york;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="Card.h" />
-    <ClInclude Include="Deck.h" />
-    <ClInclude Include="DiceRoll.h" />
-    <ClInclude Include="DiceRollingFacility.h" />
-    <ClInclude Include="Die.h" />
-    <ClInclude Include="DiscardCard.h" />
-    <ClInclude Include="EnergyCube.h" />
-    <ClInclude Include="GameManager.h" />
-    <ClInclude Include="GameMap.h" />
-    <ClInclude Include="GameMapLoader.h" />
-    <ClInclude Include="GameMapNode.h" />
-    <ClInclude Include="GoalCard.h" />
-    <ClInclude Include="KeepCard.h" />
-    <ClInclude Include="MapLoader.h" />
-    <ClInclude Include="MonsterCard.h" />
-    <ClInclude Include="GameCard.h" />
-    <ClInclude Include="PieceManager.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayerStateMachine.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="Tile.h" />
-    <ClInclude Include="Token.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Card.cpp" />
-    <ClCompile Include="Deck.cpp" />
-    <ClCompile Include="DeckCard-impl.cpp" />
-    <ClCompile Include="DiceRoll.cpp" />
-    <ClCompile Include="DiceRollingFacility.cpp" />
-    <ClCompile Include="Die.cpp" />
-    <ClCompile Include="DiscardCard.cpp" />
-    <ClCompile Include="entrypoint.cpp" />
-    <ClCompile Include="GameCard.cpp" />
-    <ClCompile Include="GameMap.cpp" />
-    <ClCompile Include="GameMapLoader.cpp" />
-    <ClCompile Include="GameMapNode.cpp" />
-    <ClCompile Include="GoalCard.cpp" />
-    <ClCompile Include="KeepCard.cpp" />
-    <ClCompile Include="MonsterCard.cpp" />
-    <ClCompile Include="PieceManager.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerStateMachine.cpp" />
-    <ClCompile Include="Tile.cpp" />
-    <ClCompile Include="Token.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="MapDirectory\broken_york.map" />
-    <None Include="MapDirectory\fake_city.map" />
-    <None Include="MapDirectory\invalid.map" />
-    <None Include="MapDirectory\new_york.map" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

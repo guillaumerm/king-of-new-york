@@ -18,7 +18,7 @@ void GameMap::listAllZones()
 {
 	for (int i = 0; i < nodeList.size(); i++)
 	{
-		cout << "Zone Name: " << nodeList.at(i)->getZoneName() << "; and is owned by: " << nodeList.at(i)->getOwner() << endl;
+		cout << "Zone Name: " << nodeList.at(i)->getZoneName() << endl;
 	}
 }
 
@@ -105,6 +105,19 @@ GameMap GameMap::getTranspose() {
 	}
 	return transposedGraph;
 }
+
+bool GameMap::zoneExists(string testZone)
+{
+	for (int i = 0; i < nodeList.size(); i++)
+	{
+		if (nodeList.at(i)->getZoneName() == testZone)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 
 void GameMap::movePlayer(Player *player, string nameSourceZone, string nameDestinationZone) {
 	GameMapNode *sourceZone = this->getZoneByName(nameSourceZone);

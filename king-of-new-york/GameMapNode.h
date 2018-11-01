@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "Player.h"
+#include "Tile.h"
 
 using namespace std;
 
@@ -17,9 +18,10 @@ class Player;
 class GameMapNode {
 private:
 	string regionName; /**< Name of the region */
-	string regionOwner; /**< Name of the owner */
+	bool startingZone; /**< Zone a starting zone */
 	vector <GameMapNode*> adjacentZones; /**< Adjacent zone */
 	vector <Player*> players; /**< Players currently in the zone */
+	Tile * tileStack[5][3];
 public:
 	/**
 	 * Parameterless constructor
@@ -35,15 +37,27 @@ public:
 	/**
 	 * A constructor which init a GameMapNode with a region name and owners name
 	 * @param regionName region name of the zone
-	 * @param regionOwner region owners name
+	 * @param startingZone if zone is a startingZone
 	 */
-	GameMapNode(string regionName, string regionOwner);
+	GameMapNode(string regionName, bool startingZone);
 
 	/**
 	 * Get the zone name
 	 * @return name of the zone
 	 */
 	string getZoneName() const;
+
+	/**
+	 * Verifies that the zone is a not starting zone.
+	 * @return true if its not a starting zone, false otherwise
+	 */
+	void noStartHere();
+
+	/**
+	 * Used to set a player
+	 * @return true
+	 */
+	bool setPlayerStart(Player* playerStart);
 
 	/**
 	 * Get the zone owner
@@ -101,4 +115,12 @@ public:
 	 * @param player to be remove from the zone
 	 */
 	void removePlayer(Player *);
+
+	/**
+	 * Adds a tile to a stack
+	 * @param outterIndex the index of the stack
+	 * @param innerIndex the index of the location you are adding the tile
+	 * @param newTile the tile being added to the stack
+	 */
+	void addTileToStack(int outterIndex, int innerIndex, Tile* newTile);
 };

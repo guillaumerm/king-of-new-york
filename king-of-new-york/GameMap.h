@@ -72,4 +72,11 @@ public:
 	 * @param destination the destination zone of the player
 	 */
 	void movePlayer(Player *player, string origin, string destination);
+
+	/**
+	 * Verifies that a zone exists.
+	 * @param testZone the name of the zone
+	 * @return true if the zone exists, false otherwise
+	 */
+	bool zoneExists(string testZone);
 };

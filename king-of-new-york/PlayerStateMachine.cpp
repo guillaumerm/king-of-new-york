@@ -107,6 +107,10 @@ bool PlayerStateMachine::isRolling() const {
 	return this->currentState == PlayerState::Rolling;
 }
 
+bool PlayerStateMachine::isIdle() const {
+	return this->currentState == PlayerState::Idle;
+}
+
 PlayerStateMachine::PlayerState PlayerStateMachine::getCurrentState() const {
 	return this->currentState;
 }

@@ -20,6 +20,7 @@ public:
 	bool isResolving() const;
 	void proceed();
 	bool isDone() const;
+	bool isIdle() const;
 	void next();
 	void initTurn();
 	void endTurn();

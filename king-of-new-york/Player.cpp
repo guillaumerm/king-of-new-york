@@ -107,6 +107,10 @@ bool Player::isDead(){
 	return this->monsterCard->getLifePoint() <= 0;
 }
 
+bool Player::isIdle() {
+	return this->state.isIdle();
+}
+
 void Player::startTurn() {
 	this->state.initTurn();
 }
@@ -120,11 +124,13 @@ void Player::endPhase() {
 }
 
 const DiceRoll* Player::rollDice(int numberDice) {
-	if (!this->state.isRolling()) {
+	if (!this->state.isIdle() && !this->state.isRolling()) {
 		throw exception("The player cannot roll has he is not in the rolling phase.");
 		exit(1);
 	}
-	this->state.proceed();
+	if (this->state.isRolling()) {
+		this->state.proceed();
+	}
 	return this->diceRollingFacility->roll(numberDice);
 }
 
@@ -174,4 +180,9 @@ string Player::getCurrentZone() const {
 
 void Player::setCurrentZone(string newCurrentZone) {
 	this->currentZone = newCurrentZone;
+}
+
+string Player::getMonster()
+{
+	return this->monsterCard->getName();
 }

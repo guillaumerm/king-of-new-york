@@ -8,18 +8,14 @@ string const defaultRegion = "";
 string const defaultOwner = "";
 vector <GameMapNode*> adjacentZones;
 
-GameMapNode::GameMapNode() :GameMapNode(defaultRegion, defaultOwner) {};
+GameMapNode::GameMapNode() :GameMapNode(defaultRegion, true) {};
 
-GameMapNode::GameMapNode(string region)
+GameMapNode::GameMapNode(string region):GameMapNode(region, true){}
+
+GameMapNode::GameMapNode(string region, bool startZoneStatus)
 {
 	regionName = region;
-	regionOwner = "None";
-}
-
-GameMapNode::GameMapNode(string region, string initialOwner)
-{
-	regionName = region;
-	regionOwner = initialOwner;
+	startingZone = startZoneStatus;
 }
 
 string GameMapNode::getZoneName() const
@@ -27,19 +23,9 @@ string GameMapNode::getZoneName() const
 	return regionName;
 }
 
-string GameMapNode::getOwner() const
-{
-	return this->regionOwner;
-}
-
 vector<GameMapNode*> GameMapNode::getNeighbours()
 {
 	return this->adjacentZones;
-}
-
-void GameMapNode::newOwner(string usurper)
-{
-	regionOwner = usurper;
 }
 
 void GameMapNode::connectZones(GameMapNode* adjacentZone)
@@ -98,17 +84,39 @@ bool GameMapNode::isNotFull() {
 	return this->players.size() < NUMBER_OF_PLAYER_SLOTS;
 }
 
+void GameMapNode::noStartHere()
+{
+	startingZone = false;
+	cout << regionName << " is not a starting zone" << endl;
+}
+
+
+bool GameMapNode::setPlayerStart(Player* playerStart)
+{
+	if (startingZone)
+	{
+		addPlayer(playerStart);
+		return true;
+	}
+	else
+	{
+		cout << "Sorry this zone is not for players to start at" << endl;
+		return false;
+	}
+
+}
+
 void GameMapNode::addPlayer(Player *player) {
-	if (!this->players.empty()) {
-		int idx = 0;
-
-		while (idx < NUMBER_OF_PLAYER_SLOTS && player != this->players.at(idx)) {
-			idx++;
-		}
-
-		if (player != this->players.at(idx)) {
+	if (!this->players.empty() && isNotFull()) {
+		if (player != this->players.at(0)) {
 			this->players.push_back(player);
+			//cout << "Player added to " << getZoneName() << endl;
 		}
+	}
+	else
+	{
+		this->players.push_back(player);
+		//cout << "Player added to " << getZoneName() << endl;
 	}
 }
 
@@ -124,4 +132,9 @@ void GameMapNode::removePlayer(Player *player) {
 			this->players.erase(this->players.begin() + idx);
 		}
 	}
+}
+
+void GameMapNode::addTileToStack(int outterIndex, int innerIndex, Tile* newTile)
+{
+	tileStack[outterIndex][innerIndex] = newTile;
 }
