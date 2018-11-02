@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\a2p1_\a2p1.cpp" />
     <ClCompile Include="..\king-of-new-york\Card.cpp" />
     <ClCompile Include="..\king-of-new-york\Deck.cpp" />
     <ClCompile Include="..\king-of-new-york\DeckCard-impl.cpp" />
@@ -39,6 +38,7 @@
     <ClCompile Include="..\king-of-new-york\PlayerStateMachine.cpp" />
     <ClCompile Include="..\king-of-new-york\Tile.cpp" />
     <ClCompile Include="..\king-of-new-york\Token.cpp" />
+    <ClCompile Include="a2p1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\king-of-new-york\Card.h" />
