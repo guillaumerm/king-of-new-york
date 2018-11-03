@@ -11,7 +11,7 @@ public:
 	/**
 	 * Loads a map from a given filename.
 	 * @params filename filename of the map to be loaded
-	 * @return GameMap pointer, NOTE: GameMap may be empty if it fails to load
+	 * @return GameMap pointer if map is valid, otherwiser NULL
 	 */
 	static GameMap *loadMap(string filename);
 };

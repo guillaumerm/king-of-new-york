@@ -70,30 +70,3 @@ ostream& operator<<(ostream& strm, const DiceRoll &diceRoll) {
 
 	return strm;
 }
-
-ostream& operator<<(ostream& strm, const Die::Face face) {
-	switch (face) {
-	case Die::Face::A:
-		strm << "A";
-		break;
-	case Die::Face::C:
-		strm << "C";
-		break;
-	case Die::Face::D:
-		strm << "D";
-		break;
-	case Die::Face::E:
-		strm << "E";
-		break;
-	case Die::Face::H:
-		strm << "H";
-		break;
-	case Die::Face::O:
-		strm << "O";
-		break;
-	default: 
-		throw new out_of_range("Not a valid Die::Face");
-		exit(1);
-	}
-	return strm;
-}

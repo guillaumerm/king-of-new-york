@@ -5,15 +5,12 @@ using namespace std;
 const int NUMBER_OF_PLAYER_SLOTS = 2;
 
 string const defaultRegion = "";
+string const defaultOwner = "";
 vector <GameMapNode*> adjacentZones;
 
-GameMapNode::GameMapNode() :GameMapNode(defaultRegion) {};
+GameMapNode::GameMapNode() :GameMapNode(defaultRegion, true) {};
 
-GameMapNode::GameMapNode(string region)
-{
-	regionName = region;
-	startingZone = true;
-}
+GameMapNode::GameMapNode(string region):GameMapNode(region, true){}
 
 GameMapNode::GameMapNode(string region, bool startZoneStatus)
 {
@@ -26,42 +23,17 @@ string GameMapNode::getZoneName() const
 	return regionName;
 }
 
-
 vector<GameMapNode*> GameMapNode::getNeighbours()
 {
 	return this->adjacentZones;
 }
-
 
 void GameMapNode::connectZones(GameMapNode* adjacentZone)
 {
 	//connectZones is called by one of the GameMapNodes and the other as its parameter
 	//connectZones adds both zones into each other's respective adjacentZone list
 	adjacentZones.push_back(adjacentZone);
-	adjacentZone->adjacentZones.push_back(this);
-}
-
-//ADDED CODE
-void GameMapNode::noStartHere()
-{
-	startingZone = false;
-	cout << regionName << " is not a starting zone" << endl;
-}
-
-//ADDED CODE
-bool GameMapNode::setPlayerStart(Player* playerStart)
-{
-	if (startingZone)
-	{
-		addPlayer(playerStart);
-		return true;
-	}
-	else
-	{
-		cout << "Sorry this zone is not for players to start at" << endl;
-		return false;
-	}
-
+	//adjacentZone->adjacentZones.push_back(this);
 }
 
 void GameMapNode::printNeighbours()
@@ -108,12 +80,32 @@ bool GameMapNode::duplicateAdjacentFree()
 	return true;
 }
 
-//RENAMED FUNCTION
 bool GameMapNode::isNotFull() {
 	return this->players.size() < NUMBER_OF_PLAYER_SLOTS;
 }
 
-//EDITED CODE
+void GameMapNode::noStartHere()
+{
+	this->startingZone = false;
+	cout << regionName << " is not a starting zone" << endl;
+}
+
+
+bool GameMapNode::setPlayerStart(Player* playerStart)
+{
+	if (startingZone)
+	{
+		addPlayer(playerStart);
+		return true;
+	}
+	else
+	{
+		cout << "Sorry this zone is not for players to start at" << endl;
+		return false;
+	}
+
+}
+
 void GameMapNode::addPlayer(Player *player) {
 	if (!this->players.empty() && isNotFull()) {
 		if (player != this->players.at(0)) {
@@ -142,7 +134,6 @@ void GameMapNode::removePlayer(Player *player) {
 	}
 }
 
-//ADDED CODE
 void GameMapNode::addTileToStack(int outterIndex, int innerIndex, Tile* newTile)
 {
 	tileStack[outterIndex][innerIndex] = newTile;

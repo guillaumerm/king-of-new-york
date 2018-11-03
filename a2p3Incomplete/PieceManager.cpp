@@ -7,6 +7,7 @@ namespace GameCoponentDriver {
 	const int NUM_SOUVENIR = 11;
 }
 
+
 template <class T> void printDeck(Deck<T>* deck) {
 	cout << "Deck (" << endl;
 	for (int i = 0; i < deck->size(); i++) {

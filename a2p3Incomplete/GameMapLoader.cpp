@@ -58,6 +58,6 @@ GameMap *GameMapLoader::loadMap(string filename) {
 
 		mapLayout.close();
 	}
+
 	return map;
-	
 }

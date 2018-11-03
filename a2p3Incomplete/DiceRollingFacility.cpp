@@ -20,14 +20,14 @@ const DiceRoll* DiceRollingFacility::getLastRoll() const {
 	return this->diceRolls.back();
 }
 
-const DiceRoll* DiceRollingFacility::resolve(bool resolution[]) {
+const DiceRoll* DiceRollingFacility::reroll(bool diceToKeep[]) {
 	const DiceRoll *diceRoll = this->diceRolls.back();
 
 	// Resolve the dice dicided to be kept.
 	Die::Face* roll = new Die::Face[diceRoll->getNumberDice()];
 	int rollIndex = 0;
 	for (int i = 0; i < diceRoll->getNumberDice(); i++) {
-		if (resolution[i]) {
+		if (diceToKeep[i]) {
 			roll[rollIndex++] = diceRoll->getFaceAt(i);
 		}
 	}

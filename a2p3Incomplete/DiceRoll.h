@@ -74,9 +74,6 @@ public:
 	 * @return the Die::Face at given index
 	 */
 	Die::Face getFaceAt(int dieIndex) const;
-private:
-	int numberDice; /**< Number of dice that the roll contains */
-	Die::Face* roll; /**< Faces that compose this dice roll */
 
 	/**
 	 * Counts the number a die face appears in the roll
@@ -84,8 +81,10 @@ private:
 	 * @return count of the face in the dice roll.
 	 */
 	int getSumFace(Die::Face face) const;
+private:
+	int numberDice; /**< Number of dice that the roll contains */
+	Die::Face* roll; /**< Faces that compose this dice roll */
+
 	friend ostream& operator<<(ostream& strm, const DiceRoll&);
 };
-
-ostream& operator<<(ostream& strm, const Die::Face);
 #endif

@@ -14,6 +14,8 @@ class GameMapNode;
 class GameMap {
 private:
 	vector <GameMapNode *> nodeList; /**< Lists of zones*/
+	static void DFS(GameMapNode *v, unordered_map<string, bool>* visited);
+	GameMap getTranspose();
 public:
 	/**
 	 * Parameterless constructor
@@ -63,9 +65,6 @@ public:
 	 */
 	bool allConnected();
 
-	//ADDED CODE
-	bool zoneExists(string testZone);
-
 	/**
 	 * Moves a player from one zone to another.
 	 * @param player the player to be moved
@@ -73,4 +72,11 @@ public:
 	 * @param destination the destination zone of the player
 	 */
 	void movePlayer(Player *player, string origin, string destination);
+
+	/**
+	 * Verifies that a zone exists.
+	 * @param testZone the name of the zone
+	 * @return true if the zone exists, false otherwise
+	 */
+	bool zoneExists(string testZone);
 };

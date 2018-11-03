@@ -18,10 +18,10 @@ class Player;
 class GameMapNode {
 private:
 	string regionName; /**< Name of the region */
-	bool startingZone;//ADDED CODE
+	bool startingZone; /**< Zone a starting zone */
 	vector <GameMapNode*> adjacentZones; /**< Adjacent zone */
 	vector <Player*> players; /**< Players currently in the zone */
-	Tile * tileStack[5][3];//max 5 stacks of 3 tiles each
+	Tile * tileStack[5][3];
 public:
 	/**
 	 * Parameterless constructor
@@ -37,9 +37,9 @@ public:
 	/**
 	 * A constructor which init a GameMapNode with a region name and owners name
 	 * @param regionName region name of the zone
-	 * @param regionOwner region owners name
+	 * @param startingZone if zone is a startingZone
 	 */
-	GameMapNode(string regionName, bool startZoneStatus);
+	GameMapNode(string regionName, bool startingZone);
 
 	/**
 	 * Get the zone name
@@ -48,22 +48,40 @@ public:
 	string getZoneName() const;
 
 	/**
+	 * Verifies that the zone is a not starting zone.
+	 * @return true if its not a starting zone, false otherwise
+	 */
+	void noStartHere();
+
+	/**
+	 * Used to set a player
+	 * @return true
+	 */
+	bool setPlayerStart(Player* playerStart);
+
+	/**
+	 * Get the zone owner
+	 * @return name of the owner
+	 */
+	string getOwner() const;
+
+	/**
 	 * Get the neighbouring zones
 	 * @return a vector of adjacent zones
 	 */
 	vector<GameMapNode*> getNeighbours();
 
 	/**
+	 * Sets a new owner
+	 * @param owner new owner
+	 */
+	void newOwner(string owner);
+
+	/**
 	 * Connects zones
 	 * @param zone zone to connect to
 	 */
 	void connectZones(GameMapNode *zone);
-
-	//ADDED CODE
-	void noStartHere();
-
-	//ADDED CODE
-	bool setPlayerStart(Player* playerStart);
 
 	/**
 	 * Prints the adjacent zones
@@ -98,6 +116,11 @@ public:
 	 */
 	void removePlayer(Player *);
 
-	//ADDED CODE
+	/**
+	 * Adds a tile to a stack
+	 * @param outterIndex the index of the stack
+	 * @param innerIndex the index of the location you are adding the tile
+	 * @param newTile the tile being added to the stack
+	 */
 	void addTileToStack(int outterIndex, int innerIndex, Tile* newTile);
 };

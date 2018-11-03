@@ -64,5 +64,5 @@ int MonsterCard::getVictoryPoint() const {
 
 
 ostream& operator<<(ostream &strm, const MonsterCard &card) {
-	return strm << "MonsterCard (name:" << card.name << "; description:" << card.description << "; lifePoints:" << card.lifePoints << "; victoryPoints:" << card.victoryPoints <<")";
+	return strm << "MonsterCard(name:" << card.name << ";description:" << card.description << ";lifePoints:" << card.lifePoints << ";victoryPoints:" << card.victoryPoints <<")";
 }

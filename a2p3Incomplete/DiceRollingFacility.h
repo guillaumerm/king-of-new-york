@@ -29,16 +29,17 @@ public:
 	const DiceRoll* roll(int numberDice);
 
 	/**
+ * Rolls a dice roll of the desired number of dice. It also records this roll.
+ * @param numberDice number of dice to be rolled
+ * @return the DiceRoll rolled
+ */
+	const DiceRoll* reroll(bool diceToKeep[]);
+
+	/**
 	 * Returns the last DiceRoll added to the DiceRollingFacility
 	 * @return the last DiceRoll * rolled
 	 */
 	const DiceRoll* getLastRoll() const;
-
-	/**
-	 * Resolves the last dice roll.
-	 * @param resolution bool[] which contains the Die::Face to keep
-	 */
-	const DiceRoll* resolve(bool resolution[]);
 private:
 	Die* die; /**< Die used to roll random Die::Face */
 	/**

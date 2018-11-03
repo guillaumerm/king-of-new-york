@@ -1,5 +1,9 @@
 #ifndef DIE_H
 #define DIE_H
+#include <ostream>
+
+using namespace std;
+
 /**
  * @brief Class which is used to roll random Die::Face
  */
@@ -19,7 +23,8 @@ public:
 		D,	/**< Destruction die face */
 		E,	/**< Energy die face */
 		H,	/**< Heal die face */
-		O	/**< Ouch! die face */
+		O,	/**< Ouch! die face */
+		Face_MAX
 	};
 
 	/**
@@ -36,4 +41,16 @@ public:
 private:
 	Face lastRoll; /**< Last randomly roll Die::Face */
 };
+
+/**
+ * Operator overload to print the Die::Face to a stream.
+ */
+ostream& operator<<(ostream& strm, const Die::Face);
+
+/**
+ * Returns the string equivalent of a Die::Face
+ * @param face Die::Face to get the string of
+ * @return string of the Die::Face
+ */
+string dieFaceToString(Die::Face face);
 #endif
