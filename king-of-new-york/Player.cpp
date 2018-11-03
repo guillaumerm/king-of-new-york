@@ -28,7 +28,7 @@ Player::~Player() {
 
 void Player::buyCards(GameCard* cards, int numCardsBought) {
 	if (!this->state.isBuying()) {
-		throw exception("The player cannot buying as he is not in the rolling phase.");
+		throw exception("The player cannot buying as he is not in the buying phase.");
 		exit(1);
 	}
 
@@ -128,9 +128,11 @@ const DiceRoll* Player::rollDice(int numberDice) {
 		throw exception("The player cannot roll has he is not in the rolling phase.");
 		exit(1);
 	}
-	if (this->state.isRolling()) {
+
+	if (this->isRolling()) {
 		this->state.proceed();
 	}
+
 	return this->diceRollingFacility->roll(numberDice);
 }
 
@@ -163,7 +165,7 @@ void Player::move(GameMap *map, string nameDestinationZone) {
 	}
 
 	if (map->adjancent(this->currentZone, nameDestinationZone) && map->getZoneByName(nameDestinationZone)->isNotFull()) {
-		this->state.next();
+		this->state.proceed();
 		map->movePlayer(this, this->currentZone, nameDestinationZone);
 		this->setCurrentZone(nameDestinationZone);
 	}

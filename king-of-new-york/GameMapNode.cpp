@@ -95,6 +95,7 @@ bool GameMapNode::setPlayerStart(Player* playerStart)
 {
 	if (startingZone)
 	{
+		playerStart->setCurrentZone(this->getZoneName());
 		addPlayer(playerStart);
 		return true;
 	}

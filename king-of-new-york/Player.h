@@ -200,6 +200,12 @@ public:
 	 * @return the name of the monster
 	 */
 	string getMonster();
+
+	/**
+	 * Sets the current zone of the player
+	 * @param zone new zone where the player is located
+	 */
+	void setCurrentZone(string zones);
 private:
 	DiceRollingFacility* diceRollingFacility; /**< Object used to roll and track rolls */
 	MonsterCard* monsterCard; /**< Object used to track victory points and life points */
@@ -208,10 +214,5 @@ private:
 	vector<Token*> tokens; /**< Tokens currently being held by the player */
 	string currentZone; /**< The zone where the player is currently located */
 	PlayerStateMachine state; /**< The state that keeps track of the current state of the player */
-	/**
-	 * Sets the current zone of the player
-	 * @param zone new zone where the player is located
-	 */
-	void setCurrentZone(string zones);
 };
 #endif

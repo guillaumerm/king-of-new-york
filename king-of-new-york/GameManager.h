@@ -1,9 +1,12 @@
 #ifndef GAME_MANAGER_H
 #define GAME_MANAGER_H
 #include "Player.h";
+#include "Deck.h"
 
-void executeStart();
-void executeStartupPhase();
+void executeStart(GameMap& map, vector<Player*>& playerList, Deck<GameCard*>& deckOfCards);
+
+
+int* executeStartupPhase(GameMap* map, vector<Player*>* playerList);
 
 /**
  * Function used to execute the roll dice phase
