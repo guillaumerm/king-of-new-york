@@ -5,6 +5,10 @@
 #include "GameMapLoader.h"
 #include "PieceManager.h"
 
+/**
+ *Function used to print a vector
+ * @param aVector vector being printed
+ */
 template <typename T> void printVector(vector<T> aVector) {
 	typename vector<T>::iterator anIterator;
 	for (anIterator = aVector.begin(); anIterator != aVector.end(); anIterator++) {
@@ -12,13 +16,22 @@ template <typename T> void printVector(vector<T> aVector) {
 	}
 }
 
-template <typename T> void printSet(unordered_set<T*> aVector) {
+/**
+ * Function used to print a set
+ * @param aSet set being printed
+ */
+template <typename T> void printSet(unordered_set<T*> aSet) {
 	typename unordered_set<T*>::iterator anIterator;
-	for (anIterator = aVector.begin(); anIterator != aVector.end(); anIterator++) {
+	for (anIterator = aSet.begin(); anIterator != aSet.end(); anIterator++) {
 		cout << **anIterator << endl;
 	}
 }
 
+/**
+ * Function used to print an array
+ * @param array array being printed
+ * @param size size of the array
+ */
 template <class T> void printArray(T* array, int size) {
 	for (int i = 0; i < size; i++) {
 		cout << array[i] << endl;
