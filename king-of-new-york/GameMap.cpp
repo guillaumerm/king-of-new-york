@@ -82,6 +82,11 @@ bool GameMap::allConnected()
 	return true;
 }
 
+int GameMap::getPlayersCountInManhantten()
+{
+	return this->getZoneByName("Lower Manhatten")->getPlayersCount() + this->getZoneByName("Midtown")->getPlayersCount() + this->getZoneByName("Upper Manhatten")->getPlayersCount();
+}
+
 void GameMap::DFS(GameMapNode* v, unordered_map<string, bool> *visited) {
 	visited->insert_or_assign(v->getZoneName(), true);
 	for (int i = 0; i < v->getNeighbours().size(); i++)

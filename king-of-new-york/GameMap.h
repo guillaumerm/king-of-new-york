@@ -66,6 +66,12 @@ public:
 	bool allConnected();
 
 	/**
+	 * Returns the count of players currently in Manhantten
+	 * @return number of players currently in Manhantten
+	 */
+	int getPlayersCountInManhantten();
+
+	/**
 	 * Moves a player from one zone to another.
 	 * @param player the player to be moved
 	 * @param origin the current zone of the player

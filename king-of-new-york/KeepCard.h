@@ -44,6 +44,8 @@ public:
 	 * @param facingUp bool which indicates if the KeepCard will be facing up
 	 */
 	void setFacingUp(bool facingUp);
+
+	~KeepCard();
 private:
 	bool facingUp; /**< Value which indicates if the card is facing up*/
 	friend ostream& operator<<(ostream& strm, const KeepCard&);

@@ -50,6 +50,9 @@ public:
 	 * @param description description of the card
 	 */
 	void setDescription(string description);
+
+	virtual ~Card();
+
 	friend ostream& operator<<(ostream&, const Card&);
 };
 #endif

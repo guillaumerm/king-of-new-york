@@ -1,24 +1,25 @@
 #include <unordered_map>
 #include "Player.h"
 
-Player::Player() : Player(NULL, 0, "", PlayerStateMachine::PlayerState::Idle) {
+Player::Player() : Player(NULL, 0, "", PlayerStateMachine::PlayerState::Idle, NULL) {
 
 }
 
 
-Player::Player(MonsterCard* monsterCard) : Player(monsterCard, 0, "", PlayerStateMachine::PlayerState::Idle) { }
+Player::Player(MonsterCard* monsterCard, PlayerStrategy* strategy) : Player(monsterCard, 0, "", PlayerStateMachine::PlayerState::Idle, strategy) { }
 
-Player::Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone): Player(monsterCard, energyCubes, startingZone, PlayerStateMachine::PlayerState::Idle) {
+Player::Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone, PlayerStrategy* strategy): Player(monsterCard, energyCubes, startingZone, PlayerStateMachine::PlayerState::Idle, strategy) {
 
 }
 
 
-Player::Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone, PlayerStateMachine::PlayerState state) {
+Player::Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone, PlayerStateMachine::PlayerState state, PlayerStrategy* strategy) {
 	this->monsterCard = monsterCard;
 	this->energyCubes = energyCubes;
 	this->diceRollingFacility = new DiceRollingFacility();
 	this->currentZone = startingZone;
 	this->state.setCurrentState(state);
+	this->strategy = strategy;
 }
 
 Player::~Player() {
@@ -26,16 +27,21 @@ Player::~Player() {
 	delete diceRollingFacility;
 }
 
-void Player::buyCards(GameCard* cards, int numCardsBought) {
+void Player::buyCards(unordered_set<GameCard*> cardsToBeBought) {
 	if (!this->state.isBuying()) {
 		throw exception("The player cannot buying as he is not in the buying phase.");
 		exit(1);
 	}
 
+	if(cardsToBeBought.empty()){
+		this->endPhase();
+		return;
+	}
+
 	int cost = 0;
 	
-	for (int i = 0; i < numCardsBought; i++) {
-		cost += cards[i].getCost();
+	for (auto card: cardsToBeBought) {
+		cost += card->getCost();
 	}
 
 	if ((this->energyCubes - cost) <= 0) {
@@ -44,10 +50,43 @@ void Player::buyCards(GameCard* cards, int numCardsBought) {
 	}
 
 	this->energyCubes -= cost;
-	for (int i = 0; i < numCardsBought; i++) {
-		this->gameCards.push_back(&cards[i]);
+	for (auto card : cardsToBeBought) {
+		this->gameCards.push_back(card);
 	}
+
+	cardsToBeBought.clear();
+
 	this->state.proceed();
+}
+
+void Player::executeTurn(GameMap* board, vector<GameCard*> cardsAvailable, int numberOfDice) {
+	if (this->isIdle()) {
+		throw "Not players turn to play";
+		return;
+	}
+	
+	if (this->isDead()) {
+		throw "Player is dead";
+		return;
+	}
+
+	while (!this->isIdle()) {
+		if (this->isRolling()) {
+			this->strategy->executeRollDicePhase(*this, numberOfDice);
+		}
+		else if (this->isRelsoving()) {
+			this->strategy->executeResolveDicePhase(*this);
+		}
+		else if (this->isMoving()) {
+			this->strategy->executeMovePhase(this, board);
+		}
+		else if (this->isBuying()) {
+			this->strategy->executeBuyCardsPhase(*this, cardsAvailable);
+		}
+		else {
+			throw "Illegal State";
+		}
+	}
 }
 
 void Player::removeEnergyCubes(int amount) {
@@ -182,6 +221,11 @@ string Player::getCurrentZone() const {
 
 void Player::setCurrentZone(string newCurrentZone) {
 	this->currentZone = newCurrentZone;
+}
+
+void Player::setPlayerStrategy(PlayerStrategy * strategy) {
+	delete this->strategy;
+	this->strategy = strategy;
 }
 
 string Player::getMonster()

@@ -10,10 +10,13 @@
 #include "EnergyCube.h"
 #include "Token.h"
 #include "PlayerStateMachine.h"
+#include "PlayerStrategy.h"
 
 class GameMap;
 
 using namespace std;
+
+class PlayerStrategy;
 
 /** 
  * @brief A class which regroups the behavior/action that a player would need to play the game.
@@ -29,7 +32,7 @@ public:
 	 * Constructor which init a Player with a MonsterCard
 	 * @param monsterCard A pointer to a monsterCard
 	 */
-	Player(MonsterCard* monsterCard);
+	Player(MonsterCard* monsterCard, PlayerStrategy* strategy);
 
 	/**
 	 * Constructor which init a Player with a MonsterCard, EnergyCubes and a StartingZone
@@ -37,7 +40,7 @@ public:
 	 * @param energyCubes Number of energyCubes initially held by the player
 	 * @param startingZone name of the zone in which the player starts from
 	 */
-	Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone);
+	Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone, PlayerStrategy* strategy);
 
 	/**
 	 * Constructor which init a Player with a MonsterCard, EnergyCubes and a StartingZone
@@ -45,7 +48,7 @@ public:
 	 * @param energyCubes Number of energyCubes initially held by the player
 	 * @param startingZone name of the zone in which the player starts from
 	 */
-	Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone, PlayerStateMachine::PlayerState state);
+	Player(MonsterCard* monsterCard, EnergyCube energyCubes, string startingZone, PlayerStateMachine::PlayerState state, PlayerStrategy* strategy);
 
 	/**
 	 * A destructor for Player
@@ -127,7 +130,9 @@ public:
 	 * @param cards array of card being bought by the player
 	 * @param numCardsBought number of cards being bought
 	 */
-	void buyCards(GameCard* cards, int numCardsBought);
+	void buyCards(unordered_set<GameCard*> cardsToBeBought);
+
+	void executeTurn(GameMap* board, vector<GameCard*> cardsAvailable, int numberOfDice);
 
 	/**
 	 * Checks whether the Player is dead (ie has 0 life points)
@@ -206,6 +211,8 @@ public:
 	 * @param zone new zone where the player is located
 	 */
 	void setCurrentZone(string zones);
+
+	void setPlayerStrategy(PlayerStrategy *strategy);
 private:
 	DiceRollingFacility* diceRollingFacility; /**< Object used to roll and track rolls */
 	MonsterCard* monsterCard; /**< Object used to track victory points and life points */
@@ -214,5 +221,6 @@ private:
 	vector<Token*> tokens; /**< Tokens currently being held by the player */
 	string currentZone; /**< The zone where the player is currently located */
 	PlayerStateMachine state; /**< The state that keeps track of the current state of the player */
+	PlayerStrategy* strategy;
 };
 #endif

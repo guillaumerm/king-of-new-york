@@ -37,6 +37,10 @@ void Card::setDescription(string description) {
 	this->description = description;
 }
 
+Card::~Card()
+{
+}
+
 string Card::getName() const {
 	return this->name;
 }

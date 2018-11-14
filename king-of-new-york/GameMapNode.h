@@ -60,22 +60,22 @@ public:
 	bool setPlayerStart(Player* playerStart);
 
 	/**
-	 * Get the zone owner
-	 * @return name of the owner
+	 * Get the count of players currently in the zone
+	 * @return number of player currently in the zone
 	 */
-	string getOwner() const;
+	int getPlayersCount() const;
+
+	/**
+	 * Returns if the zone is a starting zone
+	 * @return true if starting zone, false otherwise
+	 */
+	bool isStartZone() const;
 
 	/**
 	 * Get the neighbouring zones
 	 * @return a vector of adjacent zones
 	 */
 	vector<GameMapNode*> getNeighbours();
-
-	/**
-	 * Sets a new owner
-	 * @param owner new owner
-	 */
-	void newOwner(string owner);
 
 	/**
 	 * Connects zones

@@ -115,8 +115,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AggesivePlayerStrategyBuilder.cpp" />
+    <ClInclude Include="AggresiveBuyingCardsStrategy.h" />
+    <ClInclude Include="AggresiveDiceRollingStrategy.h" />
+    <ClInclude Include="AggresiveDiceResolvingStrategy.h" />
+    <ClInclude Include="AggresiveMovingStrategy.h" />
+    <ClInclude Include="AggresivePlayerStrategyBuilder.h" />
+    <ClInclude Include="BuyingCardsStrategy.h" />
     <ClInclude Include="Card.h" />
+    <ClInclude Include="ComputerPlayer.h" />
     <ClInclude Include="Deck.h" />
+    <ClInclude Include="DiceResolvingStrategy.h" />
     <ClInclude Include="DiceRoll.h" />
     <ClInclude Include="DiceRollingFacility.h" />
     <ClInclude Include="Die.h" />
@@ -127,18 +136,38 @@
     <ClInclude Include="GameMapLoader.h" />
     <ClInclude Include="GameMapNode.h" />
     <ClInclude Include="GoalCard.h" />
+    <ClInclude Include="InteractiveBuyingCardsStrategy.h" />
+    <ClInclude Include="InteractiveDiceResolvingStrategy.h" />
+    <ClInclude Include="InteractiveDiceRollingStrategy.h" />
+    <ClInclude Include="InteractiveMovingStrategy.h" />
+    <ClInclude Include="InteractivePlayerStrategyBuilder.h" />
     <ClInclude Include="KeepCard.h" />
     <ClInclude Include="MapLoader.h" />
+    <ClInclude Include="ModerateBuyingCardsStrategy.h" />
+    <ClInclude Include="ModerateDiceResolvingStrategy.h" />
+    <ClInclude Include="ModerateDiceRollingStrategy.h" />
+    <ClInclude Include="ModerateMovingStrategy.h" />
+    <ClInclude Include="ModeratePlayerStrategyBuilder.h" />
     <ClInclude Include="MonsterCard.h" />
     <ClInclude Include="GameCard.h" />
+    <ClInclude Include="MovingStrategy.h" />
     <ClInclude Include="PieceManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStateMachine.h" />
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="DiceRollingStrategy.h" />
+    <ClInclude Include="PlayerStrategy.h" />
+    <ClInclude Include="PlayerStrategyBuilder.h" />
+    <ClInclude Include="PlayerStrategyDirector.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Token.h" />
+    <ClInclude Include="Util.cpp" />
+    <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AggresiveBuyingCardsStrategy.cpp" />
+    <ClCompile Include="AggresiveDiceResolvingStrategy.cpp" />
+    <ClCompile Include="AggresiveDiceRollingStrategy.cpp" />
+    <ClCompile Include="AggresiveMovingStrategy.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="DeckCard-impl.cpp" />
@@ -153,11 +182,23 @@
     <ClCompile Include="GameMapLoader.cpp" />
     <ClCompile Include="GameMapNode.cpp" />
     <ClCompile Include="GoalCard.cpp" />
+    <ClCompile Include="InteractiveBuyingCardsStrategy.cpp" />
+    <ClCompile Include="InteractiveDiceResolvingStrategy.cpp" />
+    <ClCompile Include="InteractiveDiceRollingStrategy.cpp" />
+    <ClCompile Include="InteractiveMovingStrategy.cpp" />
+    <ClCompile Include="InteractivePlayerStrategyBuilder.cpp" />
     <ClCompile Include="KeepCard.cpp" />
+    <ClCompile Include="ModerateBuyingCardsStrategy.cpp" />
+    <ClCompile Include="ModerateDiceResolvingStrategy.cpp" />
+    <ClCompile Include="ModerateDiceRollingStrategy.cpp" />
+    <ClCompile Include="ModerateMovingStrategy.cpp" />
+    <ClCompile Include="ModeratePlayerStrategyBuilder.cpp" />
     <ClCompile Include="MonsterCard.cpp" />
     <ClCompile Include="PieceManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerStateMachine.cpp" />
+    <ClCompile Include="PlayerStrategy.cpp" />
+    <ClCompile Include="PlayerStrategyDirector.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Token.cpp" />
   </ItemGroup>

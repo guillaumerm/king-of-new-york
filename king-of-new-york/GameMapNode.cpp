@@ -36,6 +36,15 @@ void GameMapNode::connectZones(GameMapNode* adjacentZone)
 	//adjacentZone->adjacentZones.push_back(this);
 }
 
+int GameMapNode::getPlayersCount() const{
+	return this->players.size();
+}
+
+bool GameMapNode::isStartZone() const
+{
+	return this->startingZone;
+}
+
 void GameMapNode::printNeighbours()
 {
 	if (adjacentZones.empty())

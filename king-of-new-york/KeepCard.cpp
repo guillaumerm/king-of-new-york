@@ -21,6 +21,10 @@ void KeepCard::setFacingUp(bool facingUp) {
 	this->facingUp = facingUp;
 }
 
+KeepCard::~KeepCard()
+{
+}
+
 ostream& operator<<(ostream& strm, const KeepCard& card) {
 	return strm << "GameCard(name:" << card.name << "; description:" << card.description << "cost:" << card.cost << ")";
 }

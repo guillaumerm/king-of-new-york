@@ -44,6 +44,8 @@ public:
 	 * @param cost cost to be set to the card
 	 */
 	void setCost(int cost);
+
+	virtual ~GameCard();
 private:
 	friend ostream& operator<<(ostream&, const GameCard&);
 };

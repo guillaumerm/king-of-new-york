@@ -12,7 +12,13 @@ void PlayerStateMachine::proceed() {
 			exit(1);
 		}
 		this->numberRolls++;
-		this->nextState = Resolving;
+
+		if (this->numberRolls == PlayerStateMachine::MAX_NUMBER_OF_ROLLS) {
+			this->next();
+		}
+		else {
+			this->nextState = Resolving;
+		}
 		break;
 	case PlayerState::Resolving:
 		if (this->resolved) {
