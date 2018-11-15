@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{37905F0D-D8BF-4AA5-8A71-5DE0FC6B76DA}</ProjectGuid>
     <RootNamespace>kingofnewyork</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -151,6 +151,7 @@
     <ClInclude Include="MonsterCard.h" />
     <ClInclude Include="GameCard.h" />
     <ClInclude Include="MovingStrategy.h" />
+    <ClInclude Include="Observer.h" />
     <ClInclude Include="PieceManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStateMachine.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="PlayerStrategy.h" />
     <ClInclude Include="PlayerStrategyBuilder.h" />
     <ClInclude Include="PlayerStrategyDirector.h" />
+    <ClInclude Include="Subject.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Token.h" />
     <ClInclude Include="Util.cpp" />
@@ -199,6 +201,7 @@
     <ClCompile Include="PlayerStateMachine.cpp" />
     <ClCompile Include="PlayerStrategy.cpp" />
     <ClCompile Include="PlayerStrategyDirector.cpp" />
+    <ClCompile Include="Subject.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Token.cpp" />
   </ItemGroup>

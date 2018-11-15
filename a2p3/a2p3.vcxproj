@@ -23,7 +23,7 @@
     <ProjectGuid>{2B3F69F8-2E15-45B8-B133-544D393B7A7A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>a2p3</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -165,20 +165,33 @@
     <ClCompile Include="..\king-of-new-york\GameMapLoader.cpp" />
     <ClCompile Include="..\king-of-new-york\GameMapNode.cpp" />
     <ClCompile Include="..\king-of-new-york\GoalCard.cpp" />
+    <ClCompile Include="..\king-of-new-york\InteractiveBuyingCardsStrategy.cpp" />
+    <ClCompile Include="..\king-of-new-york\InteractiveDiceResolvingStrategy.cpp" />
+    <ClCompile Include="..\king-of-new-york\InteractiveDiceRollingStrategy.cpp" />
+    <ClCompile Include="..\king-of-new-york\InteractiveMovingStrategy.cpp" />
+    <ClCompile Include="..\king-of-new-york\InteractivePlayerStrategyBuilder.cpp" />
     <ClCompile Include="..\king-of-new-york\KeepCard.cpp" />
     <ClCompile Include="..\king-of-new-york\MonsterCard.cpp" />
     <ClCompile Include="..\king-of-new-york\PieceManager.cpp" />
     <ClCompile Include="..\king-of-new-york\Player.cpp" />
     <ClCompile Include="..\king-of-new-york\PlayerStateMachine.cpp" />
+    <ClCompile Include="..\king-of-new-york\PlayerStrategy.cpp" />
+    <ClCompile Include="..\king-of-new-york\PlayerStrategyBuilder.cpp" />
+    <ClCompile Include="..\king-of-new-york\PlayerStrategyDirector.cpp" />
+    <ClCompile Include="..\king-of-new-york\Subject.cpp" />
     <ClCompile Include="..\king-of-new-york\Tile.cpp" />
     <ClCompile Include="..\king-of-new-york\Token.cpp" />
+    <ClCompile Include="..\king-of-new-york\Util.cpp" />
     <ClCompile Include="a2p3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\king-of-new-york\BuyingCardsStrategy.h" />
     <ClInclude Include="..\king-of-new-york\Card.h" />
     <ClInclude Include="..\king-of-new-york\Deck.h" />
+    <ClInclude Include="..\king-of-new-york\DiceResolvingStrategy.h" />
     <ClInclude Include="..\king-of-new-york\DiceRoll.h" />
     <ClInclude Include="..\king-of-new-york\DiceRollingFacility.h" />
+    <ClInclude Include="..\king-of-new-york\DiceRollingStrategy.h" />
     <ClInclude Include="..\king-of-new-york\Die.h" />
     <ClInclude Include="..\king-of-new-york\DiscardCard.h" />
     <ClInclude Include="..\king-of-new-york\EnergyCube.h" />
@@ -188,13 +201,25 @@
     <ClInclude Include="..\king-of-new-york\GameMapLoader.h" />
     <ClInclude Include="..\king-of-new-york\GameMapNode.h" />
     <ClInclude Include="..\king-of-new-york\GoalCard.h" />
+    <ClInclude Include="..\king-of-new-york\InteractiveBuyingCardsStrategy.h" />
+    <ClInclude Include="..\king-of-new-york\InteractiveDiceResolvingStrategy.h" />
+    <ClInclude Include="..\king-of-new-york\InteractiveDiceRollingStrategy.h" />
+    <ClInclude Include="..\king-of-new-york\InteractiveMovingStrategy.h" />
+    <ClInclude Include="..\king-of-new-york\InteractivePlayerStrategyBuilder.h" />
     <ClInclude Include="..\king-of-new-york\KeepCard.h" />
     <ClInclude Include="..\king-of-new-york\MonsterCard.h" />
+    <ClInclude Include="..\king-of-new-york\MovingStrategy.h" />
+    <ClInclude Include="..\king-of-new-york\Observer.h" />
     <ClInclude Include="..\king-of-new-york\PieceManager.h" />
     <ClInclude Include="..\king-of-new-york\Player.h" />
     <ClInclude Include="..\king-of-new-york\PlayerStateMachine.h" />
+    <ClInclude Include="..\king-of-new-york\PlayerStrategy.h" />
+    <ClInclude Include="..\king-of-new-york\PlayerStrategyBuilder.h" />
+    <ClInclude Include="..\king-of-new-york\PlayerStrategyDirector.h" />
+    <ClInclude Include="..\king-of-new-york\Subject.h" />
     <ClInclude Include="..\king-of-new-york\Tile.h" />
     <ClInclude Include="..\king-of-new-york\Token.h" />
+    <ClInclude Include="..\king-of-new-york\Util.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\king-of-new-york\MapDirectory\broken_york.map" />

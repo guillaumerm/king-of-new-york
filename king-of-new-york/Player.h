@@ -11,6 +11,7 @@
 #include "Token.h"
 #include "PlayerStateMachine.h"
 #include "PlayerStrategy.h"
+#include "Subject.h"
 
 class GameMap;
 
@@ -21,7 +22,7 @@ class PlayerStrategy;
 /** 
  * @brief A class which regroups the behavior/action that a player would need to play the game.
  */
-class Player {
+class Player: public Subject {
 public:
 	/** 
 	 * Parameterless constructor
@@ -134,6 +135,13 @@ public:
 
 	void executeTurn(GameMap* board, vector<GameCard*> cardsAvailable, int numberOfDice);
 
+
+	unordered_map<Die::Face, int> getLastResolved();
+
+	const DiceRoll* getLastRoll();
+
+	vector<GameCard*> getHand();
+
 	/**
 	 * Checks whether the Player is dead (ie has 0 life points)
 	 * @return true if dead, false otherwise
@@ -222,5 +230,6 @@ private:
 	string currentZone; /**< The zone where the player is currently located */
 	PlayerStateMachine state; /**< The state that keeps track of the current state of the player */
 	PlayerStrategy* strategy;
+	unordered_map<Die::Face, int> lastResolved;
 };
 #endif
