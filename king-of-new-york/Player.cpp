@@ -55,7 +55,7 @@ void Player::buyCards(unordered_set<GameCard*> cardsToBeBought) {
 	}
 
 	cardsToBeBought.clear();
-
+	this->notify();
 	this->state.proceed();
 }
 
@@ -87,6 +87,21 @@ void Player::executeTurn(GameMap* board, vector<GameCard*> cardsAvailable, int n
 			throw "Illegal State";
 		}
 	}
+}
+
+unordered_map<Die::Face, int> Player::getLastResolved()
+{
+	return unordered_map<Die::Face, int>();
+}
+
+const DiceRoll* Player::getLastRoll()
+{
+	return this->diceRollingFacility->getLastRoll();
+}
+
+vector<GameCard*> Player::getHand()
+{
+	return this->gameCards;
 }
 
 void Player::removeEnergyCubes(int amount) {
@@ -169,6 +184,7 @@ const DiceRoll* Player::rollDice(int numberDice) {
 	}
 
 	if (this->isRolling()) {
+		this->notify();
 		this->state.proceed();
 	}
 
@@ -176,6 +192,7 @@ const DiceRoll* Player::rollDice(int numberDice) {
 }
 
 const DiceRoll* Player::rollDice(bool diceToKeep[]) {
+	this->notify();
 	this->state.proceed();
 	return this->diceRollingFacility->reroll(diceToKeep);
 }
@@ -193,7 +210,10 @@ const unordered_map<Die::Face, int> Player::resolveDice(unordered_set<Die::Face>
 	for (iter = order.begin(); iter != order.end(); iter++) {
 		resolution.insert({ *iter, lastRoll->getSumFace(*iter) });
 	}
+
+	this->notify();
 	this->state.proceed();
+	this->lastResolved = resolution;
 	return resolution;
 }
 
@@ -204,6 +224,7 @@ void Player::move(GameMap *map, string nameDestinationZone) {
 	}
 
 	if (map->adjancent(this->currentZone, nameDestinationZone) && map->getZoneByName(nameDestinationZone)->isNotFull()) {
+		this->notify();
 		this->state.proceed();
 		map->movePlayer(this, this->currentZone, nameDestinationZone);
 		this->setCurrentZone(nameDestinationZone);
