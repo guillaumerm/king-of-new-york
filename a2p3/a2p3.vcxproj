@@ -171,6 +171,11 @@
     <ClCompile Include="..\king-of-new-york\InteractiveMovingStrategy.cpp" />
     <ClCompile Include="..\king-of-new-york\InteractivePlayerStrategyBuilder.cpp" />
     <ClCompile Include="..\king-of-new-york\KeepCard.cpp" />
+    <ClCompile Include="..\king-of-new-york\ModerateBuyingCardsStrategy.cpp" />
+    <ClCompile Include="..\king-of-new-york\ModerateDiceResolvingStrategy.cpp" />
+    <ClCompile Include="..\king-of-new-york\ModerateDiceRollingStrategy.cpp" />
+    <ClCompile Include="..\king-of-new-york\ModerateMovingStrategy.cpp" />
+    <ClCompile Include="..\king-of-new-york\ModeratePlayerStrategyBuilder.cpp" />
     <ClCompile Include="..\king-of-new-york\MonsterCard.cpp" />
     <ClCompile Include="..\king-of-new-york\PieceManager.cpp" />
     <ClCompile Include="..\king-of-new-york\Player.cpp" />
@@ -182,6 +187,8 @@
     <ClCompile Include="..\king-of-new-york\Tile.cpp" />
     <ClCompile Include="..\king-of-new-york\Token.cpp" />
     <ClCompile Include="..\king-of-new-york\Util.cpp" />
+    <ClCompile Include="..\king-of-new-york\VictoryPointStatistic.cpp" />
+    <ClCompile Include="..\king-of-new-york\VictoryPointSubject.cpp" />
     <ClCompile Include="a2p3.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +214,11 @@
     <ClInclude Include="..\king-of-new-york\InteractiveMovingStrategy.h" />
     <ClInclude Include="..\king-of-new-york\InteractivePlayerStrategyBuilder.h" />
     <ClInclude Include="..\king-of-new-york\KeepCard.h" />
+    <ClInclude Include="..\king-of-new-york\ModerateBuyingCardsStrategy.h" />
+    <ClInclude Include="..\king-of-new-york\ModerateDiceResolvingStrategy.h" />
+    <ClInclude Include="..\king-of-new-york\ModerateDiceRollingStrategy.h" />
+    <ClInclude Include="..\king-of-new-york\ModerateMovingStrategy.h" />
+    <ClInclude Include="..\king-of-new-york\ModeratePlayerStrategyBuilder.h" />
     <ClInclude Include="..\king-of-new-york\MonsterCard.h" />
     <ClInclude Include="..\king-of-new-york\MovingStrategy.h" />
     <ClInclude Include="..\king-of-new-york\Observer.h" />
@@ -220,6 +232,9 @@
     <ClInclude Include="..\king-of-new-york\Tile.h" />
     <ClInclude Include="..\king-of-new-york\Token.h" />
     <ClInclude Include="..\king-of-new-york\Util.h" />
+    <ClInclude Include="..\king-of-new-york\VictoryPointObserver.h" />
+    <ClInclude Include="..\king-of-new-york\VictoryPointStatistic.h" />
+    <ClInclude Include="..\king-of-new-york\VictoryPointSubject.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\king-of-new-york\MapDirectory\broken_york.map" />

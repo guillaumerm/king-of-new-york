@@ -108,6 +108,27 @@
     <ClCompile Include="..\king-of-new-york\InteractiveBuyingCardsStrategy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\king-of-new-york\VictoryPointStatistic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\king-of-new-york\VictoryPointSubject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\king-of-new-york\ModerateBuyingCardsStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\king-of-new-york\ModerateDiceResolvingStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\king-of-new-york\ModerateDiceRollingStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\king-of-new-york\ModerateMovingStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\king-of-new-york\ModeratePlayerStrategyBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\king-of-new-york\Card.h">
@@ -213,6 +234,30 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\king-of-new-york\PlayerStrategyDirector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\king-of-new-york\VictoryPointObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\king-of-new-york\VictoryPointStatistic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\king-of-new-york\VictoryPointSubject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\king-of-new-york\ModerateBuyingCardsStrategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\king-of-new-york\ModerateDiceResolvingStrategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\king-of-new-york\ModerateDiceRollingStrategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\king-of-new-york\ModerateMovingStrategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\king-of-new-york\ModeratePlayerStrategyBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
