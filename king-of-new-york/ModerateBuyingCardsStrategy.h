@@ -3,6 +3,6 @@
 #include "BuyingCardsStrategy.h"
 class ModerateBuyingCardsStrategy: public BuyingCardsStrategy {
 public:
-	void execute(Player & player, vector<GameCard*> cardsAvailable);
+	void execute(Player & player, vector<GameCard*> cardsAvailable, Deck<GameCard*>* deckOfGameCards);
 };
 #endif

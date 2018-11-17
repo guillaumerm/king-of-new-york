@@ -11,7 +11,9 @@
 #include "Token.h"
 #include "PlayerStateMachine.h"
 #include "PlayerStrategy.h"
-#include "Subject.h"
+#include "PhaseSubject.h"
+#include "GameStatisticSubject.h"
+#include "Deck.h"
 
 class GameMap;
 
@@ -22,7 +24,7 @@ class PlayerStrategy;
 /** 
  * @brief A class which regroups the behavior/action that a player would need to play the game.
  */
-class Player: public Subject {
+class Player: public PhaseSubject, public GameStatisticSubject {
 public:
 	/** 
 	 * Parameterless constructor
@@ -133,7 +135,7 @@ public:
 	 */
 	void buyCards(unordered_set<GameCard*> cardsToBeBought);
 
-	void executeTurn(GameMap* board, vector<GameCard*> cardsAvailable, int numberOfDice);
+	void executeTurn(GameMap* board, vector<GameCard*> cardsAvailable, int numberOfDice, Deck<GameCard*>* deckOfCards);
 
 
 	unordered_map<Die::Face, int> getLastResolved();
@@ -230,6 +232,6 @@ private:
 	string currentZone; /**< The zone where the player is currently located */
 	PlayerStateMachine state; /**< The state that keeps track of the current state of the player */
 	PlayerStrategy* strategy;
-	unordered_map<Die::Face, int> lastResolved;
+	unordered_map<Die::Face, int> *lastResolved;
 };
 #endif

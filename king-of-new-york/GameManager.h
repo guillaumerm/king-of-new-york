@@ -2,31 +2,51 @@
 #define GAME_MANAGER_H
 #include "Player.h";
 #include "Deck.h"
-#include "Observer.h"
+#include "GameManager.h"
+#include "Card.h"
+#include "DiscardCard.h"
+#include "KeepCard.h"
+#include "GameMapLoader.h"
+#include "PieceManager.h"
+#include "Util.h"
+#include "GameStatisticView.h"
+#include "PhaseView.h"
+#include "AggresivePlayerStrategyBuilder.h"
+#include "ModeratePlayerStrategyBuilder.h"
+#include "InteractivePlayerStrategyBuilder.h"
+#include "PlayerStrategyDirector.h"
 
 using namespace std;
 
-class GameManager: public Observer {
+class GameManager {
 public:
+	static const int NUMBER_OF_CARDS;
+
+	GameManager();
+
+	~GameManager();
+	
 	/**
 	* Creates all component requires for the game.
-	* @param map map being created
-	* @param playerList list of players currently playing the game
-	* @param deckOfCards the deck of GameCards
 	*/
-	void executeStart(GameMap& map, vector<Player*>& playerList, Deck<GameCard*>& deckOfCards);
+	void executeStart();
 
 	/**
 	* Set ups the game to be ready to play.
-	* @param map
-	* @param playerList the players
 	*/
-	int* executeStartupPhase(GameMap* map, vector<Player*>* playerList);
+	void executeStartupPhase();
 
-	void update();
+	Player *hasWon();
 
-	Player * currentPlayer;
+	void play();
 private:
-	
+	vector<GameCard*> cardsAvailable;
+	Player* currentPlayer;
+	GameStatisticView* statisticView;
+	PhaseView* phaseView;
+	GameMap* map;
+	vector<Player*>* playerList;
+	Deck<GameCard*>* deckOfCards;
+	int* turnOrder;
 };
 #endif

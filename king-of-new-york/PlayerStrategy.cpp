@@ -31,9 +31,9 @@ void PlayerStrategy::executeResolveDicePhase(Player & player)
 	this->diceResolvingStrategy->execute(player);
 }
 
-void PlayerStrategy::executeBuyCardsPhase(Player & player, vector<GameCard*> cardsAvailable)
+void PlayerStrategy::executeBuyCardsPhase(Player & player, vector<GameCard*> cardsAvailable, Deck<GameCard*>* deckOfCards)
 {
-	this->buyingCardStrategy->execute(player, cardsAvailable);
+	this->buyingCardStrategy->execute(player, cardsAvailable, deckOfCards);
 }
 
 PlayerStrategy::~PlayerStrategy() {

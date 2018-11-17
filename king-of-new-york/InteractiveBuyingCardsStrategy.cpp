@@ -1,6 +1,6 @@
 #include "InteractiveBuyingCardsStrategy.h"
 
-void InteractiveBuyingCardsStrategy::execute(Player & player, vector<GameCard*> cardsAvailable) {
+void InteractiveBuyingCardsStrategy::execute(Player & player, vector<GameCard*> cardsAvailable, Deck<GameCard*> *deckOfCards) {
 	cout << "--Cards Available to buy--" << endl;
 	
 	for (auto iter : cardsAvailable) {
@@ -9,10 +9,12 @@ void InteractiveBuyingCardsStrategy::execute(Player & player, vector<GameCard*> 
 
 	if (player.getEnergyCubes() < 1) {
 		cout << "You do not have enough energy cubes to buy cards " << endl;
+		player.endPhase();
 		return;
 	}
 
 	if (!askYesNoQuestion("Do you want to buy cards?", 'y', 'n')) {
+		player.endPhase();
 		return;
 	}
 

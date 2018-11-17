@@ -4,6 +4,7 @@
 #include "DiceResolvingStrategy.h"
 #include "MovingStrategy.h"
 #include "BuyingCardsStrategy.h"
+#include "Deck.h"
 
 using namespace std;
 
@@ -43,7 +44,7 @@ public:
 	void executeResolveDicePhase(Player &player);
 
 
-	void executeBuyCardsPhase(Player &player, vector<GameCard*> cardsAvailable);
+	void executeBuyCardsPhase(Player &player, vector<GameCard*> cardsAvailable, Deck<GameCard*>* deckOfCards);
 
 	/**
 	 * Function which executes dealing new cards available to buy at the cost of two(2) energy cubes

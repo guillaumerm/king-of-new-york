@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\a3p3\GameStatisticObserver.h" />
     <ClInclude Include="AggesivePlayerStrategyBuilder.cpp" />
     <ClInclude Include="AggresiveBuyingCardsStrategy.h" />
     <ClInclude Include="AggresiveDiceRollingStrategy.h" />
@@ -123,7 +124,6 @@
     <ClInclude Include="AggresivePlayerStrategyBuilder.h" />
     <ClInclude Include="BuyingCardsStrategy.h" />
     <ClInclude Include="Card.h" />
-    <ClInclude Include="ComputerPlayer.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="DiceResolvingStrategy.h" />
     <ClInclude Include="DiceRoll.h" />
@@ -135,6 +135,10 @@
     <ClInclude Include="GameMap.h" />
     <ClInclude Include="GameMapLoader.h" />
     <ClInclude Include="GameMapNode.h" />
+    <ClInclude Include="GameStatisticInterface.h" />
+    <ClInclude Include="GameStatisticObserver.h" />
+    <ClInclude Include="GameStatisticSubject.h" />
+    <ClInclude Include="GameStatisticView.h" />
     <ClInclude Include="GoalCard.h" />
     <ClInclude Include="InteractiveBuyingCardsStrategy.h" />
     <ClInclude Include="InteractiveDiceResolvingStrategy.h" />
@@ -151,7 +155,9 @@
     <ClInclude Include="MonsterCard.h" />
     <ClInclude Include="GameCard.h" />
     <ClInclude Include="MovingStrategy.h" />
-    <ClInclude Include="Observer.h" />
+    <ClInclude Include="PhaseObserver.h" />
+    <ClInclude Include="PhaseObserverInterface.h" />
+    <ClInclude Include="PhaseView.h" />
     <ClInclude Include="PieceManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStateMachine.h" />
@@ -159,7 +165,8 @@
     <ClInclude Include="PlayerStrategy.h" />
     <ClInclude Include="PlayerStrategyBuilder.h" />
     <ClInclude Include="PlayerStrategyDirector.h" />
-    <ClInclude Include="Subject.h" />
+    <ClInclude Include="StatisticInterface.h" />
+    <ClInclude Include="PhaseSubject.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Token.h" />
     <ClInclude Include="Util.cpp" />
@@ -177,12 +184,13 @@
     <ClCompile Include="DiceRollingFacility.cpp" />
     <ClCompile Include="Die.cpp" />
     <ClCompile Include="DiscardCard.cpp" />
-    <ClCompile Include="entrypoint.cpp" />
     <ClCompile Include="GameCard.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameMap.cpp" />
     <ClCompile Include="GameMapLoader.cpp" />
     <ClCompile Include="GameMapNode.cpp" />
+    <ClCompile Include="GameStatisticSubject.cpp" />
+    <ClCompile Include="GameStatisticView.cpp" />
     <ClCompile Include="GoalCard.cpp" />
     <ClCompile Include="InteractiveBuyingCardsStrategy.cpp" />
     <ClCompile Include="InteractiveDiceResolvingStrategy.cpp" />
@@ -196,12 +204,13 @@
     <ClCompile Include="ModerateMovingStrategy.cpp" />
     <ClCompile Include="ModeratePlayerStrategyBuilder.cpp" />
     <ClCompile Include="MonsterCard.cpp" />
+    <ClCompile Include="PhaseView.cpp" />
     <ClCompile Include="PieceManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerStateMachine.cpp" />
     <ClCompile Include="PlayerStrategy.cpp" />
     <ClCompile Include="PlayerStrategyDirector.cpp" />
-    <ClCompile Include="Subject.cpp" />
+    <ClCompile Include="PhaseSubject.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Token.cpp" />
   </ItemGroup>

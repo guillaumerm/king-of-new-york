@@ -7,6 +7,6 @@ using namespace std;
 
 class InteractiveBuyingCardsStrategy : public BuyingCardsStrategy {
 public:
-	void execute(Player & player, vector<GameCard*> cardsAvailable);
+	void execute(Player & player, vector<GameCard*> cardsAvailable, Deck<GameCard*> *deckOfCards);
 };
 #endif

@@ -55,11 +55,11 @@ void Player::buyCards(unordered_set<GameCard*> cardsToBeBought) {
 	}
 
 	cardsToBeBought.clear();
-	this->notify();
+	dynamic_cast<PhaseSubject*>(this)->notify();
 	this->state.proceed();
 }
 
-void Player::executeTurn(GameMap* board, vector<GameCard*> cardsAvailable, int numberOfDice) {
+void Player::executeTurn(GameMap* board, vector<GameCard*> cardsAvailable, int numberOfDice, Deck<GameCard*>* deckOfCards) {
 	if (this->isIdle()) {
 		throw "Not players turn to play";
 		return;
@@ -81,7 +81,7 @@ void Player::executeTurn(GameMap* board, vector<GameCard*> cardsAvailable, int n
 			this->strategy->executeMovePhase(this, board);
 		}
 		else if (this->isBuying()) {
-			this->strategy->executeBuyCardsPhase(*this, cardsAvailable);
+			this->strategy->executeBuyCardsPhase(*this, cardsAvailable, deckOfCards);
 		}
 		else {
 			throw "Illegal State";
@@ -91,7 +91,7 @@ void Player::executeTurn(GameMap* board, vector<GameCard*> cardsAvailable, int n
 
 unordered_map<Die::Face, int> Player::getLastResolved()
 {
-	return unordered_map<Die::Face, int>();
+	return *this->lastResolved;
 }
 
 const DiceRoll* Player::getLastRoll()
@@ -131,10 +131,12 @@ void Player::addLifePoints(int lifePoints) {
 
 void Player::addVictoryPoints(int victoryPoints) {
 	this->monsterCard->addVictoryPoints(victoryPoints);
+	dynamic_cast<GameStatisticSubject*>(this)->notify(this->monsterCard->getName(), this->currentZone, this->monsterCard->getVictoryPoint());
 }
 
 void Player::removeVictoryPoints(int victoryPoints) {
 	this->monsterCard->removeVictoryPoints(victoryPoints);
+	dynamic_cast<GameStatisticSubject*>(this)->notify(this->monsterCard->getName(), this->currentZone, this->monsterCard->getVictoryPoint());
 }
 
 void Player::removeLifePoints(int lifePoints) {
@@ -182,39 +184,43 @@ const DiceRoll* Player::rollDice(int numberDice) {
 		throw exception("The player cannot roll has he is not in the rolling phase.");
 		exit(1);
 	}
+	const DiceRoll *roll = this->diceRollingFacility->roll(numberDice);
 
 	if (this->isRolling()) {
-		this->notify();
+		dynamic_cast<PhaseSubject*>(this)->notify();
 		this->state.proceed();
 	}
 
-	return this->diceRollingFacility->roll(numberDice);
+	return roll;
 }
 
 const DiceRoll* Player::rollDice(bool diceToKeep[]) {
-	this->notify();
+	dynamic_cast<PhaseSubject*>(this)->notify();
 	this->state.proceed();
 	return this->diceRollingFacility->reroll(diceToKeep);
 }
 
 const unordered_map<Die::Face, int> Player::resolveDice(unordered_set<Die::Face> order) {
+	delete this->lastResolved;
+	this->lastResolved = NULL;
+
 	if (!this->state.isResolving()) {
 		throw exception("The player cannot roll has he is not in the resolving phase.");
 		exit(1);
 	}
 
-	unordered_map<Die::Face, int> resolution;
+	this->lastResolved = new unordered_map<Die::Face, int>();
 	const DiceRoll *lastRoll = this->diceRollingFacility->getLastRoll();
 	unordered_set<Die::Face>::iterator iter;
 	
 	for (iter = order.begin(); iter != order.end(); iter++) {
-		resolution.insert({ *iter, lastRoll->getSumFace(*iter) });
+		this->lastResolved->insert({ *iter, lastRoll->getSumFace(*iter) });
 	}
 
-	this->notify();
 	this->state.proceed();
-	this->lastResolved = resolution;
-	return resolution;
+	this->lastResolved = this->lastResolved;
+	dynamic_cast<PhaseSubject*>(this)->notify();
+	return *this->lastResolved;
 }
 
 void Player::move(GameMap *map, string nameDestinationZone) {
@@ -224,16 +230,15 @@ void Player::move(GameMap *map, string nameDestinationZone) {
 	}
 
 	if (map->adjancent(this->currentZone, nameDestinationZone) && map->getZoneByName(nameDestinationZone)->isNotFull()) {
-		this->notify();
 		this->state.proceed();
 		map->movePlayer(this, this->currentZone, nameDestinationZone);
 		this->setCurrentZone(nameDestinationZone);
+		dynamic_cast<PhaseSubject*>(this)->notify();
 	}
 	else {
 		throw out_of_range("Cannot move to a none adjacent zone");
 		exit(1);
 	};
-
 }
 
 string Player::getCurrentZone() const {
@@ -242,6 +247,7 @@ string Player::getCurrentZone() const {
 
 void Player::setCurrentZone(string newCurrentZone) {
 	this->currentZone = newCurrentZone;
+	dynamic_cast<GameStatisticSubject*>(this)->notify(this->monsterCard->getName(), this->currentZone, this->monsterCard->getVictoryPoint());
 }
 
 void Player::setPlayerStrategy(PlayerStrategy * strategy) {
