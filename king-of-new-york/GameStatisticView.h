@@ -6,12 +6,26 @@
 #include <string>
 #include "GameStatisticInterface.h"
 #include "GameStatisticObserver.h"
+
+/**
+ * @brief A view which is used to keep track GameStatistic.
+ */
 class GameStatisticView : public GameStatisticInterface, public GameStatisticObserver {
 public:
+	/**
+	 * Method used by GameStatisticSubject to notify the view that a change as occured.
+	 * @param playerName name of the subject
+	 * @param location current location of the subject
+	 * @param victoryPoints current number of victory points being held by the player
+	 */
 	void update(std::string playerName, std::string location, int victoryPoints);
+
+	/**
+	 * Method used to display the current GameStatistic.
+	 */
 	void show();
 private:
-	std::map<std::string, std::string> playerLocation;
-	std::map<std::string, int> playerProgression;
+	std::map<std::string, std::string> playerLocation; /** < Current location of the players */
+	std::map<std::string, int> playerProgression;/** < Current progression of the players */
 };
 #endif

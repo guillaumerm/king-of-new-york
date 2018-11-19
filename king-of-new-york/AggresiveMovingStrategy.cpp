@@ -13,19 +13,21 @@ void AggresiveMovingStrategy::execute(Player *player, GameMap *map) {
 			player->move(map, possibleMoves.at(0)->getZoneName());
 		}
 		else {
-			vector<GameMapNode*>::iterator possibleMove = possibleMoves.begin();
+			
 
 			// Checks if player is in Upper Manhatten or find first possible valid moves that is not in Manhatten since there is already a player
-			bool possiblyInUpperManhatten = (*possibleMove)->isStartZone();
+			bool possiblyInUpperManhatten = true;
+			GameMapNode* possibleMove = NULL;
 
-			while (possibleMove != possibleMoves.end() && possiblyInUpperManhatten) {
-				possibleMove++;
-				possiblyInUpperManhatten = (*possibleMove)->isStartZone();
+
+			for (auto move : possibleMoves) {
+				possibleMove = move;
+				possiblyInUpperManhatten &= possibleMove->isStartZone();
 			}
 
 			// Move to the newly found possible move if not in Manhatten
-			if (!possiblyInUpperManhatten) {
-				player->move(map, (*(possibleMove - 1))->getZoneName());
+			if (!possiblyInUpperManhatten && possibleMove) {
+				player->move(map, possibleMove->getZoneName());
 			}
 		}
 	}

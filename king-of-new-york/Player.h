@@ -135,7 +135,7 @@ public:
 	 */
 	void buyCards(unordered_set<GameCard*> cardsToBeBought);
 
-	void executeTurn(GameMap* board, vector<GameCard*> cardsAvailable, int numberOfDice, Deck<GameCard*>* deckOfCards);
+	void executeTurn(GameMap* board, vector<GameCard*>* cardsAvailable, int numberOfDice, Deck<GameCard*>* deckOfCards);
 
 
 	unordered_map<Die::Face, int> getLastResolved();

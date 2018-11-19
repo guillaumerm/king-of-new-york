@@ -18,6 +18,9 @@
 
 using namespace std;
 
+/**
+ * @brief Main controller from controlling the view and the models.
+ */
 class GameManager {
 public:
 	static const int NUMBER_OF_CARDS;
@@ -36,17 +39,24 @@ public:
 	*/
 	void executeStartupPhase();
 
+	/**
+	 * Returns the player that has won.
+	 * @return Player instance that has won, else NULL
+	 */
 	Player *hasWon();
 
+	/**
+	 * Initiates the main game loop.
+	 */
 	void play();
 private:
-	vector<GameCard*> cardsAvailable;
-	Player* currentPlayer;
-	GameStatisticView* statisticView;
-	PhaseView* phaseView;
-	GameMap* map;
-	vector<Player*>* playerList;
-	Deck<GameCard*>* deckOfCards;
-	int* turnOrder;
+	vector<GameCard*>* cardsAvailable; /** < GameCards available to buy */
+	Player* currentPlayer; /** < Player who is currently playing */
+	GameStatisticView* statisticView; /** < Instance of a GameStatisticView */
+	PhaseView* phaseView; /** < Instance of a PhaseView */
+	GameMap* map; /** < Game board */
+	vector<Player*>* playerList; /** < List of players currently playing */
+	Deck<GameCard*>* deckOfCards; /** < Deck of GameCards */
+	int* turnOrder; /** < Turn order */
 };
 #endif

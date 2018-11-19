@@ -8,13 +8,18 @@ GameManager::GameManager()
 	this->phaseView = new PhaseView();
 	this->playerList = new vector<Player*>();
 	this->deckOfCards = new Deck<GameCard*>(NUMBER_OF_CARDS);
+	this->cardsAvailable = new vector<GameCard*>();
 	this->executeStart();
 	this->executeStartupPhase();
 }
 
 GameManager::~GameManager()
 {
-
+	delete this->cardsAvailable;
+	delete this->phaseView;
+	delete this->statisticView;
+	delete this->deckOfCards;
+	delete this->map;
 }
 
 void GameManager::executeStart() {
@@ -244,9 +249,9 @@ void GameManager::executeStartupPhase() {
 	cout << "Tiles have been placed..." << endl;
 
 	try {
-		this->cardsAvailable.push_back(*this->deckOfCards->deal());
-		this->cardsAvailable.push_back(*this->deckOfCards->deal());
-		this->cardsAvailable.push_back(*this->deckOfCards->deal());
+		this->cardsAvailable->push_back(*this->deckOfCards->deal());
+		this->cardsAvailable->push_back(*this->deckOfCards->deal());
+		this->cardsAvailable->push_back(*this->deckOfCards->deal());
 	}
 	catch (...) {
 		exit(1);
@@ -284,6 +289,9 @@ void GameManager::play()
 	int turn = 1;
 	cout << flush;
 	system("CLS");
+	for (auto player : *this->playerList) {
+		player->addEnergyCubes(10);
+	}
 	Player* winningPlayer;
 	// Main game loop - play until someone wins
 	while (!(winningPlayer = this->hasWon())) {
@@ -306,6 +314,7 @@ void GameManager::play()
 		}
 		// Line to accelerate to the winning condition
 		playerList->at(0)->addVictoryPoints(10);
+		playerList->at(0)->addEnergyCubes(30);
 		turn++;
 		//cout << flush;
 		//system("CLS");

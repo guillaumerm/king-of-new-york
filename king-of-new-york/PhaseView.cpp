@@ -30,7 +30,7 @@ void PhaseView::show() {
 		cout << " is buying: " << endl;
 		cout << "Current Hand" << endl;
 		for (auto card : this->currentPlayer->getHand()) {
-			cout << card << endl;
+			cout << *card << endl;
 		}
 		cout << endl;
 	}

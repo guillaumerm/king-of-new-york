@@ -14,14 +14,34 @@ class DiceResolvingStrategy;
 class MovingStrategy;
 class Player;
 class GameMap;
-
+/**
+ * @brief An interface which group a DiceRollingStrategy, DiceResolvingStrategy, MovingStrategy and BuyingCardsStrategy.
+ */
 class PlayerStrategy {
 public:
+	/**
+	 * Paramterless construct.
+	 */
 	~PlayerStrategy();
 
+	/**
+	 * Sets the DiceRollingStrategy of this instance of PlayerStrategy
+	 */
 	void setDiceRollingStrategy(DiceRollingStrategy *diceRollingStrategy);
+
+	/**
+	 * Sets the DiceResolvingStrategy of this instance of PlayerStrategy
+	 */
 	void setDiceResolvingStrategy(DiceResolvingStrategy *diceResolvingStrategy);
+
+	/**
+	 * Sets the MovingStrategy of this instance of PlayerStrategy
+	 */
 	void setMovingStrategy(MovingStrategy *movindStrategy);
+
+	/**
+	 * Sets the BuyingCardsStrategy of this instance of PlayerStrategy
+	 */
 	void setBuyingCardsStrategy(BuyingCardsStrategy *buyingCardsStrategy);
 
 	/**
@@ -43,8 +63,10 @@ public:
 	 */
 	void executeResolveDicePhase(Player &player);
 
-
-	void executeBuyCardsPhase(Player &player, vector<GameCard*> cardsAvailable, Deck<GameCard*>* deckOfCards);
+	/**
+	 * Function used to execute the buy card phase
+	 */
+	void executeBuyCardsPhase(Player &player, vector<GameCard*> *cardsAvailable, Deck<GameCard*>* deckOfCards);
 
 	/**
 	 * Function which executes dealing new cards available to buy at the cost of two(2) energy cubes
@@ -52,17 +74,10 @@ public:
 	 * @param cardsAvailable cards currently available to buy
 	 */
 	void dealNewCardsToBuy(Player &player, vector<GameCard> cardsAvailable) {};
-
-	/**
-	 * Function used to execute the move phase.
-	 * @param player player being moved
-	 * @param map the map which the player is currently situated.
-	 */
-	//void executeMovePhase(Player *player, GameMap *map);
 private:
-	DiceRollingStrategy *diceRollingStrategy;
-	DiceResolvingStrategy *diceResolvingStrategy;
-	MovingStrategy *movingStrategy;
-	BuyingCardsStrategy *buyingCardStrategy;
+	DiceRollingStrategy *diceRollingStrategy;  /** < DiceRollingStrategy of the PlayerStrategy */
+	DiceResolvingStrategy *diceResolvingStrategy; /** < DiceRollingStrategy of the PlayerStrategy */
+	MovingStrategy *movingStrategy; /** < DiceRollingStrategy of the PlayerStrategy */
+	BuyingCardsStrategy *buyingCardStrategy; /** < DiceRollingStrategy of the PlayerStrategy */
 };
 #endif

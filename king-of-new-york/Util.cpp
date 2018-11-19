@@ -57,7 +57,7 @@ bool askYesNoQuestion(string question, char positiveAnswer, char negativeAnswer)
 
  */
 int askChoiceQuestion(string question, int lowerChoice, int upperChoice) {
-	int choice = -1;
+	int choice = -2;
 	while (choice < lowerChoice || choice > upperChoice) {
 		cout << question;
 		cin >> choice;

@@ -57,9 +57,10 @@ void Player::buyCards(unordered_set<GameCard*> cardsToBeBought) {
 	cardsToBeBought.clear();
 	dynamic_cast<PhaseSubject*>(this)->notify();
 	this->state.proceed();
+	this->endPhase();
 }
 
-void Player::executeTurn(GameMap* board, vector<GameCard*> cardsAvailable, int numberOfDice, Deck<GameCard*>* deckOfCards) {
+void Player::executeTurn(GameMap* board, vector<GameCard*> *cardsAvailable, int numberOfDice, Deck<GameCard*>* deckOfCards) {
 	if (this->isIdle()) {
 		throw "Not players turn to play";
 		return;
