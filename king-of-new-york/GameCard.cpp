@@ -20,6 +20,10 @@ GameCard::GameCard(string name, string description, int cost) : Card(name, descr
 	}
 }
 
+void GameCard::play() {
+	this->notify(this->name, this->description, this->cost);
+}
+
 void GameCard::setCost(int cost) {
 	if (cost < 0)
 		throw new domain_error("Cost of a card must be >= 0");

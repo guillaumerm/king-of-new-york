@@ -5,6 +5,7 @@ const int GameManager::NUMBER_OF_CARDS = 64;
 GameManager::GameManager()
 {
 	this->statisticView = new GameStatisticView();
+	this->cardPlayedView = new CardPlayedView();
 	this->phaseView = new PhaseView();
 	this->playerList = new vector<Player*>();
 	this->deckOfCards = new Deck<GameCard*>(NUMBER_OF_CARDS);
@@ -141,7 +142,7 @@ void GameManager::executeStart() {
 	delete aggresiveBuilder;
 
 	cout << "Creating deck of cards....." << endl;
-	this->deckOfCards = initDeck();
+	this->deckOfCards = initDeck(this->cardPlayedView);
 
 	cout << "Game Ready!" << endl;
 }
@@ -307,8 +308,12 @@ void GameManager::play()
 			}
 			curPlayer->startTurn();
 			curPlayer->executeTurn(map, this->cardsAvailable, 6, this->deckOfCards);
+			for (auto card : curPlayer->getHand()) {
+				card->play();
+			}
 			curPlayer->endTurn();
-
+			this->cardPlayedView->show();
+			this->cardPlayedView->clear();
 			// Display Stats after each turn
 			this->statisticView->show();
 		}

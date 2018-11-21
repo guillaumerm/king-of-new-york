@@ -15,6 +15,7 @@
 #include "ModeratePlayerStrategyBuilder.h"
 #include "InteractivePlayerStrategyBuilder.h"
 #include "PlayerStrategyDirector.h"
+#include "CardPlayedView.h"
 
 using namespace std;
 
@@ -54,6 +55,7 @@ private:
 	Player* currentPlayer; /** < Player who is currently playing */
 	GameStatisticView* statisticView; /** < Instance of a GameStatisticView */
 	PhaseView* phaseView; /** < Instance of a PhaseView */
+	CardPlayedView* cardPlayedView; /** < Instance of a CardPlayedView */
 	GameMap* map; /** < Game board */
 	vector<Player*>* playerList; /** < List of players currently playing */
 	Deck<GameCard*>* deckOfCards; /** < Deck of GameCards */

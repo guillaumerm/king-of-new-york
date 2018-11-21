@@ -36,18 +36,22 @@ Token* initTokens(int numWeb, int numJinx, int numCara, int numSouv) {
 	return tokens;
 }
 
-Deck<GameCard*>* initDeck() {
+Deck<GameCard*>* initDeck(CardPlayedObserver *observer) {
 	Deck<GameCard*>* deckOfCards = new Deck<GameCard*>(20);
 
 	deckOfCards->push(new GoalCard("Superstar", "Take this card when you roll at least 3 stars, and gain 1 Victory Point, +1 Victory Point per additional Stars you rolled. While you have this card, you gain 1 Victory Point for each star you roll"));
 	deckOfCards->push(new GoalCard("Statue of Liberty", "Take this card when you roll at least 3 skulls. +3 Victory Points you take this card. -3 Victory Points you lose this card."));
 
 	for (int i = 0; i < 8; i++) {
-		deckOfCards->push(new DiscardCard("DiscardCard " + to_string(i + 1), "DiscardCard", i + 1));
+		DiscardCard *discardCard = new DiscardCard("DiscardCard " + to_string(i + 1), "DiscardCard", i + 1);
+		discardCard->attach(observer);
+		deckOfCards->push(discardCard);
 	}
 
 	for (int i = 8; i < 17; i++) {
-		deckOfCards->push(new KeepCard("KeepCard " + to_string(i + 1 - 8), "KeepCard", (i - 8) + 1));
+		KeepCard *keepCard = new KeepCard("KeepCard " + to_string(i + 1 - 8), "KeepCard", (i - 8) + 1);
+		keepCard->attach(observer);
+		deckOfCards->push(keepCard);
 	}
 
 

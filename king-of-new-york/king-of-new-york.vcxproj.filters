@@ -183,6 +183,18 @@
     <ClInclude Include="GameStatisticObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CardPlayedObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CardPlayedView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CardPlayedInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CardPlayedSubject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MonsterCard.cpp">
@@ -303,6 +315,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PhaseSubject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CardPlayedView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CardPlayedSubject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

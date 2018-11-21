@@ -16,6 +16,6 @@ template <class T> void printDeck(Deck<T>* deck);
 
 Token* initTokens(int numWeb, int numJinx, int numCara, int numSouv);
 
-Deck<GameCard*>* initDeck();
+Deck<GameCard*>* initDeck(CardPlayedObserver *observer);
 
 MonsterCard* initMonsterCards();

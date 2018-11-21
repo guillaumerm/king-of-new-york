@@ -3,13 +3,14 @@
 
 #include <string>
 #include "Card.h"
+#include "CardPlayedSubject.h"
 
 using namespace std;
 
 /**
  * @brief Base class for game cards. This class adds the concept of cost to the Cards.
  */
-class GameCard: public Card {
+class GameCard: public Card, public CardPlayedSubject {
 protected:
 	int cost; /**< Cost of the card instance */
 public:
@@ -32,6 +33,11 @@ public:
 	 * @param cost of the card
 	 */
 	GameCard(string name, string description, int cost);
+
+	/**
+	 *	
+	 */
+	void play();
 
 	/**
 	 * Returns the cost of the card

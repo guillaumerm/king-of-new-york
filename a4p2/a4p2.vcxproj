@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{0B37BC96-45F6-4D20-9F65-1EB699477983}</ProjectGuid>
+    <ProjectGuid>{975A44EA-114E-4DF4-A9FF-7F7EA98702AE}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>a3p1</RootNamespace>
+    <RootNamespace>a4p2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\king-of-new-york</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\king-of-new-york\</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -91,7 +91,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -106,7 +105,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -123,7 +121,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,7 +139,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -158,6 +154,8 @@
     <ClCompile Include="..\king-of-new-york\AggresiveDiceRollingStrategy.cpp" />
     <ClCompile Include="..\king-of-new-york\AggresiveMovingStrategy.cpp" />
     <ClCompile Include="..\king-of-new-york\Card.cpp" />
+    <ClCompile Include="..\king-of-new-york\CardPlayedSubject.cpp" />
+    <ClCompile Include="..\king-of-new-york\CardPlayedView.cpp" />
     <ClCompile Include="..\king-of-new-york\Deck.cpp" />
     <ClCompile Include="..\king-of-new-york\DeckCard-impl.cpp" />
     <ClCompile Include="..\king-of-new-york\DiceRoll.cpp" />
@@ -169,6 +167,8 @@
     <ClCompile Include="..\king-of-new-york\GameMap.cpp" />
     <ClCompile Include="..\king-of-new-york\GameMapLoader.cpp" />
     <ClCompile Include="..\king-of-new-york\GameMapNode.cpp" />
+    <ClCompile Include="..\king-of-new-york\GameStatisticSubject.cpp" />
+    <ClCompile Include="..\king-of-new-york\GameStatisticView.cpp" />
     <ClCompile Include="..\king-of-new-york\GoalCard.cpp" />
     <ClCompile Include="..\king-of-new-york\InteractiveBuyingCardsStrategy.cpp" />
     <ClCompile Include="..\king-of-new-york\InteractiveDiceResolvingStrategy.cpp" />
@@ -182,6 +182,8 @@
     <ClCompile Include="..\king-of-new-york\ModerateMovingStrategy.cpp" />
     <ClCompile Include="..\king-of-new-york\ModeratePlayerStrategyBuilder.cpp" />
     <ClCompile Include="..\king-of-new-york\MonsterCard.cpp" />
+    <ClCompile Include="..\king-of-new-york\PhaseSubject.cpp" />
+    <ClCompile Include="..\king-of-new-york\PhaseView.cpp" />
     <ClCompile Include="..\king-of-new-york\PieceManager.cpp" />
     <ClCompile Include="..\king-of-new-york\Player.cpp" />
     <ClCompile Include="..\king-of-new-york\PlayerStateMachine.cpp" />
@@ -191,7 +193,7 @@
     <ClCompile Include="..\king-of-new-york\Tile.cpp" />
     <ClCompile Include="..\king-of-new-york\Token.cpp" />
     <ClCompile Include="..\king-of-new-york\Util.cpp" />
-    <ClCompile Include="a3p1.cpp" />
+    <ClCompile Include="a4p2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\king-of-new-york\AggresiveBuyingCardsStrategy.h" />
@@ -201,7 +203,10 @@
     <ClInclude Include="..\king-of-new-york\AggresivePlayerStrategyBuilder.h" />
     <ClInclude Include="..\king-of-new-york\BuyingCardsStrategy.h" />
     <ClInclude Include="..\king-of-new-york\Card.h" />
-    <ClInclude Include="..\king-of-new-york\ComputerPlayer.h" />
+    <ClInclude Include="..\king-of-new-york\CardPlayedInterface.h" />
+    <ClInclude Include="..\king-of-new-york\CardPlayedObserver.h" />
+    <ClInclude Include="..\king-of-new-york\CardPlayedSubject.h" />
+    <ClInclude Include="..\king-of-new-york\CardPlayedView.h" />
     <ClInclude Include="..\king-of-new-york\Deck.h" />
     <ClInclude Include="..\king-of-new-york\DiceResolvingStrategy.h" />
     <ClInclude Include="..\king-of-new-york\DiceRoll.h" />
@@ -215,6 +220,10 @@
     <ClInclude Include="..\king-of-new-york\GameMap.h" />
     <ClInclude Include="..\king-of-new-york\GameMapLoader.h" />
     <ClInclude Include="..\king-of-new-york\GameMapNode.h" />
+    <ClInclude Include="..\king-of-new-york\GameStatisticInterface.h" />
+    <ClInclude Include="..\king-of-new-york\GameStatisticObserver.h" />
+    <ClInclude Include="..\king-of-new-york\GameStatisticSubject.h" />
+    <ClInclude Include="..\king-of-new-york\GameStatisticView.h" />
     <ClInclude Include="..\king-of-new-york\GoalCard.h" />
     <ClInclude Include="..\king-of-new-york\InteractiveBuyingCardsStrategy.h" />
     <ClInclude Include="..\king-of-new-york\InteractiveDiceResolvingStrategy.h" />
@@ -229,6 +238,10 @@
     <ClInclude Include="..\king-of-new-york\ModeratePlayerStrategyBuilder.h" />
     <ClInclude Include="..\king-of-new-york\MonsterCard.h" />
     <ClInclude Include="..\king-of-new-york\MovingStrategy.h" />
+    <ClInclude Include="..\king-of-new-york\PhaseObserver.h" />
+    <ClInclude Include="..\king-of-new-york\PhaseObserverInterface.h" />
+    <ClInclude Include="..\king-of-new-york\PhaseSubject.h" />
+    <ClInclude Include="..\king-of-new-york\PhaseView.h" />
     <ClInclude Include="..\king-of-new-york\PieceManager.h" />
     <ClInclude Include="..\king-of-new-york\Player.h" />
     <ClInclude Include="..\king-of-new-york\PlayerStateMachine.h" />
