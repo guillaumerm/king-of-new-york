@@ -51,7 +51,7 @@ public:
 	 */
 	void setCost(int cost);
 
-	virtual ~GameCard();
+	virtual ~GameCard() = 0;
 private:
 	friend ostream& operator<<(ostream&, const GameCard&);
 };

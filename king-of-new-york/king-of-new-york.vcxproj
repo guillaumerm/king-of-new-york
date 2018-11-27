@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\a3p3\GameStatisticObserver.h" />
+    <ClInclude Include="AddToRollKeepCard.h" />
     <ClInclude Include="AggesivePlayerStrategyBuilder.cpp" />
     <ClInclude Include="AggresiveBuyingCardsStrategy.h" />
     <ClInclude Include="AggresiveDiceRollingStrategy.h" />
@@ -128,6 +129,7 @@
     <ClInclude Include="CardPlayedObserver.h" />
     <ClInclude Include="CardPlayedSubject.h" />
     <ClInclude Include="CardPlayedView.h" />
+    <ClInclude Include="CostLessToBuyDiscardCard.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="DiceResolvingStrategy.h" />
     <ClInclude Include="DiceRoll.h" />
@@ -135,6 +137,8 @@
     <ClInclude Include="Die.h" />
     <ClInclude Include="DiscardCard.h" />
     <ClInclude Include="EnergyCube.h" />
+    <ClInclude Include="ExtraDieGameCard.h" />
+    <ClInclude Include="GainPointsDiscardCard.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameMap.h" />
     <ClInclude Include="GameMapLoader.h" />
@@ -177,6 +181,7 @@
     <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddToRollKeepCard.cpp" />
     <ClCompile Include="AggresiveBuyingCardsStrategy.cpp" />
     <ClCompile Include="AggresiveDiceResolvingStrategy.cpp" />
     <ClCompile Include="AggresiveDiceRollingStrategy.cpp" />
@@ -184,12 +189,14 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardPlayedSubject.cpp" />
     <ClCompile Include="CardPlayedView.cpp" />
+    <ClCompile Include="CostLessToBuyDiscardCard.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="DeckCard-impl.cpp" />
     <ClCompile Include="DiceRoll.cpp" />
     <ClCompile Include="DiceRollingFacility.cpp" />
     <ClCompile Include="Die.cpp" />
     <ClCompile Include="DiscardCard.cpp" />
+    <ClCompile Include="GainPointsDiscardCard.cpp" />
     <ClCompile Include="GameCard.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameMap.cpp" />

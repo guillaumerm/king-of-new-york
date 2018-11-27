@@ -39,9 +39,27 @@ void Player::buyCards(unordered_set<GameCard*> cardsToBeBought) {
 	}
 
 	int cost = 0;
-	
+
 	for (auto card: cardsToBeBought) {
-		cost += card->getCost();
+
+		//Verify if the card is of cost less type
+		CostLessToBuyDiscardCard *discountedCard = dynamic_cast<CostLessToBuyDiscardCard*>(card);
+		GainPointsDiscardCard *gainPointsCard = dynamic_cast<GainPointsDiscardCard*>(card);
+
+		if (discountedCard != nullptr) {
+			cost += discountedCard->getCost(this->currentZone);
+			discountedCard->addPoints(this);
+			card->play();
+		}
+		else if (gainPointsCard != nullptr) {
+			cost += gainPointsCard->getCost();
+			gainPointsCard->addPoints(this);
+			card->play();
+		}
+		else {
+			this->gameCards.push_back(card);
+			cost += card->getCost();
+		}
 	}
 
 	if ((this->energyCubes - cost) <= 0) {
@@ -50,9 +68,6 @@ void Player::buyCards(unordered_set<GameCard*> cardsToBeBought) {
 	}
 
 	this->energyCubes -= cost;
-	for (auto card : cardsToBeBought) {
-		this->gameCards.push_back(card);
-	}
 
 	cardsToBeBought.clear();
 	dynamic_cast<PhaseSubject*>(this)->notify();
@@ -92,6 +107,15 @@ void Player::executeTurn(GameMap* board, vector<GameCard*> *cardsAvailable, int 
 
 unordered_map<Die::Face, int> Player::getLastResolved()
 {
+	for (auto card : this->gameCards) {
+		AddToRollKeepCard *addToResultCard = dynamic_cast<AddToRollKeepCard *>(card);
+		if (addToResultCard != nullptr) {
+			unordered_map<Die::Face, int> modifiedLastResolved = *this->lastResolved;
+			modifiedLastResolved[addToResultCard->getFace()] += addToResultCard->getAmount();
+			addToResultCard->play();
+		}
+	}
+
 	return *this->lastResolved;
 }
 

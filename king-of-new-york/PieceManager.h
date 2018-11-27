@@ -8,6 +8,9 @@
 #include "Token.h"
 #include "Deck.h"
 #include "DeckCard-impl.cpp"
+#include "GainPointsDiscardCard.h"
+#include "CostLessToBuyDiscardCard.h"
+#include "AddToRollKeepCard.h"
 
 
 using namespace std;

@@ -14,6 +14,8 @@
 #include "PhaseSubject.h"
 #include "GameStatisticSubject.h"
 #include "Deck.h"
+#include "CostLessToBuyDiscardCard.h"
+#include "AddToRollKeepCard.h"
 
 class GameMap;
 

@@ -39,20 +39,25 @@ Token* initTokens(int numWeb, int numJinx, int numCara, int numSouv) {
 Deck<GameCard*>* initDeck(CardPlayedObserver *observer) {
 	Deck<GameCard*>* deckOfCards = new Deck<GameCard*>(20);
 
-	deckOfCards->push(new GoalCard("Superstar", "Take this card when you roll at least 3 stars, and gain 1 Victory Point, +1 Victory Point per additional Stars you rolled. While you have this card, you gain 1 Victory Point for each star you roll"));
-	deckOfCards->push(new GoalCard("Statue of Liberty", "Take this card when you roll at least 3 skulls. +3 Victory Points you take this card. -3 Victory Points you lose this card."));
+	//deckOfCards->push(new GoalCard("Superstar", "Take this card when you roll at least 3 stars, and gain 1 Victory Point, +1 Victory Point per additional Stars you rolled. While you have this card, you gain 1 Victory Point for each star you roll"));
+	//deckOfCards->push(new GoalCard("Statue of Liberty", "Take this card when you roll at least 3 skulls. +3 Victory Points you take this card. -3 Victory Points you lose this card."));
 
-	for (int i = 0; i < 8; i++) {
-		DiscardCard *discardCard = new DiscardCard("DiscardCard " + to_string(i + 1), "DiscardCard", i + 1);
-		discardCard->attach(observer);
-		deckOfCards->push(discardCard);
+	for (int i = 0; i < 3; i++) {
+		deckOfCards->push(new AddToRollKeepCard(Die::Face::A, 1));
 	}
 
-	for (int i = 8; i < 17; i++) {
-		KeepCard *keepCard = new KeepCard("KeepCard " + to_string(i + 1 - 8), "KeepCard", (i - 8) + 1);
-		keepCard->attach(observer);
-		deckOfCards->push(keepCard);
+	for (int i = 0; i < 3; i++) {
+		deckOfCards->push(new AddToRollKeepCard(Die::Face::H, 1));
 	}
+	
+	for (int i = 0; i < 3; i++) {
+		deckOfCards->push(new AddToRollKeepCard(Die::Face::E, 1));
+	}
+
+	for (int i = 0; i < 3; i++) {
+		deckOfCards->push(new AddToRollKeepCard(Die::Face::O, 1));
+	}
+
 
 
 	return deckOfCards;

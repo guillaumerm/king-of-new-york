@@ -195,6 +195,18 @@
     <ClInclude Include="CardPlayedSubject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ExtraDieGameCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CostLessToBuyDiscardCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GainPointsDiscardCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AddToRollKeepCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MonsterCard.cpp">
@@ -321,6 +333,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CardPlayedSubject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CostLessToBuyDiscardCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AddToRollKeepCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GainPointsDiscardCard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
