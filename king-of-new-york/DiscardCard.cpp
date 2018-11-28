@@ -14,7 +14,11 @@ DiscardCard::DiscardCard(string name, string description, int cost, string linke
 
 string DiscardCard::getLinkedBorough() const {
 	return this->linkedBorough;
-};
+}
+DiscardCard::~DiscardCard()
+{
+}
+;
 
 ostream& operator<<(ostream &strm, const DiscardCard &card) {
 	return strm << "DiscardCard (name=" << card.getName() << "; description=" << card.getDescription() << "; cost=" << card.getCost() << "; linkedBorough=" << card.getLinkedBorough() << ")";

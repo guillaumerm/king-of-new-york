@@ -207,6 +207,24 @@
     <ClInclude Include="AddToRollKeepCard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AttackObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackSubject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DiceView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DiceSubject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DiceObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DiceObserverInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MonsterCard.cpp">
@@ -342,6 +360,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GainPointsDiscardCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackSubject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DiceView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DiceSubject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

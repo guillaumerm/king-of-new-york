@@ -7,6 +7,7 @@ GameManager::GameManager()
 	this->statisticView = new GameStatisticView();
 	this->cardPlayedView = new CardPlayedView();
 	this->phaseView = new PhaseView();
+	this->diceView = new DiceView();
 	this->playerList = new vector<Player*>();
 	this->deckOfCards = new Deck<GameCard*>(NUMBER_OF_CARDS);
 	this->cardsAvailable = new vector<GameCard*>();
@@ -132,6 +133,7 @@ void GameManager::executeStart() {
 		Player * newPlayer = new Player(&monsterList[monsterChoice], director->getPlayerStrategy());
 		dynamic_cast<GameStatisticSubject*>(newPlayer)->attach(this->statisticView);
 		dynamic_cast<PhaseSubject*>(newPlayer)->attach(this->phaseView);
+		dynamic_cast<DiceSubject*>(newPlayer->getRollFacility())->attach(this->diceView);
 		this->playerList->push_back(newPlayer);
 		monsterChoice = -1;
 	}
@@ -285,6 +287,14 @@ Player *GameManager::hasWon() {
 	return NULL;
 }
 
+void GameManager::update(string playerName, bool attackManhatten, int attackAmount) {
+	for (auto player : *this->playerList) {
+		if (player->getMonster() != playerName && attackManhatten == player->isInManhatten() && !player->isDead()) {
+			player->removeLifePoints(attackAmount);
+		}
+	}
+}
+
 void GameManager::play()
 {
 	int turn = 1;
@@ -308,18 +318,12 @@ void GameManager::play()
 			}
 			curPlayer->startTurn();
 			curPlayer->executeTurn(map, this->cardsAvailable, 6, this->deckOfCards);
-			for (auto card : curPlayer->getHand()) {
-				card->play();
-			}
 			curPlayer->endTurn();
 			this->cardPlayedView->show();
 			this->cardPlayedView->clear();
 			// Display Stats after each turn
 			this->statisticView->show();
 		}
-		// Line to accelerate to the winning condition
-		playerList->at(0)->addVictoryPoints(10);
-		playerList->at(0)->addEnergyCubes(30);
 		turn++;
 		//cout << flush;
 		//system("CLS");

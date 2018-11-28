@@ -30,6 +30,10 @@ void GameCard::setCost(int cost) {
 	this->cost = cost;
 }
 
+GameCard::~GameCard()
+{
+}
+
 int GameCard::getCost() const {
 	return this->cost;
 }

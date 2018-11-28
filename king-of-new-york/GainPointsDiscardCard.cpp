@@ -1,16 +1,23 @@
 #include "GainPointsDiscardCard.h"
-#include "Player.h"
 
-GainPointsDiscardCard::GainPointsDiscardCard(int energyCubes, int victoryPoints, int healPoints)
+GainPointsDiscardCard::GainPointsDiscardCard(string name, string description, int cost, string linkedBorough, int energyCubes, int victoryPoints, int healPoints): DiscardCard(name, description, cost, linkedBorough)
 {
 	this->m_energyCubes = energyCubes;
 	this->m_victoryPoints = victoryPoints;
 	this->m_healPoints = healPoints;
 }
 
-void GainPointsDiscardCard::addPoints(Player * player)
+int GainPointsDiscardCard::getEnergyCubes()
 {
-	player->addEnergyCubes(this->m_energyCubes);
-	player->addLifePoints(this->m_healPoints);
-	player->addVictoryPoints(this->m_victoryPoints);
+	return this->m_energyCubes;
+}
+
+int GainPointsDiscardCard::getVictoryPoints()
+{
+	return this->m_victoryPoints;
+}
+
+int GainPointsDiscardCard::getHealPoints()
+{
+	return this->m_healPoints;
 }

@@ -10,8 +10,8 @@ void PhaseView::show() {
 
 	if (this->currentPlayer->isRolling()) {
 		cout << " is rolling : " << endl;
-		const DiceRoll* lastRoll = this->currentPlayer->getLastRoll();
-		cout << *lastRoll << endl;
+		//const DiceRoll* lastRoll = this->currentPlayer->getLastRoll();
+		//cout << *lastRoll << endl;
 	}
 	else if (this->currentPlayer->isRelsoving()) {
 		cout << " is resolving : " << endl;

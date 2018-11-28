@@ -48,12 +48,16 @@ void Player::buyCards(unordered_set<GameCard*> cardsToBeBought) {
 
 		if (discountedCard != nullptr) {
 			cost += discountedCard->getCost(this->currentZone);
-			discountedCard->addPoints(this);
+			this->addEnergyCubes(discountedCard->getEnergyCubes());
+			this->addLifePoints(discountedCard->getHealPoints());
+			this->addVictoryPoints(discountedCard->getVictoryPoints());
 			card->play();
 		}
 		else if (gainPointsCard != nullptr) {
 			cost += gainPointsCard->getCost();
-			gainPointsCard->addPoints(this);
+			this->addEnergyCubes(gainPointsCard->getEnergyCubes());
+			this->addLifePoints(gainPointsCard->getHealPoints());
+			this->addVictoryPoints(gainPointsCard->getVictoryPoints());
 			card->play();
 		}
 		else {
@@ -105,17 +109,12 @@ void Player::executeTurn(GameMap* board, vector<GameCard*> *cardsAvailable, int 
 	}
 }
 
+DiceRollingFacility* Player::getRollFacility() {
+	return this->diceRollingFacility;
+}
+
 unordered_map<Die::Face, int> Player::getLastResolved()
 {
-	for (auto card : this->gameCards) {
-		AddToRollKeepCard *addToResultCard = dynamic_cast<AddToRollKeepCard *>(card);
-		if (addToResultCard != nullptr) {
-			unordered_map<Die::Face, int> modifiedLastResolved = *this->lastResolved;
-			modifiedLastResolved[addToResultCard->getFace()] += addToResultCard->getAmount();
-			addToResultCard->play();
-		}
-	}
-
 	return *this->lastResolved;
 }
 
@@ -237,7 +236,50 @@ const unordered_map<Die::Face, int> Player::resolveDice(unordered_set<Die::Face>
 	this->lastResolved = new unordered_map<Die::Face, int>();
 	const DiceRoll *lastRoll = this->diceRollingFacility->getLastRoll();
 	unordered_set<Die::Face>::iterator iter;
-	
+
+	for (auto card : this->gameCards) {
+		AddToRollKeepCard *addToResultCard = dynamic_cast<AddToRollKeepCard *>(card);
+		if (addToResultCard != nullptr) {
+			(*this->lastResolved)[addToResultCard->getFace()] += addToResultCard->getAmount();
+			addToResultCard->play();
+		}
+	}
+
+	//ADDED resolving effects of E,H, and O Dice using the order selected above
+	for (auto face : *this->lastResolved) {
+		switch (face.first)
+		{
+		case Die::Face::A:
+			dynamic_cast<AttackSubject*>(this)->notify(this->getMonster(), !this->isInManhatten(), this->lastResolved->at(Die::Face::A));
+			break;
+		case Die::Face::C:
+			continue;
+			break;
+		case Die::Face::D:
+			continue;
+			break;
+		case Die::Face::E:
+			this->addEnergyCubes(lastRoll->getSumEnergy());
+			break;
+		case Die::Face::H:
+			if (this->monsterCard->getLifePoint() + lastRoll->getSumHeal() > 10)
+			{
+				int healedUp = 10 - this->monsterCard->getLifePoint();
+				this->monsterCard->addLifePoints(healedUp);
+			}
+			else
+			{
+				this->monsterCard->addLifePoints(lastRoll->getSumHeal());
+			}
+			break;
+		case Die::Face::O:
+			this->monsterCard->removeLifePoints(lastRoll->getSumOuch());
+			break;
+		default:
+			throw exception("Not allowed symbol");
+		}
+	}
+
 	for (iter = order.begin(); iter != order.end(); iter++) {
 		this->lastResolved->insert({ *iter, lastRoll->getSumFace(*iter) });
 	}
@@ -278,6 +320,11 @@ void Player::setCurrentZone(string newCurrentZone) {
 void Player::setPlayerStrategy(PlayerStrategy * strategy) {
 	delete this->strategy;
 	this->strategy = strategy;
+}
+
+bool Player::isInManhatten()
+{
+	return this->currentZone == "Lower Manhatten" || this->currentZone == "Midtown" || this->currentZone == "UpperMahatten";
 }
 
 string Player::getMonster()

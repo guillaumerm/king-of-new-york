@@ -38,6 +38,8 @@ public:
 	 * @return the linked Borough, empty string if not linked to a borough
 	 */
 	string getLinkedBorough() const;
+
+	virtual ~DiscardCard();
 private:
 	string linkedBorough; /**< Linked of the DiscardCard */
 	friend ostream& operator<<(ostream&, const DiscardCard&);

@@ -37,28 +37,68 @@ Token* initTokens(int numWeb, int numJinx, int numCara, int numSouv) {
 }
 
 Deck<GameCard*>* initDeck(CardPlayedObserver *observer) {
-	Deck<GameCard*>* deckOfCards = new Deck<GameCard*>(20);
+	Deck<GameCard*>* deckOfCards = new Deck<GameCard*>(27);
 
 	//deckOfCards->push(new GoalCard("Superstar", "Take this card when you roll at least 3 stars, and gain 1 Victory Point, +1 Victory Point per additional Stars you rolled. While you have this card, you gain 1 Victory Point for each star you roll"));
 	//deckOfCards->push(new GoalCard("Statue of Liberty", "Take this card when you roll at least 3 skulls. +3 Victory Points you take this card. -3 Victory Points you lose this card."));
+	GameCard* card;
 
 	for (int i = 0; i < 3; i++) {
-		deckOfCards->push(new AddToRollKeepCard(Die::Face::A, 1));
+		card = new AddToRollKeepCard("Towering Titan", "Add 2 ATTACK to your result", 10, Die::Face::A, 2);
+		card->attach(observer);
+		deckOfCards->push(card);
 	}
 
 	for (int i = 0; i < 3; i++) {
-		deckOfCards->push(new AddToRollKeepCard(Die::Face::H, 1));
+		card = new AddToRollKeepCard("Tiny Titan Turrent", "Add 1 ATTACK to your result", 5, Die::Face::A, 1);
+		card->attach(observer);
+		deckOfCards->push(card);
+	}
+
+	for (int i = 0; i < 3; i++) {
+		card = new AddToRollKeepCard("Clever Name", "Add 2 HEAL to your result", 10, Die::Face::H, 1);
+		card->attach(observer);
+		deckOfCards->push(card);
 	}
 	
 	for (int i = 0; i < 3; i++) {
-		deckOfCards->push(new AddToRollKeepCard(Die::Face::E, 1));
+		card = new AddToRollKeepCard("Chances of Rain EnergyCubes", "Add 1 ENERGY_CUBE to your result", 10, Die::Face::E, 1);
+		card->attach(observer);
+		deckOfCards->push(card);
 	}
 
 	for (int i = 0; i < 3; i++) {
-		deckOfCards->push(new AddToRollKeepCard(Die::Face::O, 1));
+		card = new AddToRollKeepCard("Clumsy Behemoth", "Add 1 OUCH to your result", 1, Die::Face::O, 1);
+		card->attach(observer);
+		deckOfCards->push(card);
 	}
 
+	for (int i = 0; i < 3; i++) {
+		card = new GainPointsDiscardCard("Brooklyn Bridge", "Buy this card for 1 ENERGY_POINT less if you are in BROOKLYN. \n+4 VICTORY_POINT", 6, "Brooklyn", 0, 4, 0);
+		card->attach(observer);
+		deckOfCards->push(card);
+	}
 
+	for (int i = 0; i < 3; i++) {
+		card = new GainPointsDiscardCard("Yankee Stadium", "Buy this card for 1 ENERGY less if you are in the BRONX.\n+5 VICTORY_POINT and heal 5 damage.", 9, "Bronx", 5, 0, 5);
+		card->attach(observer);
+		deckOfCards->push(card);
+	}
+	card = new GainPointsDiscardCard("North Central Park", "Buy this card for 1 ENERGY less if you are in the UPPER_MANHATTEN.\n+5 VICTORY_POINT and heal 5 damage.", 5, "Upper Manhatten", 2, 0, 2);
+	card->attach(observer);
+	deckOfCards->push(card);
+
+	card = new GainPointsDiscardCard("South Central Park", "Buy this card for 1 ENERGY less if you are in the LOWER_MANHATTEN.\n+5 VICTORY_POINT and heal 5 damage.", 5, "Lower Manhatten", 2, 0, 2);
+	card->attach(observer);
+	deckOfCards->push(card);
+
+	for (int i = 0; i < 3; i++) {
+		card = new GainPointsDiscardCard("The Unisphere", "Buy this card for 1 ENERGY_POINT less if you are in QUEENS.\n+4 VICTORY_POINT.", 5, "Queens", 4, 0, 0);
+		card->attach(observer);
+		deckOfCards->push(card);
+	}
+
+	deckOfCards->shuffle();
 
 	return deckOfCards;
 }

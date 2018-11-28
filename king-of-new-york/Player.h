@@ -16,6 +16,7 @@
 #include "Deck.h"
 #include "CostLessToBuyDiscardCard.h"
 #include "AddToRollKeepCard.h"
+#include "AttackSubject.h"
 
 class GameMap;
 
@@ -26,7 +27,7 @@ class PlayerStrategy;
 /** 
  * @brief A class which regroups the behavior/action that a player would need to play the game.
  */
-class Player: public PhaseSubject, public GameStatisticSubject {
+class Player: public PhaseSubject, public GameStatisticSubject, public AttackSubject {
 public:
 	/** 
 	 * Parameterless constructor
@@ -225,6 +226,14 @@ public:
 	void setCurrentZone(string zones);
 
 	void setPlayerStrategy(PlayerStrategy *strategy);
+
+	/**
+	 * Get the DiceRollingFacility from the player
+	 * @return DiceRollingFacility
+	 */
+	DiceRollingFacility* getRollFacility();
+
+	bool isInManhatten();
 private:
 	DiceRollingFacility* diceRollingFacility; /**< Object used to roll and track rolls */
 	MonsterCard* monsterCard; /**< Object used to track victory points and life points */

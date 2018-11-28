@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{37905F0D-D8BF-4AA5-8A71-5DE0FC6B76DA}</ProjectGuid>
     <RootNamespace>kingofnewyork</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -123,6 +123,8 @@
     <ClInclude Include="AggresiveDiceResolvingStrategy.h" />
     <ClInclude Include="AggresiveMovingStrategy.h" />
     <ClInclude Include="AggresivePlayerStrategyBuilder.h" />
+    <ClInclude Include="AttackObserver.h" />
+    <ClInclude Include="AttackSubject.h" />
     <ClInclude Include="BuyingCardsStrategy.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardPlayedInterface.h" />
@@ -131,9 +133,13 @@
     <ClInclude Include="CardPlayedView.h" />
     <ClInclude Include="CostLessToBuyDiscardCard.h" />
     <ClInclude Include="Deck.h" />
+    <ClInclude Include="DiceObserver.h" />
+    <ClInclude Include="DiceObserverInterface.h" />
     <ClInclude Include="DiceResolvingStrategy.h" />
     <ClInclude Include="DiceRoll.h" />
     <ClInclude Include="DiceRollingFacility.h" />
+    <ClInclude Include="DiceSubject.h" />
+    <ClInclude Include="DiceView.h" />
     <ClInclude Include="Die.h" />
     <ClInclude Include="DiscardCard.h" />
     <ClInclude Include="EnergyCube.h" />
@@ -186,6 +192,7 @@
     <ClCompile Include="AggresiveDiceResolvingStrategy.cpp" />
     <ClCompile Include="AggresiveDiceRollingStrategy.cpp" />
     <ClCompile Include="AggresiveMovingStrategy.cpp" />
+    <ClCompile Include="AttackSubject.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardPlayedSubject.cpp" />
     <ClCompile Include="CardPlayedView.cpp" />
@@ -194,6 +201,8 @@
     <ClCompile Include="DeckCard-impl.cpp" />
     <ClCompile Include="DiceRoll.cpp" />
     <ClCompile Include="DiceRollingFacility.cpp" />
+    <ClCompile Include="DiceSubject.cpp" />
+    <ClCompile Include="DiceView.cpp" />
     <ClCompile Include="Die.cpp" />
     <ClCompile Include="DiscardCard.cpp" />
     <ClCompile Include="GainPointsDiscardCard.cpp" />
@@ -211,6 +220,7 @@
     <ClCompile Include="InteractiveMovingStrategy.cpp" />
     <ClCompile Include="InteractivePlayerStrategyBuilder.cpp" />
     <ClCompile Include="KeepCard.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="ModerateBuyingCardsStrategy.cpp" />
     <ClCompile Include="ModerateDiceResolvingStrategy.cpp" />
     <ClCompile Include="ModerateDiceRollingStrategy.cpp" />

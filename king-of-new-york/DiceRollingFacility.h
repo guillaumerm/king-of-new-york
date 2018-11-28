@@ -3,13 +3,14 @@
 #include "DiceRoll.h"
 #include "Die.h"
 #include <vector>
+#include "DiceSubject.h"
 
 using namespace std;
 
 /**
  * @brief Facility used to roll dice. It also keeps record of the previously rolled dice.
  */
-class DiceRollingFacility {
+class DiceRollingFacility: public DiceSubject {
 public:
 	/**
 	 * Parameterless constructor for DiceRollingFacility

@@ -7,8 +7,8 @@
 #include "DiscardCard.h"
 #include "KeepCard.h"
 #include "GameMapLoader.h"
-#include "PieceManager.h"
 #include "Util.h"
+#include "PieceManager.h"
 #include "GameStatisticView.h"
 #include "PhaseView.h"
 #include "AggresivePlayerStrategyBuilder.h"
@@ -16,13 +16,15 @@
 #include "InteractivePlayerStrategyBuilder.h"
 #include "PlayerStrategyDirector.h"
 #include "CardPlayedView.h"
+#include "AttackObserver.h"
+#include "DiceView.h"
 
 using namespace std;
 
 /**
  * @brief Main controller from controlling the view and the models.
  */
-class GameManager {
+class GameManager: public AttackObserver {
 public:
 	static const int NUMBER_OF_CARDS;
 
@@ -46,6 +48,8 @@ public:
 	 */
 	Player *hasWon();
 
+	void update(string playerName, bool attackManhatten, int attackAmount);
+
 	/**
 	 * Initiates the main game loop.
 	 */
@@ -55,6 +59,7 @@ private:
 	Player* currentPlayer; /** < Player who is currently playing */
 	GameStatisticView* statisticView; /** < Instance of a GameStatisticView */
 	PhaseView* phaseView; /** < Instance of a PhaseView */
+	DiceView* diceView;
 	CardPlayedView* cardPlayedView; /** < Instance of a CardPlayedView */
 	GameMap* map; /** < Game board */
 	vector<Player*>* playerList; /** < List of players currently playing */
