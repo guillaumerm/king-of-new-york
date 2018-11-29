@@ -99,12 +99,6 @@
     <ClInclude Include="DiceRollingStrategy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AggresivePlayerStrategyBuilder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AggesivePlayerStrategyBuilder.cpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="AggresiveDiceRollingStrategy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -148,9 +142,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InteractivePlayerStrategyBuilder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerStrategyDirector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StatisticInterface.h">
@@ -220,6 +211,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DiceObserverInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AggresivePlayerStrategyBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStrategyDirector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -329,9 +326,6 @@
     <ClCompile Include="InteractivePlayerStrategyBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerStrategyDirector.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameStatisticSubject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -369,6 +363,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AggresivePlayerStrategyBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStrategyDirector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStrategyBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

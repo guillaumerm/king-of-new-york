@@ -120,7 +120,6 @@
   <ItemGroup>
     <ClInclude Include="..\a3p3\GameStatisticObserver.h" />
     <ClInclude Include="AddToRollKeepCard.h" />
-    <ClInclude Include="AggesivePlayerStrategyBuilder.cpp" />
     <ClInclude Include="AggresiveBuyingCardsStrategy.h" />
     <ClInclude Include="AggresiveDiceRollingStrategy.h" />
     <ClInclude Include="AggresiveDiceResolvingStrategy.h" />
@@ -194,6 +193,7 @@
     <ClCompile Include="AggresiveDiceResolvingStrategy.cpp" />
     <ClCompile Include="AggresiveDiceRollingStrategy.cpp" />
     <ClCompile Include="AggresiveMovingStrategy.cpp" />
+    <ClCompile Include="AggresivePlayerStrategyBuilder.cpp" />
     <ClCompile Include="AttackSubject.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardPlayedSubject.cpp" />
@@ -234,8 +234,9 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerStateMachine.cpp" />
     <ClCompile Include="PlayerStrategy.cpp" />
-    <ClCompile Include="PlayerStrategyDirector.cpp" />
     <ClCompile Include="PhaseSubject.cpp" />
+    <ClCompile Include="PlayerStrategyBuilder.cpp" />
+    <ClCompile Include="PlayerStrategyDirector.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Token.cpp" />
   </ItemGroup>

@@ -39,7 +39,7 @@ const DiceRoll* DiceRollingFacility::reroll(bool diceToKeep[]) {
 	const DiceRoll *resolvedDiceRoll = new DiceRoll(roll, diceRoll->getNumberDice());
 
 	this->diceRolls.push_back(resolvedDiceRoll);
-
+	this->notify();
 	return resolvedDiceRoll;
 }
 
@@ -60,6 +60,6 @@ const DiceRoll* DiceRollingFacility::roll(int numberDice) {
 	const DiceRoll* diceRoll = new DiceRoll(roll, numberDice);
 
 	this->diceRolls.push_back(diceRoll);
-
+	this->notify();
 	return diceRoll;
 }

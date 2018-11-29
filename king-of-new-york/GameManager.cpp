@@ -156,6 +156,7 @@ void GameManager::executeStartupPhase() {
 	int indOfMostAttack = -1;
 	for (int i = 0; i < playerList->size(); i++)
 	{
+		this->diceView->setCurrentFacility(playerList->at(i)->getRollFacility());
 		const DiceRoll *diceRoll = playerList->at(i)->rollDice(8);
 		currentAttack = diceRoll->getSumAttack();
 		cout << "Player " << i + 1 << " rolled " << currentAttack << " attack faces" << endl;
@@ -311,6 +312,7 @@ void GameManager::play()
 			Player* curPlayer = playerList->at(turnOrder[turn]);
 
 			this->phaseView->setCurrentPlayer(curPlayer);
+			this->diceView->setCurrentFacility(curPlayer->getRollFacility());
 
 			// Precondition of playing a turn the player must not be dead
 			if (curPlayer->isDead()) {
@@ -324,7 +326,6 @@ void GameManager::play()
 			// Display Stats after each turn
 			this->statisticView->show();
 		}
-		turn++;
 		//cout << flush;
 		//system("CLS");
 	}
