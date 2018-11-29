@@ -1,6 +1,8 @@
 #ifndef DIE_H
 #define DIE_H
-#include <ostream>
+#include <string>
+#include <iostream>
+
 
 using namespace std;
 

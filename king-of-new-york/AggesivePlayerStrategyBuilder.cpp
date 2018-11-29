@@ -1,9 +1,4 @@
 #include "AggresivePlayerStrategyBuilder.h"
-#include "AggresiveDiceRollingStrategy.h"
-#include "AggresiveDiceResolvingStrategy.h"
-#include "AggresiveMovingStrategy.h"
-#include "AggresiveBuyingCardsStrategy.h"
-
 
 void AggresivePlayerStrategyBuilder::buildDiceRollingStrategy() {
 	this->strategy->setDiceRollingStrategy(new AggresiveDiceRollingStrategy());

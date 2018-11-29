@@ -2,6 +2,9 @@
 #define CARD_H
 
 #include <string>
+#include <exception>
+#include <iostream>
+
 
 using namespace std;
 /**

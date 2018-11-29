@@ -1,7 +1,8 @@
 #ifndef PLAYER_STRATEGY_BUILDER_H
 #define PLAYER_STRATEGY_BUILDER_H
-#include "PlayerStrategy.h"
 #include "PlayerStrategyBuilder.h"
+#include "PlayerStrategy.h"
+
 /**
  * @brief An interface which regroups the behavior/action a PlayerStrategyBuilder.
  */

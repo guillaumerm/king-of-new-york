@@ -1,23 +1,17 @@
 #ifndef GAME_MANAGER_H
 #define GAME_MANAGER_H
-#include "Player.h";
-#include "Deck.h"
-#include "GameManager.h"
-#include "Card.h"
-#include "DiscardCard.h"
-#include "KeepCard.h"
-#include "GameMapLoader.h"
-#include "Util.h"
-#include "PieceManager.h"
+#include "Player.h"
 #include "GameStatisticView.h"
-#include "PhaseView.h"
-#include "AggresivePlayerStrategyBuilder.h"
-#include "ModeratePlayerStrategyBuilder.h"
-#include "InteractivePlayerStrategyBuilder.h"
-#include "PlayerStrategyDirector.h"
 #include "CardPlayedView.h"
-#include "AttackObserver.h"
 #include "DiceView.h"
+#include "PhaseView.h"
+#include "GameMapLoader.h"
+#include "PieceManager.h"
+#include "PlayerStrategyDirector.h"
+#include "ModeratePlayerStrategyBuilder.h"
+#include "AggresivePlayerStrategyBuilder.h"
+#include "InteractivePlayerStrategyBuilder.h"
+#include "Util.h"
 
 using namespace std;
 

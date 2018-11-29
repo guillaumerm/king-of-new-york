@@ -1,8 +1,4 @@
 #include "InteractivePlayerStrategyBuilder.h"
-#include "InteractiveDiceRollingStrategy.h"
-#include "InteractiveDiceResolvingStrategy.h"
-#include "InteractiveBuyingCardsStrategy.h"
-#include "InteractiveMovingStrategy.h"
 
 void InteractivePlayerStrategyBuilder::buildDiceRollingStrategy() {
 	this->strategy->setDiceRollingStrategy(new InteractiveDiceRollingStrategy);

@@ -3,20 +3,19 @@
 #include <string>
 #include <vector>
 #include <unordered_set>
-
-using namespace std;
+#include <iostream>
 
 /**
  *Function used to print a vector
  * @param aVector vector being printed
  */
-template <typename T> void printVector(const vector<T> &aVector);
+template <typename T> void printVector(const std::vector<T> &aVector);
 
 /**
  * Function used to print a set
  * @param aSet set being printed
  */
-template <typename T> void printSet(const unordered_set<T> &aSet);
+template <typename T> void printSet(const std::unordered_set<T> &aSet);
 
 /**
  * Function used to print an array

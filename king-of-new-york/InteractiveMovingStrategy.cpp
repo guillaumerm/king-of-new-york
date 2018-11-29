@@ -1,5 +1,4 @@
 #include "InteractiveMovingStrategy.h"
-#include "Util.h"
 
 void InteractiveMovingStrategy::execute(Player * player, GameMap * map) {
 	GameMapNode* currentZone = map->getZoneByName(player->getCurrentZone());
@@ -30,7 +29,7 @@ void InteractiveMovingStrategy::execute(Player * player, GameMap * map) {
 		int choice = -1;
 
 		while (choice == -1) {
-			choice = choice = askChoiceQuestion("Select which zone you want to move to? (0 to skip this phase)", 0, neighbours.size());
+			choice = askChoiceQuestion("Select which zone you want to move to? (0 to skip this phase)", 0, neighbours.size());
 			
 			if (choice == 0) {
 				break;

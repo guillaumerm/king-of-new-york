@@ -1,5 +1,4 @@
 #include "InteractiveDiceResolvingStrategy.h"
-#include "Util.h"
 
 void InteractiveDiceResolvingStrategy::execute(Player & player) {
 	// Decide the order in which the dice will be played.

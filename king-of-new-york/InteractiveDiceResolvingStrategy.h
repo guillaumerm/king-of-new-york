@@ -1,6 +1,8 @@
 #ifndef INTERACTIVE_DICE_RESOLVING_STRATEGY_H
 #define INTERACTIVE_DICE_RESOLVING_STRATEGY_H
 #include "DiceResolvingStrategy.h"
+#include "Util.h"
+
 /**
  * @brief A concrete DiceResolvingStrategy that a player calls from which he interactively decides the resolve order of his last DiceRoll.
  */

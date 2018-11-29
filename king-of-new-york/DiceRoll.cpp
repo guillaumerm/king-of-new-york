@@ -1,5 +1,4 @@
 #include "DiceRoll.h"
-#include <ostream>
 
 using namespace std;
 

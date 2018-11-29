@@ -2,6 +2,7 @@
 #define DECK_H
 #include <iostream>
 #include <ostream>
+#include <string>
 
 using namespace std;
 

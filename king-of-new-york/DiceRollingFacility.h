@@ -3,6 +3,7 @@
 #include "DiceRoll.h"
 #include "Die.h"
 #include <vector>
+#include <time.h>
 #include "DiceSubject.h"
 
 using namespace std;

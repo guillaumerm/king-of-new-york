@@ -1,4 +1,3 @@
-#include <string>
 #include "KeepCard.h"
 
 using namespace std;

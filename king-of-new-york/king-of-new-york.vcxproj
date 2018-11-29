@@ -84,6 +84,9 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <ShowIncludes>false</ShowIncludes>
+      <UseFullPaths>false</UseFullPaths>
+      <ForcedIncludeFiles>.\Util.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -143,7 +146,6 @@
     <ClInclude Include="Die.h" />
     <ClInclude Include="DiscardCard.h" />
     <ClInclude Include="EnergyCube.h" />
-    <ClInclude Include="ExtraDieGameCard.h" />
     <ClInclude Include="GainPointsDiscardCard.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameMap.h" />

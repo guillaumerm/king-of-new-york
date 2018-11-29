@@ -1,13 +1,13 @@
-#include <iostream>
 #include "Util.h"
+
 /**
  *Function used to print a vector
  * @param aVector vector being printed
  */
-template <typename T> inline void printVector(const vector<T> &aVector) {
+template <typename T> inline void printVector(const std::vector<T> &aVector) {
 	typename vector<T>::iterator anIterator;
 	for (anIterator = aVector.begin(); anIterator != aVector.end(); anIterator++) {
-		cout << *anIterator << endl;
+		std::cout << *anIterator << std::endl;
 	}
 }
 
@@ -15,10 +15,10 @@ template <typename T> inline void printVector(const vector<T> &aVector) {
  * Function used to print a set
  * @param aSet set being printed
  */
-template <typename T> inline void printSet(const unordered_set<T> &aSet) {
+template <typename T> inline void printSet(const std::unordered_set<T> &aSet) {
 	typename unordered_set<T>::iterator anIterator;
 	for (anIterator = aSet.begin(); anIterator != aSet.end(); anIterator++) {
-		cout << *anIterator << endl;
+		std::cout << *anIterator << std::endl;
 	}
 }
 
@@ -31,7 +31,7 @@ template <typename T> inline void printArray(const T* array, int size) {
 	for (int i = 0; i < size; i++) {
 		std::cout << array[i] << std::endl;
 	}
-	cout << endl;
+	std::cout << std::endl;
 }
 
 /**
@@ -41,11 +41,11 @@ template <typename T> inline void printArray(const T* array, int size) {
  * @param negativeAnswer char representing a negative answer for the question
  * @return true if answer with positiveAnswer, false if answered with a negativeAnswer
  */
-bool askYesNoQuestion(string question, char positiveAnswer, char negativeAnswer) {
+bool askYesNoQuestion(std::string question, char positiveAnswer, char negativeAnswer) {
 	char answer = -1;
 	while (answer != positiveAnswer && answer != negativeAnswer) {
-		cout << question << "(" << positiveAnswer << " or " << negativeAnswer << "):";
-		cin >> answer;
+		std::cout << question << "(" << positiveAnswer << " or " << negativeAnswer << "):";
+		std::cin >> answer;
 	}
 	return answer == positiveAnswer;
 }
@@ -56,11 +56,11 @@ bool askYesNoQuestion(string question, char positiveAnswer, char negativeAnswer)
  * @param lowerChoice lower bound limit for choices
 
  */
-int askChoiceQuestion(string question, int lowerChoice, int upperChoice) {
+int askChoiceQuestion(std::string question, int lowerChoice, int upperChoice) {
 	int choice = -2;
 	while (choice < lowerChoice || choice > upperChoice) {
-		cout << question;
-		cin >> choice;
+		std::cout << question;
+		std::cin >> choice;
 	}
 	return choice;
 }

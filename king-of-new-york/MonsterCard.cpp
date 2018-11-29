@@ -1,6 +1,5 @@
-#include <string.h>
-
 #include "MonsterCard.h"
+
 using namespace std;
 
 const int STARTING_LIFE_POINTS = 10;

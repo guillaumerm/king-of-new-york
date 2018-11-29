@@ -1,6 +1,8 @@
 #ifndef INTERACTIVE_DICE_ROLLING_STRATEGY_H
 #define INTERACTIVE_DICE_ROLLING_STRATEGY_H
 #include "DiceRollingStrategy.h"
+#include "Util.h"
+
 /**
  * @brief A concrete DiceRollingStrategy that a player calls when he is executing its dice rolling phase. Player interactively decides which dice to keep or reroll.
  */

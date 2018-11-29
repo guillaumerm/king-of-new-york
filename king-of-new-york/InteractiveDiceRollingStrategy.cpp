@@ -1,5 +1,4 @@
 #include "InteractiveDiceRollingStrategy.h"
-#include "Util.h"
 
 void InteractiveDiceRollingStrategy::execute(Player & player, int numberOfDice) {
 	bool *diceToKeep = new bool[numberOfDice];

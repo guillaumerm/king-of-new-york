@@ -1,5 +1,4 @@
 #include "ModerateBuyingCardsStrategy.h"
-#include "KeepCard.h"
 
 void ModerateBuyingCardsStrategy::execute(Player & player, vector<GameCard*> *cardsAvailable, Deck<GameCard*>* deckOfGameCards) {
 	unordered_set<GameCard*> cardsToBeBought;

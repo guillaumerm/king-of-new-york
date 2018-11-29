@@ -1,6 +1,8 @@
 #ifndef INTERACTIVE_MOVING_STRATEGY_H
 #define INTERACTIVE_MOVING_STRATEGY_H
 #include "MovingStrategy.h"
+#include "Util.h"
+
 /**
  * @brief A concrete class of MovingStrategy which is interactively interacts with the player to make choices where to move.
  */

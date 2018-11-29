@@ -1,8 +1,4 @@
 #include "Die.h"
-#include <string>
-#include <stdlib.h>
-#include <time.h>
-#include <ostream>
 
 using namespace std;
 

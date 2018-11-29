@@ -1,5 +1,4 @@
 #include "DiceRollingFacility.h"
-#include <time.h>
 
 DiceRollingFacility::DiceRollingFacility() {
 	srand(time(NULL));

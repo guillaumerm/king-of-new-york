@@ -1,5 +1,4 @@
 #include "GameCard.h"
-#include <string>
 
 using namespace std;
 

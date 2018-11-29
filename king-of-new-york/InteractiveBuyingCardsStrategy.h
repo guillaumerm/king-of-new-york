@@ -1,7 +1,7 @@
 #ifndef INTERACTIVE_BUYING_CARDS_STRATEGY_H
 #define INTERACTIVE_BUYING_CARDS_STRATEGY_H
-#include "BuyingCardsStrategy.h"
 #include "Util.h"
+#include "BuyingCardsStrategy.h"
 
 using namespace std;
 

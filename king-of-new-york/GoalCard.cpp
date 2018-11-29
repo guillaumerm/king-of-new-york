@@ -1,5 +1,3 @@
-#include <string>
-#include "GameCard.h"
 #include "GoalCard.h"
 
 using namespace std;

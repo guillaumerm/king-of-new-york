@@ -1,4 +1,3 @@
-#include <unordered_map>
 #include "Player.h"
 
 Player::Player() : Player(NULL, 0, "", PlayerStateMachine::PlayerState::Idle, NULL) {
