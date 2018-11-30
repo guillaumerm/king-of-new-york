@@ -80,20 +80,20 @@ Deck<GameCard*>* initDeck(CardPlayedObserver *observer) {
 	}
 
 	for (int i = 0; i < 3; i++) {
-		card = new GainPointsDiscardCard("Yankee Stadium", "Buy this card for 1 ENERGY less if you are in the BRONX.\n+5 VICTORY_POINT and heal 5 damage.", 9, "Bronx", 5, 0, 5);
+		card = new GainPointsDiscardCard("Yankee Stadium", "Buy this card for 1 ENERGY less if you are in the BRONX.\n+5 VICTORY_POINT and heal 5 damage.", 9, "Bronx", 0, 5, 5);
 		card->attach(observer);
 		deckOfCards->push(card);
 	}
-	card = new GainPointsDiscardCard("North Central Park", "Buy this card for 1 ENERGY less if you are in the UPPER_MANHATTEN.\n+5 VICTORY_POINT and heal 5 damage.", 5, "Upper Manhatten", 2, 0, 2);
+	card = new GainPointsDiscardCard("North Central Park", "Buy this card for 1 ENERGY less if you are in the UPPER_MANHATTEN.\n+5 VICTORY_POINT and heal 5 damage.", 5, "Upper Manhatten", 0, 5, 5);
 	card->attach(observer);
 	deckOfCards->push(card);
 
-	card = new GainPointsDiscardCard("South Central Park", "Buy this card for 1 ENERGY less if you are in the LOWER_MANHATTEN.\n+5 VICTORY_POINT and heal 5 damage.", 5, "Lower Manhatten", 2, 0, 2);
+	card = new GainPointsDiscardCard("South Central Park", "Buy this card for 1 ENERGY less if you are in the LOWER_MANHATTEN.\n+5 VICTORY_POINT and heal 5 damage.", 5, "Lower Manhatten", 0, 5, 5);
 	card->attach(observer);
 	deckOfCards->push(card);
 
 	for (int i = 0; i < 3; i++) {
-		card = new GainPointsDiscardCard("The Unisphere", "Buy this card for 1 ENERGY_POINT less if you are in QUEENS.\n+4 VICTORY_POINT.", 5, "Queens", 4, 0, 0);
+		card = new GainPointsDiscardCard("The Unisphere", "Buy this card for 1 ENERGY_POINT less if you are in QUEENS.\n+4 VICTORY_POINT.", 5, "Queens", 0, 4, 0);
 		card->attach(observer);
 		deckOfCards->push(card);
 	}

@@ -72,7 +72,6 @@ void Player::buyCards(unordered_set<GameCard*> cardsToBeBought) {
 
 	this->energyCubes -= cost;
 
-	cardsToBeBought.clear();
 	dynamic_cast<PhaseSubject*>(this)->notify();
 	this->state.proceed();
 	this->endPhase();
@@ -130,6 +129,7 @@ vector<GameCard*> Player::getHand()
 void Player::removeEnergyCubes(int amount) {
 	int diff = this->energyCubes - amount;
 	this->energyCubes = diff < 0 ? 0 : diff;
+	dynamic_cast<GameStatisticSubject*>(this)->notify(this->monsterCard->getName(), this->currentZone, this->monsterCard->getVictoryPoint(), this->monsterCard->getLifePoint(), this->energyCubes);
 }
 
 int Player::getEnergyCubes() const{
@@ -138,6 +138,7 @@ int Player::getEnergyCubes() const{
 
 void Player::addEnergyCubes(int amount) {
 	this->energyCubes += amount;
+	dynamic_cast<GameStatisticSubject*>(this)->notify(this->monsterCard->getName(), this->currentZone, this->monsterCard->getVictoryPoint(), this->monsterCard->getLifePoint(), this->energyCubes);
 }
 
 int Player::getLifePoints() const {
@@ -150,20 +151,22 @@ int Player::getVictoryPoints() const {
 
 void Player::addLifePoints(int lifePoints) {
 	this->monsterCard->addLifePoints(lifePoints);
+	dynamic_cast<GameStatisticSubject*>(this)->notify(this->monsterCard->getName(), this->currentZone, this->monsterCard->getVictoryPoint(), this->monsterCard->getLifePoint(), this->energyCubes);
 }
 
 void Player::addVictoryPoints(int victoryPoints) {
 	this->monsterCard->addVictoryPoints(victoryPoints);
-	dynamic_cast<GameStatisticSubject*>(this)->notify(this->monsterCard->getName(), this->currentZone, this->monsterCard->getVictoryPoint());
+	dynamic_cast<GameStatisticSubject*>(this)->notify(this->monsterCard->getName(), this->currentZone, this->monsterCard->getVictoryPoint(), this->monsterCard->getLifePoint(), this->energyCubes);
 }
 
 void Player::removeVictoryPoints(int victoryPoints) {
 	this->monsterCard->removeVictoryPoints(victoryPoints);
-	dynamic_cast<GameStatisticSubject*>(this)->notify(this->monsterCard->getName(), this->currentZone, this->monsterCard->getVictoryPoint());
+	dynamic_cast<GameStatisticSubject*>(this)->notify(this->monsterCard->getName(), this->currentZone, this->monsterCard->getVictoryPoint(), this->monsterCard->getLifePoint(), this->energyCubes);
 }
 
 void Player::removeLifePoints(int lifePoints) {
 	this->monsterCard->removeLifePoints(lifePoints);
+	dynamic_cast<GameStatisticSubject*>(this)->notify(this->monsterCard->getName(), this->currentZone, this->monsterCard->getVictoryPoint(), this->monsterCard->getLifePoint(), this->energyCubes);
 }
 
 bool Player::isRolling() const {
@@ -236,6 +239,11 @@ const unordered_map<Die::Face, int> Player::resolveDice(unordered_set<Die::Face>
 	const DiceRoll *lastRoll = this->diceRollingFacility->getLastRoll();
 	unordered_set<Die::Face>::iterator iter;
 
+	for (iter = order.begin(); iter != order.end(); iter++) {
+		this->lastResolved->insert({ *iter, lastRoll->getSumFace(*iter) });
+	}
+
+
 	for (auto card : this->gameCards) {
 		AddToRollKeepCard *addToResultCard = dynamic_cast<AddToRollKeepCard *>(card);
 		if (addToResultCard != nullptr) {
@@ -249,7 +257,8 @@ const unordered_map<Die::Face, int> Player::resolveDice(unordered_set<Die::Face>
 		switch (face.first)
 		{
 		case Die::Face::A:
-			dynamic_cast<AttackSubject*>(this)->notify(this->getMonster(), !this->isInManhatten(), this->lastResolved->at(Die::Face::A));
+			if(face.second > 0)
+				dynamic_cast<AttackSubject*>(this)->notify(this->getMonster(), !this->isInManhatten(), face.second);
 			break;
 		case Die::Face::C:
 			continue;
@@ -258,33 +267,28 @@ const unordered_map<Die::Face, int> Player::resolveDice(unordered_set<Die::Face>
 			continue;
 			break;
 		case Die::Face::E:
-			this->addEnergyCubes(lastRoll->getSumEnergy());
+			this->addEnergyCubes(face.second);
 			break;
 		case Die::Face::H:
-			if (this->monsterCard->getLifePoint() + lastRoll->getSumHeal() > 10)
+			if (this->monsterCard->getLifePoint() + face.second > 10)
 			{
 				int healedUp = 10 - this->monsterCard->getLifePoint();
 				this->monsterCard->addLifePoints(healedUp);
 			}
 			else
 			{
-				this->monsterCard->addLifePoints(lastRoll->getSumHeal());
+				this->monsterCard->addLifePoints(face.second);
 			}
 			break;
 		case Die::Face::O:
-			this->monsterCard->removeLifePoints(lastRoll->getSumOuch());
+			this->monsterCard->removeLifePoints(face.second);
 			break;
 		default:
 			throw exception("Not allowed symbol");
 		}
 	}
 
-	for (iter = order.begin(); iter != order.end(); iter++) {
-		this->lastResolved->insert({ *iter, lastRoll->getSumFace(*iter) });
-	}
-
 	this->state.proceed();
-	this->lastResolved = this->lastResolved;
 	dynamic_cast<PhaseSubject*>(this)->notify();
 	return *this->lastResolved;
 }
@@ -313,7 +317,7 @@ string Player::getCurrentZone() const {
 
 void Player::setCurrentZone(string newCurrentZone) {
 	this->currentZone = newCurrentZone;
-	dynamic_cast<GameStatisticSubject*>(this)->notify(this->monsterCard->getName(), this->currentZone, this->monsterCard->getVictoryPoint());
+	dynamic_cast<GameStatisticSubject*>(this)->notify(this->monsterCard->getName(), this->currentZone, this->monsterCard->getVictoryPoint(), this->monsterCard->getLifePoint(), this->energyCubes);
 }
 
 void Player::setPlayerStrategy(PlayerStrategy * strategy) {
@@ -323,7 +327,7 @@ void Player::setPlayerStrategy(PlayerStrategy * strategy) {
 
 bool Player::isInManhatten()
 {
-	return this->currentZone == "Lower Manhatten" || this->currentZone == "Midtown" || this->currentZone == "UpperMahatten";
+	return this->currentZone == "Lower Manhatten" || this->currentZone == "Midtown" || this->currentZone == "Upper Manhatten";
 }
 
 string Player::getMonster()

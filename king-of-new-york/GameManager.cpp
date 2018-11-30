@@ -1,7 +1,7 @@
 #include "GameManager.h"
 
 const int GameManager::NUMBER_OF_CARDS = 64;
-
+using namespace std;
 GameManager::GameManager()
 {
 	this->statisticView = new GameStatisticView();
@@ -131,6 +131,7 @@ void GameManager::executeStart() {
 		director->constructPlayerStrategy();
 
 		Player * newPlayer = new Player(&monsterList[monsterChoice], director->getPlayerStrategy());
+		dynamic_cast<AttackSubject*>(newPlayer)->attach(this);
 		dynamic_cast<GameStatisticSubject*>(newPlayer)->attach(this->statisticView);
 		dynamic_cast<PhaseSubject*>(newPlayer)->attach(this->phaseView);
 		dynamic_cast<DiceSubject*>(newPlayer->getRollFacility())->attach(this->diceView);
@@ -168,16 +169,16 @@ void GameManager::executeStartupPhase() {
 		}
 
 	}
-	this->turnOrder = new int[4];
+	this->turnOrder = new int[this->playerList->size()]();
 	cout << "Player with the most attack faces: " << indOfMostAttack + 1 << endl;
 	this->turnOrder[0] = indOfMostAttack;
 	indOfMostAttack++;
 	//cout << turnOrder[0] << " " << endl;
-	for (int i = 1; i < 4; i++)
+	for (int i = 1; i < this->playerList->size(); i++)
 	{
-		if (indOfMostAttack + 1 > 4)
+		if (indOfMostAttack + 1 > this->playerList->size())
 		{
-			indOfMostAttack -= 4;
+			indOfMostAttack -= this->playerList->size();
 			this->turnOrder[i] = indOfMostAttack;
 		}
 		this->turnOrder[i] = indOfMostAttack;
@@ -186,16 +187,19 @@ void GameManager::executeStartupPhase() {
 	}
 	//NOTE: For simplicity "clockwise order" will be assumed to be in the order players were created
 	cout << "Therefore the turn order is:" << endl;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < this->playerList->size(); i++)
 	{
 		cout << "Player " << this->turnOrder[i] + 1 << " is " << i + 1 << "(st/nd/rd/th)" << endl;
 	}
+
+	map->getZoneByName("Lower Manhatten")->addPlayer(playerList->at(turnOrder[0]));
+	playerList->at(turnOrder[0])->setCurrentZone("Lower Manhatten");
 
 	cout << "Now players will choose which boroughs they'd like to begin in" << endl;
 
 	bool undecidedStart;
 	string chosenZone;
-	for (int i = 0; i < 4; i++)
+	for (int i = 1; i < this->playerList->size(); i++)
 	{
 		undecidedStart = true;
 		while (undecidedStart)
@@ -292,22 +296,56 @@ void GameManager::update(string playerName, bool attackManhatten, int attackAmou
 	for (auto player : *this->playerList) {
 		if (player->getMonster() != playerName && attackManhatten == player->isInManhatten() && !player->isDead()) {
 			player->removeLifePoints(attackAmount);
+			if (attackManhatten) {
+				for (auto zone : this->map->getList()) {
+					if (zone->isNotFull() && zone->getZoneName() != "Lower Manhatten" && zone->getZoneName() != "Midtown" && zone->getZoneName() != "Upper Manhatten") {
+						map->movePlayer(player, player->getCurrentZone(), zone->getZoneName());
+						player->setCurrentZone(zone->getZoneName());
+						return;
+					}
+				}
+			}
 		}
 	}
 }
 
 void GameManager::play()
 {
-	int turn = 1;
-	cout << flush;
-	system("CLS");
-	for (auto player : *this->playerList) {
-		player->addEnergyCubes(10);
-	}
+	int round = 1;
+	std::cout << flush;
+	std::system("CLS");
 	Player* winningPlayer;
 	// Main game loop - play until someone wins
 	while (!(winningPlayer = this->hasWon())) {
-		cout << " ----------- Turn " << to_string(turn) << " ----------- " << endl << endl;
+		std::cout << " ----------- Round " << to_string(round) << " ----------- " << endl << endl;
+
+		GameMapNode *zone = this->map->getZoneByName("Lower Manhatten");
+		if (zone->getPlayersCount() > 0) {
+			for (auto player : zone->getPlayers()) {
+				player->addEnergyCubes(1);
+				player->addVictoryPoints(1);
+			}
+		}
+
+		zone = this->map->getZoneByName("Midtown");
+		if (zone->getPlayersCount() > 0) {
+			for (auto player : zone->getPlayers()) {
+				player->addEnergyCubes(1);
+				player->addVictoryPoints(2);
+			}
+		}
+
+		zone = this->map->getZoneByName("Upper Manhatten");
+		if (zone->getPlayersCount() > 0) {
+			for (auto player : this->map->getZoneByName("Upper Manhatten")->getPlayers()) {
+				player->addEnergyCubes(2);
+				player->addVictoryPoints(2);
+			}
+		}
+
+		// Display Stats after each turn
+		this->statisticView->show();
+
 		for (int turn = 0; turn < playerList->size(); turn++) {
 			Player* curPlayer = playerList->at(turnOrder[turn]);
 
@@ -326,11 +364,14 @@ void GameManager::play()
 			// Display Stats after each turn
 			this->statisticView->show();
 		}
-		//cout << flush;
-		//system("CLS");
+		round++;
+		std::cout << flush;
+		std::system("CLS");
 	}
 
-	cout << endl << "Game has ended!" << endl;
+	std::cout << endl << "Game has ended!" << endl;
+	
+	std::cout << winningPlayer->getMonster() << " has won!" << endl;
 	this->statisticView->show();
-	cout << winningPlayer->getMonster() << " has won!" << endl;
+	system("Pause");
 }

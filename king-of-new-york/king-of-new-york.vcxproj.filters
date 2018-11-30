@@ -144,9 +144,6 @@
     <ClInclude Include="InteractivePlayerStrategyBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StatisticInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameStatisticSubject.h">
       <Filter>Header Files</Filter>
     </ClInclude>

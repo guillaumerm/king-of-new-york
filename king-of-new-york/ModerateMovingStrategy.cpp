@@ -12,6 +12,9 @@ void ModerateMovingStrategy::execute(Player * player, GameMap * map) {
 		if (possibleMoves.size() == 1) {
 			player->move(map, possibleMoves.at(0)->getZoneName());
 		}
+		else {
+			player->endPhase();
+		}
 	}
 
 	player->endPhase();

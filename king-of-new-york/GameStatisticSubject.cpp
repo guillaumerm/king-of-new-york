@@ -15,10 +15,10 @@ void GameStatisticSubject::detach(GameStatisticObserver * ob)
 	this->observers->remove(ob);
 }
 
-void GameStatisticSubject::notify(std::string playerName, std::string location, int victoryPoint)
+void GameStatisticSubject::notify(std::string playerName, std::string location, int victoryPoint, int healPoints, int energyCubes)
 {
 	for (auto observer : *this->observers) {
-		observer->update(playerName, location, victoryPoint);
+		observer->update(playerName, location, victoryPoint, healPoints, energyCubes);
 	}
 }
 

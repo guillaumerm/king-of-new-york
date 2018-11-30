@@ -27,7 +27,7 @@ public:
 	/**
 	 * Notifies the GameStatisticObservers that the GameStatisticSubject state as changed.
 	 */
-	void notify(std::string playerName, std::string location, int victoryPoint);
+	void notify(std::string playerName, std::string location, int victoryPoint, int healPoints, int energyCubes);
 
 	/**
 	 * Deconstructor

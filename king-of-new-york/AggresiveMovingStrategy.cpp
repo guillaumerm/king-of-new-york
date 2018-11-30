@@ -12,7 +12,7 @@ void AggresiveMovingStrategy::execute(Player *player, GameMap *map) {
 		if (possibleMoves.size() == 1) {
 			player->move(map, possibleMoves.at(0)->getZoneName());
 		}
-		else {
+		else if (player->getCurrentZone() != "Upper Manhatten") {
 			
 
 			// Checks if player is in Upper Manhatten or find first possible valid moves that is not in Manhatten since there is already a player

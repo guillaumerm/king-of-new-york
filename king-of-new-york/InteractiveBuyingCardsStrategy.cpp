@@ -48,7 +48,11 @@ void InteractiveBuyingCardsStrategy::execute(Player & player, vector<GameCard*> 
 		player.buyCards(cardsToBeBought);
 	}
 
-	player.endPhase();
+	for (auto card : cardsToBeBought) {
+		deckOfCards->push(card);
+	}
+	deckOfCards->shuffle();
+	cardsToBeBought.clear();
 }
 
 void InteractiveBuyingCardsStrategy::dealNewCardsToBuy(Player &player, vector<GameCard*> *cardsAvailable, Deck<GameCard*>* deckOfCards) {

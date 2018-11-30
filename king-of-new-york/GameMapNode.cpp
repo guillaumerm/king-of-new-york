@@ -40,6 +40,11 @@ int GameMapNode::getPlayersCount() const{
 	return this->players.size();
 }
 
+vector<Player*> GameMapNode::getPlayers()
+{
+	return this->players;
+}
+
 bool GameMapNode::isStartZone() const
 {
 	return this->startingZone;

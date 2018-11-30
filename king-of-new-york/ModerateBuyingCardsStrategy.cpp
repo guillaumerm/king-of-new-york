@@ -7,16 +7,16 @@ void ModerateBuyingCardsStrategy::execute(Player & player, vector<GameCard*> *ca
 
 	while(card != cardsAvailable->end() && cost + (*card)->getCost() < player.getEnergyCubes()) {
 		GameCard *currentCard = *card;
-		KeepCard *keepCard = dynamic_cast<KeepCard*>(currentCard);
-		// Card is not of type KeepCard (that is power ups) check next cards
-		if (!keepCard) {
-			continue;
-		}
 
-		if (cost + keepCard->getCost() <= player.getEnergyCubes()) {
-			cost += keepCard->getCost();
-			cardsToBeBought.emplace(keepCard);
+		if (cost + currentCard->getCost() <= player.getEnergyCubes()) {
+			cost += currentCard->getCost();
+			cardsToBeBought.emplace(currentCard);
 		}
+		card++;
+	}
+
+	for (int i = 0; i < cardsToBeBought.size(); i++) {
+		cardsAvailable->push_back(*deckOfGameCards->deal());
 	}
 
 	for (auto card : cardsToBeBought) {
@@ -27,4 +27,10 @@ void ModerateBuyingCardsStrategy::execute(Player & player, vector<GameCard*> *ca
 	}
 
 	player.buyCards(cardsToBeBought);
+
+	for (auto card : cardsToBeBought) {
+		deckOfGameCards->push(card);
+	}
+	deckOfGameCards->shuffle();
+	cardsToBeBought.clear();
 }

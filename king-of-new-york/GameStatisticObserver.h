@@ -7,11 +7,13 @@
 class GameStatisticObserver {
 public:
 	/**
-	 * Signal the GameStatisticObserver that the registered GameStatisticSubject had its state changed.
+	 * Method used by GameStatisticSubject to notify the view that a change as occured.
 	 * @param playerName name of the subject
 	 * @param location current location of the subject
 	 * @param victoryPoints current number of victory points being held by the player
+	 * @param healPoints current number of heal points that a player has
+	 * @param energyCubes current number of energy cubes held by the player
 	 */
-	virtual void update(std::string playerName, std::string location, int victoryPoints) = 0;
+	virtual void update(std::string playerName, std::string location, int victoryPoints, int healPoints, int energyCubes) = 0;
 };
 #endif

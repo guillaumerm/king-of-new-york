@@ -180,7 +180,6 @@
     <ClInclude Include="PlayerStrategy.h" />
     <ClInclude Include="PlayerStrategyBuilder.h" />
     <ClInclude Include="PlayerStrategyDirector.h" />
-    <ClInclude Include="StatisticInterface.h" />
     <ClInclude Include="PhaseSubject.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Token.h" />

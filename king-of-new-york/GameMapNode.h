@@ -65,6 +65,8 @@ public:
 	 */
 	int getPlayersCount() const;
 
+	vector <Player*> getPlayers();
+
 	/**
 	 * Returns if the zone is a starting zone
 	 * @return true if starting zone, false otherwise
