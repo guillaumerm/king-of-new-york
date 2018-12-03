@@ -3,6 +3,9 @@
 #include <list>
 #include "AttackObserver.h"
 
+/**
+ * @brief AttackSubject as Subject that have the possibility of Attacking.
+ */
 class AttackSubject {
 public:
 	AttackSubject();

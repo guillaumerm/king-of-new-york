@@ -346,7 +346,7 @@ void GameManager::play()
 		// Display Stats after each turn
 		this->statisticView->show();
 
-		for (int turn = 0; turn < playerList->size(); turn++) {
+		for (int turn = 0; turn < playerList->size() && !(winningPlayer = this->hasWon()); turn++) {
 			Player* curPlayer = playerList->at(turnOrder[turn]);
 
 			this->phaseView->setCurrentPlayer(curPlayer);
@@ -365,8 +365,8 @@ void GameManager::play()
 			this->statisticView->show();
 		}
 		round++;
-		std::cout << flush;
-		std::system("CLS");
+		//std::cout << flush;
+		//std::system("CLS");
 	}
 
 	std::cout << endl << "Game has ended!" << endl;

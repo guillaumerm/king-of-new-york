@@ -48,6 +48,10 @@ void InteractiveBuyingCardsStrategy::execute(Player & player, vector<GameCard*> 
 		player.buyCards(cardsToBeBought);
 	}
 
+	for (int i = 0; i < 3 - cardsAvailable->size(); i++) {
+		cardsAvailable->push_back(*deckOfCards->deal());
+	}
+
 	for (auto card : cardsToBeBought) {
 		deckOfCards->push(card);
 	}
